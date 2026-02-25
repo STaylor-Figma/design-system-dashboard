@@ -202,7 +202,7 @@ var popoverData = {
   "In NPM Package": "35 components in @constructconnect/ui-components monorepo via Cloudsmith NPM registry.<br><br><strong>12 Atoms:</strong> Badge, Checkbox, Icon, Indicator Counter/Dot, Input, Label, Logo, Radio Button, TextArea, Toggle, Tooltip<br><strong>19 Molecules:</strong> Button, Button Icon, Checkbox Field, Dropdown Button, Dropdown Item, Input Field, Pill, Quick Search, Radio Button Field, Search Field, Tab, Text Area Field, Toggle Field + 6 more<br><strong>4 Organisms:</strong> Accordion, Accordion Header, Menu Header, Radio Button Group<br><strong>200+ Tokens</strong> — colors, typography, spacing, animations",
   "Fully Shippable": "\"Fully shippable\" = coded implementation + Storybook docs + JSON tokens.<br><br><strong>9 complete:</strong> Checkbox, Indicator (Dot/Counter), Input, Label, Radio Button, Button, Input Field, Pill, Toggle Field<br><br><strong>8 partial:</strong> Icon, TextArea, Toggle, CheckboxField, RadioButtonField, TextAreaField, Tab, RadioButtonGroup<br><strong>Remaining 18</strong> need token conversion or Storybook docs.",
   "Design Specs Ready": "22 components extracted from Figma with tokens but not yet in NPM package.<br><br>These are READY for developers to implement:<br>• Complete CSS token files<br>• Comprehensive documentation<br>• Behavioral specifications<br>• WCAG compliance specs<br><br><strong>Once implemented, these will bring NPM package to 57 total components.</strong>",
-  "MCP Ready": "57 total components ready for AI-powered design-to-code workflows.<br><br><strong>✅ All 5 Figma MCP Requirements Met:</strong><br>1. Component organization ✅<br>2. Variants & properties ✅<br>3. Design tokens integration ✅<br>4. Component documentation ✅<br>5. Behavioral specifications ✅<br><br><strong>27 components</strong> with comprehensive behavioral specs (Feb 24, 2026 update)<br><br>AI agents can generate production-ready code from Figma designs.",
+  "MCP Ready": "57 total components have complete behavioral specifications for developer implementation.<br><br><strong>✅ All 5 Documentation Standards Met:</strong><br>1. Component organization ✅<br>2. Variants & properties ✅<br>3. Design tokens & mappings ✅<br>4. Implementation guidance ✅<br>5. Accessibility requirements ✅<br><br><strong>27 components</strong> with enhanced behavioral specs (Feb 24, 2026)<br><br>Developers have complete specifications to build components that exactly match the design system — includes all states, motion properties, and WCAG requirements.",
   "Pilot Teams": "3 teams consuming via npm:<br><br><strong>Admin Portal</strong> — Primary partner<br><strong>Crimson</strong> — Collaborative dev<br><strong>Web Takeoff</strong> — Strategic integration<br><br><strong>Metrics:</strong> 40% dev time reduction · 100% design consistency · 100% WCAG AA<br><br><strong>Q1 2026:</strong> Expand to 4+ teams. Payment Portal next."
 };
 
@@ -520,31 +520,33 @@ function renderSystems(container) {
 // ═══════════════════════════════════════════════════════
 function renderMCPDocs(container) {
   // Header card with status
-  var headerCard = card('MCP Documentation Status', 'Behavioral specifications for AI code generation');
-  headerCard.innerHTML += '<div style="padding:16px;background:#E8F5E9;border:1px solid #C8E6C9;border-radius:8px;margin-bottom:16px"><div style="display:flex;gap:24px;align-items:center;justify-content:center"><div style="text-align:center"><div style="font-size:32px;font-weight:700;color:#459D13">27</div><div style="font-size:13px;color:#4A4F55;font-weight:600">Components</div><div style="font-size:11px;color:#88888E">With behavioral specs</div></div><div style="font-size:28px;color:#459D13">✅</div><div style="text-align:center"><div style="font-size:32px;font-weight:700;color:#459D13">100%</div><div style="font-size:13px;color:#4A4F55;font-weight:600">MCP Ready</div><div style="font-size:11px;color:#88888E">All 5 requirements met</div></div></div></div>';
-  headerCard.innerHTML += '<div class="highlight-bar" style="background:#F2FAFE;color:#0C79A8;border:1px solid #CCECF9"><strong>📅 February 24, 2026 Update:</strong> All 27 component documentation files enhanced with comprehensive behavioral specifications. All future documentation will include these specifications by default.</div>';
+  var headerCard = card('Behavioral Specifications Status', 'Complete developer documentation for implementation');
+  headerCard.innerHTML += '<div style="padding:16px;background:#E8F5E9;border:1px solid #C8E6C9;border-radius:8px;margin-bottom:16px"><div style="display:flex;gap:24px;align-items:center;justify-content:center"><div style="text-align:center"><div style="font-size:32px;font-weight:700;color:#459D13">27</div><div style="font-size:13px;color:#4A4F55;font-weight:600">Components</div><div style="font-size:11px;color:#88888E">With behavioral specs</div></div><div style="font-size:28px;color:#459D13">✅</div><div style="text-align:center"><div style="font-size:32px;font-weight:700;color:#459D13">100%</div><div style="font-size:13px;color:#4A4F55;font-weight:600">Docs Complete</div><div style="font-size:11px;color:#88888E">All 5 requirements met</div></div></div></div>';
+  headerCard.innerHTML += '<div class="highlight-bar" style="background:#FFF8E1;color:#8B6914;border:1px solid #FFE082"><strong>⚠️ Important:</strong> Behavioral specifications are developer documentation that guide manual implementation. Components must still be built by developers following these specifications — this is NOT automatic code generation.</div>';
+  headerCard.innerHTML += '<div class="highlight-bar" style="background:#F2FAFE;color:#0C79A8;border:1px solid #CCECF9;margin-top:12px"><strong>📅 February 24, 2026 Update:</strong> All 27 component documentation files enhanced with comprehensive behavioral specifications. All future documentation will include these specifications by default.</div>';
   container.appendChild(headerCard);
 
-  // MCP Requirements card
-  var reqCard = card('Figma MCP Requirements', '5 requirements for AI-powered design-to-code workflows');
+  // Documentation Requirements card
+  var reqCard = card('Behavioral Specification Requirements', '5 documentation standards for complete component specifications');
   reqCard.innerHTML += '<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px">';
   var requirements = [
     {num:1,title:"Organization",status:"Complete",desc:"Component naming & hierarchy"},
     {num:2,title:"Variants",status:"Complete",desc:"Properties & states defined"},
-    {num:3,title:"Design Tokens",status:"Complete",desc:"Variable bindings & aliasing"},
-    {num:4,title:"Documentation",status:"Complete",desc:"Specs & token files"},
-    {num:5,title:"Behavioral Specs",status:"Complete",desc:"Updated Feb 24, 2026"}
+    {num:3,title:"Design Tokens",status:"Complete",desc:"Token files & mappings"},
+    {num:4,title:"Implementation",status:"Complete",desc:"Developer guidance"},
+    {num:5,title:"Accessibility",status:"Complete",desc:"WCAG requirements"}
   ];
   requirements.forEach(function(r) {
     reqCard.innerHTML += '<div style="padding:14px;background:#F0FAF0;border:1px solid #C8E6C9;border-radius:8px;text-align:center"><div style="font-size:20px;font-weight:700;color:#459D13;margin-bottom:4px">'+r.num+'</div><div style="font-size:12px;font-weight:700;color:#1C1F22;margin-bottom:2px">'+r.title+'</div><div style="font-size:10px;color:#88888E;margin-bottom:4px">'+r.desc+'</div><div style="font-size:11px;font-weight:600;color:#459D13">✅ '+r.status+'</div></div>';
   });
   reqCard.innerHTML += '</div>';
-  reqCard.innerHTML += '<div style="padding:14px;background:#FFF8E1;border-radius:6px;font-size:13px;color:#4A4F55;line-height:1.6"><strong>What this means:</strong> AI agents (Claude, GitHub Copilot, etc.) can read Figma designs and generate production-ready code that matches Blueprint Design System exactly — no manual tweaking required.</div>';
+  reqCard.innerHTML += '<div style="padding:14px;background:#E8F5E9;border:1px solid #C8E6C9;border-radius:6px;font-size:13px;color:#4A4F55;line-height:1.6"><strong>What this means:</strong> Developers have complete specifications for building components that match the design system exactly. Each spec includes visual states, interactive behaviors, motion properties, token mappings, and WCAG accessibility requirements.</div>';
+  reqCard.innerHTML += '<div style="padding:14px;background:#FFF3CD;border:1px solid #FFE082;border-radius:6px;font-size:12px;color:#4A4F55;line-height:1.6;margin-top:12px"><strong>Developer Workflow:</strong> (1) Read behavioral specification → (2) Implement component following documented states, tokens, and motion → (3) Test against accessibility requirements → (4) QA validates implementation matches spec</div>';
   container.appendChild(reqCard);
 
   // Components breakdown
   var totalComps = mcpDocsComponents.atoms.length + mcpDocsComponents.molecules.length + mcpDocsComponents.organisms.length;
-  var breakdownCard = card('Components with Behavioral Specifications ('+totalComps+')', 'Enhanced documentation includes interaction patterns and accessibility');
+  var breakdownCard = card('Components with Behavioral Specifications ('+totalComps+')', 'Complete developer documentation with all states, motion, and WCAG requirements');
 
   // Grid layout for three columns
   var grid = el('div', {className:'grid-3'});
