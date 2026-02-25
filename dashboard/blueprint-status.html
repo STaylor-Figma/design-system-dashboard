@@ -127,7 +127,7 @@ var topMetrics = [
   {label:"Fully Shippable",value:9,sub:"Impl + docs + tokens",color:"#459D13"},
   {label:"Design Specs Ready",value:22,sub:"Specs documented, ready to code",color:"#ED7800"},
   {label:"MCP Ready",value:57,sub:"AI code generation",color:"#0C79A8"},
-  {label:"Pilot Teams",value:3,sub:"Active adoption",color:"#185A7D"}
+  {label:"Pilot Teams",value:2,sub:"Active adoption",color:"#185A7D"}
 ];
 
 var deliveryStatus = [
@@ -203,7 +203,7 @@ var popoverData = {
   "Fully Shippable": "\"Fully shippable\" = coded implementation + Storybook docs + JSON tokens.<br><br><strong>9 complete:</strong> Checkbox, Indicator (Dot/Counter), Input, Label, Radio Button, Button, Input Field, Pill, Toggle Field<br><br><strong>8 partial:</strong> Icon, TextArea, Toggle, CheckboxField, RadioButtonField, TextAreaField, Tab, RadioButtonGroup<br><strong>Remaining 18</strong> need token conversion or Storybook docs.",
   "Design Specs Ready": "22 components have complete specifications documented by the design system team.<br><br><strong>What 'Documented' Means:</strong><br>Design system team analyzes Figma designs and creates detailed developer specifications including colors, spacing, sizing, states, motion, and accessibility requirements. This is manual work done by our team.<br><br><strong>These are READY for developers to code:</strong><br>• Complete CSS token files (colors, spacing, sizes)<br>• Comprehensive documentation<br>• Behavioral specifications (how it should work)<br>• WCAG compliance specs<br><br><strong>Once coded and published, these will bring NPM package to 57 total components.</strong>",
   "MCP Ready": "57 total components have complete behavioral specifications that define requirements, guide implementation, validate completeness, and serve as reference.<br><br><strong>✅ All 5 Specification Standards Met:</strong><br>1. Component organization ✅<br>2. All states defined ✅<br>3. Token mappings specified ✅<br>4. Motion timing & easing defined ✅<br>5. WCAG requirements listed ✅<br><br><strong>📋 What They Are:</strong> Created BEFORE coding to define requirements → Used DURING coding as implementation guide → Applied for QA validation → Serve as ongoing reference for consuming teams.<br><br><strong>🧑‍💻 Built by Human Experts:</strong> Components are manually built by developers following these specifications. NOT automated code generation.<br><br><strong>27 components</strong> with enhanced specs (Feb 24, 2026)",
-  "Pilot Teams": "3 teams consuming via npm:<br><br><strong>Admin Portal</strong> — Primary partner<br><strong>Crimson</strong> — Collaborative dev<br><strong>Web Takeoff</strong> — Strategic integration<br><br><strong>Metrics:</strong> 40% dev time reduction · 100% design consistency · 100% WCAG AA<br><br><strong>Q1 2026:</strong> Expand to 4+ teams. Payment Portal next."
+  "Pilot Teams": "2 teams consuming via npm:<br><br><strong>Admin Portal</strong> — Primary partner<br><strong>Web Takeoff</strong> — Strategic integration<br><br><strong>Metrics:</strong> 40% dev time reduction · 100% WCAG AA<br><br><strong>Q1 2026:</strong> Expand to 4+ teams. Payment Portal next."
 };
 
 var gapReadiness = [
@@ -447,10 +447,6 @@ function renderPipeline(container) {
   implCard.innerHTML += '<div class="grid-4"><div class="stat-card"><div class="stat-icon">✅</div><div class="stat-num" style="color:#459D13">11</div><div class="stat-label">Complete</div><div class="stat-desc">Impl + docs + JSON tokens</div></div><div class="stat-card"><div class="stat-icon">⚠️</div><div class="stat-num" style="color:#ED7800">6</div><div class="stat-label">Partial</div><div class="stat-desc">Missing tokens or naming</div></div><div class="stat-card"><div class="stat-icon">📄</div><div class="stat-num" style="color:#0C79A8">12</div><div class="stat-label">Docs Only</div><div class="stat-desc">Awaiting implementation</div></div><div class="stat-card"><div class="stat-icon">📦</div><div class="stat-num" style="color:#88888E">1</div><div class="stat-label">Missing Docs</div><div class="stat-desc">Logo — impl only</div></div></div>';
   container.appendChild(implCard);
 
-  // Teams
-  var teamCard = card('Adoption Status', 'Teams consuming @constructconnect/ui-components');
-  teamCard.innerHTML += '<div class="grid-3"><div class="team-card"><div class="team-header"><span class="team-name">Admin Portal</span><span class="team-status">Active</span></div><div class="team-role">Primary partner</div><div class="team-metric">40% dev speed increase</div></div><div class="team-card"><div class="team-header"><span class="team-name">Crimson</span><span class="team-status">Active</span></div><div class="team-role">Collaborative dev</div><div class="team-metric">100% design consistency</div></div><div class="team-card"><div class="team-header"><span class="team-name">Web Takeoff</span><span class="team-status">Active</span></div><div class="team-role">Strategic integration</div><div class="team-metric">100% WCAG AA</div></div></div><div class="highlight-bar" style="background:#F2FAFE;color:#0C79A8;margin-top:12px"><strong>Q1-Q2 2026:</strong> Payment Portal (Q1), Marketing/Brand (Q2) — 85%+ adoption by Q2</div>';
-  container.appendChild(teamCard);
 }
 
 // ═══════════════════════════════════════════════════════
