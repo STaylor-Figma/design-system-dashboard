@@ -375,7 +375,7 @@ function renderOverview(container) {
   var donutSvg = el('div'); donutSvg.innerHTML = svgDonut(deliveryStatus, 160, 22);
   donutInner.appendChild(donutSvg);
   var legendDiv = el('div', {style:{flex:'1'}});
-  legendDiv.innerHTML = '<div style="font-size:11px;color:#88888E;margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Monorepo Audit — Feb 20, 2026</div>';
+  legendDiv.innerHTML = '<div style="font-size:11px;color:#88888E;margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Monorepo Audit — March 3, 2026</div>';
   deliveryStatus.forEach(function(g) {
     legendDiv.innerHTML += '<div class="legend-item"><span class="legend-swatch" style="background:'+g.color+'"></span><span class="legend-name">'+g.name+'</span><span class="legend-val">'+g.value+'</span></div>';
   });
