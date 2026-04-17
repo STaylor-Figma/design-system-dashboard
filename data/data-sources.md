@@ -1,6 +1,6 @@
 # Blueprint Dashboard - Data Sources Inventory
 
-**Last Updated:** February 25, 2026 (Updated with Vivian's latest audit)
+**Last Updated:** April 17, 2026 (Synced with UDS `main` branch)
 
 ## Overview
 
@@ -54,69 +54,38 @@ This document tracks all data sources that feed into the Blueprint Design System
 2. **COMPONENT_ACTION_PLAN.md** - Immediate actions needed (Updated Feb 25, 2026)
 3. **COMPONENT_REPORTS.md** - Guide to component reports workflow
 
-### Summary Statistics
-- **Total in Monorepo:** 35 components
-- **Complete:** 9 (implementation + docs + tokens)
-- **Partial:** 8 (working but missing tokens/naming)
-- **Docs Only:** 17 (awaiting implementation)
+### Summary Statistics (UDS `main`, April 17, 2026)
+- **Total folders in Monorepo:** 98 components (26 atoms + 56 molecules + 15 organisms; templates not in src/)
+- **Implemented:** 63 (have `.tsx` + `_stories/` + `_tests/`)
+- **Docs-only:** 35 (have `*-documentation.md` but no `.tsx` yet)
+- **Partial:** 0 (all implemented components meet code + stories + tests gate)
 - **Missing Docs:** 0
 
-### Breakdown by Atomic Level
-- **Atoms:** 12 components
-- **Molecules:** 19 components
-- **Organisms:** 4 components
+### Breakdown by Atomic Level (Implemented on main)
+- **Atoms:** 26 implemented, 1 docs-only (ProgressBarFill)
+- **Molecules:** 32 implemented, 24 docs-only
+- **Organisms:** 5 implemented, 10 docs-only
 
-### Complete Components (9)
-**Atoms:**
-1. Checkbox
-2. Indicator (Dot & Counter)
-3. Input
-4. Label
-5. RadioButton
+### Implemented Components (63) — UDS `main`, Apr 17, 2026
 
-**Molecules:**
-6. Button
-7. InputField
-8. Pill
-9. ToggleField
+**Atoms (26):**
+Badge, Breadcrumb, Checkbox, Divider, FieldMessage, HelperText, Icon, Indicator Counter, Indicator Dot, Input, Label, Logo, MenuToggleIcon, Overlay, ProgressBar, ProgressRing, RadioButton, SkipLink, SliderRail, SliderThumb, SliderTrack, TextArea, Toggle, Tooltip, UserAvatar, VisuallyHidden
 
-### Partial Components (8)
-**Atoms:**
-- Icon (missing tokens — may be wrapper only)
-- TextArea (token naming mismatch)
-- Toggle (token file shared with ToggleField)
+**Molecules (32):**
+AccordionHeader, BreadcrumbItem, BreadcrumbTrail, Button, ButtonIcon, CheckboxField, CircularIndicator, CircularProgress, DateInput, DropdownButton, DropdownItem, HeaderButton, InlineSearchField, InputField, LoadingMask, LogoLoader, ModalHeader, MultiSelectItem, NavSubmenuButton, NumberInputField, OverflowPanel, Pill, QuickSearchField, RadioButtonField, SearchField, Slider, SliderField, Tab, TableCell, TextAreaField, ToastMessage, ToggleField
 
-**Molecules:**
-- CheckboxField (missing tokens)
-- RadioButtonField (missing tokens)
-- TextAreaField (doc naming fixed)
-- Tab (missing implementation + tokens)
+**Organisms (5):**
+Accordion, Card, MenuContainer, MenuHeaderOrganism, RadioButtonGroup
 
-**Organisms:**
-- RadioButtonGroup (missing tokens, doc renamed)
+### Docs-only Components (35) — scaffolded with `.md` but no `.tsx` on main
 
-### Docs Only Components (17)
-**Atoms:**
-- Badge
-- Tooltip
+**Atoms (1):** ProgressBarFill
 
-**Molecules:**
-- ButtonIcon
-- DropdownButton
-- DropdownInput
-- DropdownItem
-- MultiselectItem
-- QuickSearchField
-- SearchField
-- SplitButton (new)
+**Molecules (24):**
+CalendarItemButton, DropdownInput, FileUploadAvatar, FileUploadButton, FileUploadField, FileUploadProgress, FilterButton, HeaderLogoButton, HeaderLogoTitle, ListItem, MenuContainer (molecule), MenuHeader, MenuToggleButton, MultiselectDropdownInput, NavMenuButton, PageHeader, ProgressBar (molecule), SearchBar, StepIndicator, TableActionsHeader, TableFooter, TableRow, TableRowContent, UsernameButton
 
-**Organisms:**
-- Accordion (new)
-- AccordionHeader (new)
-- DropdownItemOrganism (new)
-- Logo (now has documentation)
-- MenuContainer
-- MenuHeaderOrganism (new)
+**Organisms (10):**
+BreadcrumbOrganism, DrawerModal, DropdownButton (organism), DropdownInput (organism), FilterMultiselectDropdown, MultiselectDropdownInputField, QuickSearch, SplitButton, TabGroup, Table
 
 ### Missing Documentation (0)
 All components now have documentation

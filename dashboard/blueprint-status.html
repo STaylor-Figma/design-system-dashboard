@@ -112,7 +112,7 @@ tr.alt{background:#FAFAFA}
   <div class="header-top">
     <div>
       <h1>Blueprint Design System</h1>
-      <p class="sub">Status Dashboard — March 28, 2026</p>
+      <p class="sub">Status Dashboard — April 17, 2026</p>
     </div>
     <div class="badge">v5.8 — Templates Added</div>
   </div>
@@ -127,9 +127,9 @@ tr.alt{background:#FAFAFA}
 
 var topMetrics = [
   {label:"Total Components",value:107,sub:"103 core + 4 templates — Excel de-duped from 115",color:"#0C79A8"},
-  {label:"Production-Certified",value:24,sub:"DS team certification",color:"#459D13"},
+  {label:"Production-Certified",value:63,sub:"Implemented on UDS main (code + stories + tests)",color:"#459D13"},
   {label:"Has Tokens",value:107,sub:"Figma design complete",color:"#00838F"},
-  {label:"In NPM Package",value:25,sub:"Published via Cloudsmith",color:"#0C79A8"},
+  {label:"In NPM Package",value:63,sub:"Published via Cloudsmith",color:"#0C79A8"},
   {label:"Ready to Build",value:107,sub:"Foundations built — dev team to review &amp; finalize",color:"#00838F"},
   {label:"Blocked",value:0,sub:"All gaps resolved",color:"#B70900"},
   {label:"Planned (Roadmap)",value:2,sub:"Button Group + Button Container — future scope",color:"#6B3FA0"},
@@ -137,62 +137,75 @@ var topMetrics = [
   {label:"Active Consumers",value:3,sub:"Teams actively adopting",color:"#185A7D"}
 ];
 
-// Pipeline audit counts (gap analysis audit, Mar 28, 2026)
+// Pipeline audit counts (UDS main branch, Apr 17, 2026)
 // Use these for the Implementation Completeness card in Pipeline tab
 var pipelineStats = {
-  docsOnly: 0,     // All components now have foundations built (tokens, structure, docs)
+  docsOnly: 35,    // Components with docs on main but no .tsx yet (1 atom + 24 molecules + 10 organisms)
   missingDocs: 0   // All components now documented
 };
 
 var deliveryStatus = [
-  {name:"Prod-Certified",value:24, color:"#459D13"},
-  {name:"DS Complete",   value:83, color:"#00838F"},
+  {name:"Prod-Certified",value:63, color:"#459D13"},
+  {name:"DS Complete",   value:44, color:"#00838F"},
   {name:"Future Planned",value:2,  color:"#6B3FA0"}
 ];
 
 var completeComponents = [
-  // Atoms (12) — Production monorepo certified (Vivian's audit)
-  {name:"Checkbox",type:"Atom"},{name:"Input",type:"Atom"},{name:"Icon",type:"Atom"},
-  {name:"Label",type:"Atom"},{name:"Logo",type:"Atom"},{name:"RadioButton",type:"Atom"},
-  {name:"TextArea",type:"Atom"},{name:"Toggle",type:"Atom"},{name:"ProgressRing",type:"Atom"},
-  {name:"Badge",type:"Atom"},{name:"Indicator Counter",type:"Atom"},{name:"Indicator Dot",type:"Atom"},
-  // Molecules (11)
-  {name:"Button",type:"Molecule"},{name:"CheckboxField",type:"Molecule"},{name:"InputField",type:"Molecule"},
-  {name:"RadioButtonField",type:"Molecule"},{name:"TextAreaField",type:"Molecule"},{name:"ToggleField",type:"Molecule"},
-  {name:"CircularIndicator",type:"Molecule"},{name:"LogoLoader",type:"Molecule"},{name:"CircularProgress",type:"Molecule"},
-  {name:"DropdownItem",type:"Molecule"},{name:"Pill",type:"Molecule"},
-  // Organisms (1)
-  {name:"RadioButtonGroup",type:"Organism"}
+  // Atoms (26) — Implemented on UDS main (code + stories + tests)
+  {name:"Badge",type:"Atom"},{name:"Breadcrumb",type:"Atom"},{name:"Checkbox",type:"Atom"},
+  {name:"Divider",type:"Atom"},{name:"FieldMessage",type:"Atom"},{name:"HelperText",type:"Atom"},
+  {name:"Icon",type:"Atom"},{name:"Indicator Counter",type:"Atom"},{name:"Indicator Dot",type:"Atom"},
+  {name:"Input",type:"Atom"},{name:"Label",type:"Atom"},{name:"Logo",type:"Atom"},
+  {name:"MenuToggleIcon",type:"Atom"},{name:"Overlay",type:"Atom"},{name:"ProgressBar",type:"Atom"},
+  {name:"ProgressRing",type:"Atom"},{name:"RadioButton",type:"Atom"},{name:"SkipLink",type:"Atom"},
+  {name:"SliderRail",type:"Atom"},{name:"SliderThumb",type:"Atom"},{name:"SliderTrack",type:"Atom"},
+  {name:"TextArea",type:"Atom"},{name:"Toggle",type:"Atom"},{name:"Tooltip",type:"Atom"},
+  {name:"UserAvatar",type:"Atom"},{name:"VisuallyHidden",type:"Atom"},
+  // Molecules (32)
+  {name:"AccordionHeader",type:"Molecule"},{name:"BreadcrumbItem",type:"Molecule"},{name:"BreadcrumbTrail",type:"Molecule"},
+  {name:"Button",type:"Molecule"},{name:"ButtonIcon",type:"Molecule"},{name:"CheckboxField",type:"Molecule"},
+  {name:"CircularIndicator",type:"Molecule"},{name:"CircularProgress",type:"Molecule"},{name:"DateInput",type:"Molecule"},
+  {name:"DropdownButton",type:"Molecule"},{name:"DropdownItem",type:"Molecule"},{name:"HeaderButton",type:"Molecule"},
+  {name:"InlineSearchField",type:"Molecule"},{name:"InputField",type:"Molecule"},{name:"LoadingMask",type:"Molecule"},
+  {name:"LogoLoader",type:"Molecule"},{name:"ModalHeader",type:"Molecule"},{name:"MultiSelectItem",type:"Molecule"},
+  {name:"NavSubmenuButton",type:"Molecule"},{name:"NumberInputField",type:"Molecule"},{name:"OverflowPanel",type:"Molecule"},
+  {name:"Pill",type:"Molecule"},{name:"QuickSearchField",type:"Molecule"},{name:"RadioButtonField",type:"Molecule"},
+  {name:"SearchField",type:"Molecule"},{name:"Slider",type:"Molecule"},{name:"SliderField",type:"Molecule"},
+  {name:"Tab",type:"Molecule"},{name:"TableCell",type:"Molecule"},{name:"TextAreaField",type:"Molecule"},
+  {name:"ToastMessage",type:"Molecule"},{name:"ToggleField",type:"Molecule"},
+  // Organisms (5)
+  {name:"Accordion",type:"Organism"},{name:"Card",type:"Organism"},{name:"MenuContainer",type:"Organism"},
+  {name:"MenuHeaderOrganism",type:"Organism"},{name:"RadioButtonGroup",type:"Organism"}
 ];
 
 var partialComponents = [];
 
 var atomicComparison = [
-  {level:"Atoms",     extracted:19, monorepo:12, handoff:7},
-  {level:"Molecules", extracted:58, monorepo:11, handoff:47},
-  {level:"Organisms", extracted:26, monorepo:1,  handoff:25},
+  {level:"Atoms",     extracted:19, monorepo:26, handoff:0},
+  {level:"Molecules", extracted:58, monorepo:32, handoff:26},
+  {level:"Organisms", extracted:26, monorepo:5,  handoff:21},
   {level:"Templates", extracted:4,  monorepo:0,  handoff:4}
 ];
 
 var systems = [
   {name:"Boolean Controls",  components:6,  implemented:6, status:"done"},
-  {name:"Form Inputs",       components:7,  implemented:5, status:"partial"},
-  {name:"Buttons",           components:4,  implemented:1, status:"partial"},
-  {name:"Navigation",        components:7,  implemented:0, status:"ready"},
-  {name:"Header",            components:6,  implemented:0, status:"ready"},
-  {name:"Modal/Drawer",      components:4,  implemented:0, status:"ready"},
-  {name:"Dropdown/Filter",   components:12, implemented:1, status:"partial"},
-  {name:"Menu System",       components:4,  implemented:0, status:"ready"},
-  {name:"Loading",           components:4,  implemented:2, status:"partial"},
-  {name:"Accordion",         components:2,  implemented:0, status:"ready"},
-  {name:"Slider",            components:3,  implemented:0, status:"ready"},
-  {name:"Table System",      components:6,  implemented:0, status:"ready"},
-  {name:"Calendar/Date",     components:4,  implemented:0, status:"ready"},
-  {name:"Search",            components:4,  implemented:0, status:"ready"},
+  {name:"Form Inputs",       components:7,  implemented:6, status:"partial"},
+  {name:"Buttons",           components:4,  implemented:3, status:"partial"},
+  {name:"Navigation",        components:7,  implemented:5, status:"partial"},
+  {name:"Header",            components:6,  implemented:1, status:"partial"},
+  {name:"Modal/Drawer",      components:4,  implemented:1, status:"partial"},
+  {name:"Dropdown/Filter",   components:12, implemented:3, status:"partial"},
+  {name:"Menu System",       components:4,  implemented:2, status:"partial"},
+  {name:"Loading",           components:4,  implemented:4, status:"done"},
+  {name:"Accordion",         components:2,  implemented:2, status:"done"},
+  {name:"Slider",            components:3,  implemented:3, status:"done"},
+  {name:"Table System",      components:6,  implemented:1, status:"partial"},
+  {name:"Calendar/Date",     components:4,  implemented:1, status:"partial"},
+  {name:"Search",            components:4,  implemented:3, status:"partial"},
   {name:"File Upload",       components:4,  implemented:0, status:"ready"},
-  {name:"Progress/Steps",    components:5,  implemented:0, status:"ready"},
-  {name:"Notifications",     components:2,  implemented:0, status:"ready"},
-  {name:"Containers/Layout", components:5,  implemented:0, status:"ready"}
+  {name:"Progress/Steps",    components:5,  implemented:1, status:"partial"},
+  {name:"Notifications",     components:2,  implemented:1, status:"partial"},
+  {name:"Containers/Layout", components:5,  implemented:1, status:"partial"}
 ];
 
 var closedGaps = [
@@ -229,9 +242,9 @@ var remainingGaps = [
 
 var popoverData = {
   "Has Tokens": "103 components have complete Figma design specifications (tokens, states, and documentation) — 100% of the design system.<br><br><strong>What 'Has Tokens' Means:</strong><br>Design tokens have been extracted from Figma and exported as CSS files containing colors, spacing, typography, motion, and other design specifications.<br><br><strong>Token Files Include:</strong><br>• Color values (fills, strokes, text)<br>• Spacing/sizing values<br>• Typography specifications<br>• Motion timing &amp; easing<br>• State variations (default, hover, focus, active, disabled)<br><br><strong>Breakdown:</strong> 19 Atoms + 58 Molecules + 26 Organisms — all levels complete as of March 28, 2026.",
-  "Production-Certified": "24 components have complete code implementation in the production monorepo (Vivian's audit: code + Storybook + JSON tokens + tests).<br><br><strong>Atoms (12):</strong> Checkbox, Input, Icon, Label, Logo, RadioButton, TextArea, Toggle, ProgressRing, Badge, Indicator Counter, Indicator Dot<br><br><strong>Molecules (11):</strong> Button, CheckboxField, InputField, RadioButtonField, TextAreaField, ToggleField, CircularIndicator, LogoLoader, CircularProgress, DropdownItem, Pill<br><br><strong>Organisms (1):</strong> RadioButtonGroup<br><br><strong>Certification Requirements:</strong><br>• Coded implementation in monorepo<br>• Storybook documentation<br>• JSON token files verified<br>• Accessibility compliance validated<br><br><em>79 additional components are DS-complete (foundations built) awaiting dev team monorepo integration.</em>",
+  "Production-Certified": "63 components have complete code implementation on the UDS main branch (code + Storybook + tests).<br><br><strong>Atoms (26):</strong> Badge, Breadcrumb, Checkbox, Divider, FieldMessage, HelperText, Icon, Indicator Counter, Indicator Dot, Input, Label, Logo, MenuToggleIcon, Overlay, ProgressBar, ProgressRing, RadioButton, SkipLink, SliderRail, SliderThumb, SliderTrack, TextArea, Toggle, Tooltip, UserAvatar, VisuallyHidden<br><br><strong>Molecules (32):</strong> AccordionHeader, BreadcrumbItem, BreadcrumbTrail, Button, ButtonIcon, CheckboxField, CircularIndicator, CircularProgress, DateInput, DropdownButton, DropdownItem, HeaderButton, InlineSearchField, InputField, LoadingMask, LogoLoader, ModalHeader, MultiSelectItem, NavSubmenuButton, NumberInputField, OverflowPanel, Pill, QuickSearchField, RadioButtonField, SearchField, Slider, SliderField, Tab, TableCell, TextAreaField, ToastMessage, ToggleField<br><br><strong>Organisms (5):</strong> Accordion, Card, MenuContainer, MenuHeaderOrganism, RadioButtonGroup<br><br><strong>Certification Requirements:</strong><br>• Coded implementation on main<br>• Storybook documentation<br>• Vitest unit tests<br>• Accessibility compliance validated<br><br><em>35 additional components are docs-only on main (scaffolded with documentation .md but no .tsx yet) awaiting implementation.</em>",
   "Dev-Ready Assets": "103 components have design tokens, starter code structure, and complete documentation — all foundations built and handed off for the dev team to review, finalize, and integrate.<br><br><strong>What's Included Per Component:</strong><br>• CSS design token files (colors, spacing, sizes)<br>• Styled CSS implementation<br>• TypeScript component (headless + styled wrappers)<br>• Unit tests<br>• Comprehensive documentation with behavioral specs<br>• WCAG AA compliance requirements<br><br><strong>Breakdown:</strong> 19 Atoms + 58 Molecules + 26 Organisms + 4 bonus Templates<br><br><strong>Status:</strong> Design system team has completed all foundation work. Dev team to finalize, review, and integrate into production monorepo.",
-  "In NPM Package": "25 components with code presence in @constructconnect/ui-components monorepo via Cloudsmith NPM registry.<br><br><strong>Complete (24):</strong><br>Atoms: Checkbox, Input, Icon, Label, Logo, RadioButton, TextArea, Toggle, ProgressRing, Badge, Indicator Counter, Indicator Dot<br>Molecules: Button, CheckboxField, InputField, RadioButtonField, TextAreaField, ToggleField, CircularIndicator, LogoLoader, CircularProgress, DropdownItem, Pill<br>Organisms: RadioButtonGroup<br><br><strong>In Progress (1):</strong> MultiselectItem (Molecule)<br><br><em>79 additional components have DS foundations built and are ready for monorepo integration.</em>",
+  "In NPM Package": "63 components with code on the UDS main branch, published via @constructconnect/ui-components Cloudsmith NPM registry.<br><br><strong>Atoms (26):</strong> Badge, Breadcrumb, Checkbox, Divider, FieldMessage, HelperText, Icon, Indicator Counter, Indicator Dot, Input, Label, Logo, MenuToggleIcon, Overlay, ProgressBar, ProgressRing, RadioButton, SkipLink, SliderRail, SliderThumb, SliderTrack, TextArea, Toggle, Tooltip, UserAvatar, VisuallyHidden<br><br><strong>Molecules (32):</strong> AccordionHeader, BreadcrumbItem, BreadcrumbTrail, Button, ButtonIcon, CheckboxField, CircularIndicator, CircularProgress, DateInput, DropdownButton, DropdownItem, HeaderButton, InlineSearchField, InputField, LoadingMask, LogoLoader, ModalHeader, MultiSelectItem, NavSubmenuButton, NumberInputField, OverflowPanel, Pill, QuickSearchField, RadioButtonField, SearchField, Slider, SliderField, Tab, TableCell, TextAreaField, ToastMessage, ToggleField<br><br><strong>Organisms (5):</strong> Accordion, Card, MenuContainer, MenuHeaderOrganism, RadioButtonGroup<br><br><em>35 additional components are docs-only on main and ready for implementation. Source: UDS main branch audit, Apr 17, 2026.</em>",
   "Active Consumers": "3 teams actively engaged with the NPM package (Active + In Progress + On Pause).<br><br><strong>Active:</strong><br>• Payment Portal — Most active adopter (Button, Input, Badge, Checkbox, Toggle, Label confirmed)<br><br><strong>In Progress:</strong><br>• GCV4 — Active conversations, onboarding in progress<br><br><strong>On Pause:</strong><br>• UCMS (Crimson) — On hold pending platform direction<br><br><strong>Planned Pipeline:</strong><br>• OST — HubSpot integration planned<br>• FAI — HubSpot integration planned<br>• Identity Platform (user management + admin portal) — Upcoming",
   "MCP Ready": "103 components have complete behavioral specifications — 100% of the design system foundation documented and ready.<br><br><strong>✅ All Specification Standards Met:</strong><br>1. Component organization ✅<br>2. All states defined ✅<br>3. Token mappings specified ✅<br>4. Motion timing &amp; easing defined ✅<br>5. WCAG AA requirements listed ✅<br><br><strong>📋 What They Are:</strong> Created BEFORE coding to define requirements → Used DURING coding as implementation guide → Applied for QA validation → Serve as ongoing reference for consuming teams.<br><br><strong>Coverage:</strong> 19 Atoms + 58 Molecules + 26 Organisms + 4 bonus Templates (March 28, 2026)"
 };
@@ -422,7 +435,7 @@ function renderOverview(container) {
   var donutSvg = el('div'); donutSvg.innerHTML = svgDonut(deliveryStatus, 160, 22);
   donutInner.appendChild(donutSvg);
   var legendDiv = el('div', {style:{flex:'1'}});
-  legendDiv.innerHTML = '<div style="font-size:11px;color:#88888E;margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Data Updated — March 28, 2026</div>';
+  legendDiv.innerHTML = '<div style="font-size:11px;color:#88888E;margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Data Updated — April 17, 2026</div>';
   deliveryStatus.forEach(function(g) {
     legendDiv.innerHTML += '<div class="legend-item"><span class="legend-swatch" style="background:'+g.color+'"></span><span class="legend-name">'+g.name+'</span><span class="legend-val">'+g.value+'</span></div>';
   });
@@ -499,7 +512,7 @@ function renderPipeline(container) {
   container.appendChild(chartCard);
 
   // Status cards
-  var implCard = card('Implementation Completeness', "Gap analysis audit, Mar 28, 2026 · Code status breakdown across all 107 components (103 core + 4 templates)");
+  var implCard = card('Implementation Completeness', "UDS main branch audit, Apr 17, 2026 · Code status breakdown across all 107 components (103 core + 4 templates)");
   implCard.innerHTML += '<div class="grid-4"><div class="stat-card"><div class="stat-icon">✅</div><div class="stat-num" style="color:#459D13">'+pFullyComplete+'</div><div class="stat-label">Fully Complete</div><div class="stat-desc">Code + Storybook + tokens + tests</div></div><div class="stat-card"><div class="stat-icon">⚠️</div><div class="stat-num" style="color:#ED7800">'+partialComponents.length+'</div><div class="stat-label">Partial</div><div class="stat-desc">Missing tokens or naming</div></div><div class="stat-card"><div class="stat-icon">📄</div><div class="stat-num" style="color:#0C79A8">'+pipelineStats.docsOnly+'</div><div class="stat-label">Docs Only</div><div class="stat-desc">Awaiting implementation</div></div><div class="stat-card"><div class="stat-icon">📦</div><div class="stat-num" style="color:#88888E">'+pipelineStats.missingDocs+'</div><div class="stat-label">Missing Docs</div><div class="stat-desc">'+(pipelineStats.missingDocs===0?'All components documented ✅':'Has impl, needs docs')+'</div></div></div>';
   container.appendChild(implCard);
 

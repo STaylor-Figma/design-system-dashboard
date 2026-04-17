@@ -58,11 +58,23 @@ blueprint-dashboard/
 
 | Metric | Value | Source |
 |--------|-------|--------|
-| **Extracted from Figma** | 57 | Design-System-Work extraction inventory |
-| **In NPM Package** | 35 | Monorepo audit (Vivian - Feb 25, 2026) |
-| **Fully Shippable** | 9 | Monorepo audit (Vivian - Feb 25, 2026) |
-| **Ready for Dev** | 22 | Extracted but not yet in NPM (57-35) |
-| **MCP Ready** | 57 | All extracted components |
+| **Total Components (Figma extraction)** | 107 | 103 core + 4 templates |
+| **Implemented on UDS main** | 63 | Components with .tsx + stories + tests on main branch |
+| **Docs-only on main** | 35 | Components scaffolded with .md documentation but no .tsx yet |
+| **Not yet scaffolded in UDS** | 9 | In Figma extraction but no folder on main yet (mostly templates + some organisms) |
+| **MCP Ready** | 107 | All extracted components documented |
+
+### Implemented vs. Docs-only Breakdown (UDS main, Apr 17, 2026)
+
+**Implemented (63):**
+- Atoms (26): Badge, Breadcrumb, Checkbox, Divider, FieldMessage, HelperText, Icon, Indicator Counter, Indicator Dot, Input, Label, Logo, MenuToggleIcon, Overlay, ProgressBar, ProgressRing, RadioButton, SkipLink, SliderRail, SliderThumb, SliderTrack, TextArea, Toggle, Tooltip, UserAvatar, VisuallyHidden
+- Molecules (32): AccordionHeader, BreadcrumbItem, BreadcrumbTrail, Button, ButtonIcon, CheckboxField, CircularIndicator, CircularProgress, DateInput, DropdownButton, DropdownItem, HeaderButton, InlineSearchField, InputField, LoadingMask, LogoLoader, ModalHeader, MultiSelectItem, NavSubmenuButton, NumberInputField, OverflowPanel, Pill, QuickSearchField, RadioButtonField, SearchField, Slider, SliderField, Tab, TableCell, TextAreaField, ToastMessage, ToggleField
+- Organisms (5): Accordion, Card, MenuContainer, MenuHeaderOrganism, RadioButtonGroup
+
+**Docs-only on main (35):**
+- Atoms (1): ProgressBarFill
+- Molecules (24): CalendarItemButton, DropdownInput, FileUploadAvatar, FileUploadButton, FileUploadField, FileUploadProgress, FilterButton, HeaderLogoButton, HeaderLogoTitle, ListItem, MenuContainer (molecule), MenuHeader, MenuToggleButton, MultiselectDropdownInput, NavMenuButton, PageHeader, ProgressBar (molecule), SearchBar, StepIndicator, TableActionsHeader, TableFooter, TableRow, TableRowContent, UsernameButton
+- Organisms (10): BreadcrumbOrganism, DrawerModal, DropdownButton (organism), DropdownInput (organism), FilterMultiselectDropdown, MultiselectDropdownInputField, QuickSearch, SplitButton, TabGroup, Table
 
 ## Dashboard Updates
 
@@ -136,6 +148,16 @@ These 22 components have:
 
 ## Version History
 
+### v2.2 - April 17, 2026
+- Synced dashboard with UDS `main` branch inventory
+- Production-Certified / In NPM Package: 24/25 → 63 (all implemented on main with code + stories + tests)
+- Docs-only count: 0 → 35 (components scaffolded as `.md` but not yet built)
+- atomicComparison monorepo column: Atoms 12→26, Molecules 11→32, Organisms 1→5, Templates unchanged (0)
+- deliveryStatus donut rebalanced: Prod-Certified 63 / DS-Complete 44 / Future Planned 2
+- Systems table implementation counts updated across 18 systems; Loading/Accordion/Slider/Boolean Controls now fully done
+- Closed gaps unchanged (already reflected Accordion, Slider, Table)
+- Source: direct audit of `origin/main` tree under `packages/components/src/{atoms,molecules,organisms}`
+
 ### v2.1 - February 25, 2026 (Evening Update)
 - ✅ Updated with Vivian's latest audit (Feb 25, 2026)
 - ✅ NPM package: 30 → 35 components (+5)
@@ -181,5 +203,5 @@ open /Users/taylors/Desktop/ConstructConnect-Projects/blueprint-dashboard/dashbo
 ## Contact
 
 **Maintained by:** Taylor S.
-**Last Updated:** February 25, 2026 (v2.1)
+**Last Updated:** April 17, 2026 (v2.2)
 **Next Review:** As needed when Vivian provides updates
