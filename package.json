@@ -1,0 +1,16 @@
+{
+  "name": "design-system-dashboard",
+  "version": "2.3.0",
+  "private": true,
+  "description": "Blueprint Design System status dashboard (static HTML)",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "sync:tokens": "node scripts/sync-tokens.mjs"
+  },
+  "dependencies": {
+    "@unified_design_system/design-tokens": "^2.4.0"
+  }
+}

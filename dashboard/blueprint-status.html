@@ -7,101 +7,102 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>Blueprint Design System — Status Dashboard</title>
+<link rel="stylesheet" href="../assets/tokens.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter','Segoe UI',-apple-system,sans-serif;background:#F8F9FA;color:#1C1F22}
-.header{background:linear-gradient(135deg,#01304A 0%,#0C79A8 100%);padding:24px 32px 0;color:#fff}
+body{font-family:'Inter','Segoe UI',-apple-system,sans-serif;background:#F8F9FA;color:var(--color-neutral-600)}
+.header{background:linear-gradient(135deg,var(--color-primary-700) 0%,var(--color-primary-500) 100%);padding:24px 32px 0;color:var(--color-neutral-0)}
 .header h1{font-size:22px;font-weight:700;letter-spacing:-0.3px}
 .header .sub{font-size:13px;opacity:.8;margin-top:4px}
 .header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
 .badge{padding:6px 12px;background:rgba(255,255,255,.15);border-radius:6px;font-size:12px;font-weight:600}
 .tabs{display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,.2)}
 .tab{padding:10px 20px;border:none;cursor:pointer;font-size:13px;font-weight:600;border-radius:6px 6px 0 0;background:transparent;color:rgba(255,255,255,.85);font-family:inherit;transition:all .2s}
-.tab.active{background:rgba(255,255,255,.95);color:#01304A}
+.tab.active{background:rgba(255,255,255,.95);color:var(--color-primary-700)}
 .content{padding:24px 32px;max-width:1200px;margin:0 auto}
-.card{background:#fff;border-radius:10px;padding:20px 24px;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:16px}
+.card{background:var(--color-neutral-0);border-radius:10px;padding:20px 24px;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:16px}
 .card h3{font-size:15px;font-weight:700;margin:0 0 2px}
-.card .card-sub{font-size:12px;color:#88888E;margin:0 0 16px}
+.card .card-sub{font-size:12px;color:var(--color-neutral-400);margin:0 0 16px}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.metric-card{background:#fff;border-radius:8px;padding:16px 14px;box-shadow:0 1px 3px rgba(0,0,0,.08);position:relative;border-top:3px solid var(--accent)}
+.metric-card{background:var(--color-neutral-0);border-radius:8px;padding:16px 14px;box-shadow:0 1px 3px rgba(0,0,0,.08);position:relative;border-top:3px solid var(--accent)}
 .metric-val{font-size:28px;font-weight:700;color:var(--accent)}
-.metric-label{font-size:12px;font-weight:600;color:#1C1F22;margin-top:2px}
-.metric-sub{font-size:11px;color:#88888E;margin-top:2px}
-.info-btn{position:absolute;top:8px;right:8px;width:20px;height:20px;border-radius:50%;border:1px solid var(--accent);background:#fff;color:var(--accent);font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;font-family:inherit}
-.info-btn.open{background:var(--accent);color:#fff}
-.popover{position:absolute;top:32px;width:360px;background:#fff;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.15);border:1px solid #E7E6E5;padding:16px;z-index:100;font-size:12px;color:#4A4F55;line-height:1.6;display:none}
+.metric-label{font-size:12px;font-weight:600;color:var(--color-neutral-600);margin-top:2px}
+.metric-sub{font-size:11px;color:var(--color-neutral-400);margin-top:2px}
+.info-btn{position:absolute;top:8px;right:8px;width:20px;height:20px;border-radius:50%;border:1px solid var(--accent);background:var(--color-neutral-0);color:var(--accent);font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;font-family:inherit}
+.info-btn.open{background:var(--accent);color:var(--color-neutral-0)}
+.popover{position:absolute;top:32px;width:360px;background:var(--color-neutral-0);border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.15);border:1px solid var(--color-neutral-200);padding:16px;z-index:100;font-size:12px;color:var(--color-neutral-500);line-height:1.6;display:none}
 .popover.show{display:block}
 .popover.right{right:0}
 .popover.left{left:0}
-.popover-title{font-size:13px;font-weight:700;color:#1C1F22;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
-.popover-close{background:none;border:none;cursor:pointer;font-size:16px;color:#88888E;padding:0 2px;line-height:1;font-family:inherit}
-.pop-sep{border-top:1px solid #E7E6E5;padding-top:8px;margin-top:8px;font-size:11px;color:#88888E}
-.pop-sep strong{color:#4A4F55}
+.popover-title{font-size:13px;font-weight:700;color:var(--color-neutral-600);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.popover-close{background:none;border:none;cursor:pointer;font-size:16px;color:var(--color-neutral-400);padding:0 2px;line-height:1;font-family:inherit}
+.pop-sep{border-top:1px solid var(--color-neutral-200);padding-top:8px;margin-top:8px;font-size:11px;color:var(--color-neutral-400)}
+.pop-sep strong{color:var(--color-neutral-500)}
 .legend-item{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .legend-swatch{width:12px;height:12px;border-radius:3px;flex-shrink:0}
 .legend-name{font-size:13px;flex:1}
 .legend-val{font-size:14px;font-weight:700}
 .growth-box{padding:12px;border-radius:8px;text-align:center;flex:1}
 .growth-num{font-size:28px;font-weight:700}
-.growth-label{font-size:11px;color:#88888E}
+.growth-label{font-size:11px;color:var(--color-neutral-400)}
 .highlight-bar{padding:10px 14px;border-radius:6px;font-size:12px}
 .comp-row{padding:8px 12px;border-radius:6px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
 .comp-name{font-size:13px;font-weight:600}
-.comp-type{font-size:10px;color:#88888E;background:#F4F4F4;padding:2px 6px;border-radius:4px;flex-shrink:0}
-.comp-issue{font-size:11px;color:#88888E;margin-top:2px}
-.bar-track{height:8px;background:#E7E6E5;border-radius:4px;overflow:hidden;flex:1}
+.comp-type{font-size:10px;color:var(--color-neutral-400);background:var(--color-neutral-100);padding:2px 6px;border-radius:4px;flex-shrink:0}
+.comp-issue{font-size:11px;color:var(--color-neutral-400);margin-top:2px}
+.bar-track{height:8px;background:var(--color-neutral-200);border-radius:4px;overflow:hidden;flex:1}
 .bar-fill{height:100%;border-radius:4px;transition:width .5s ease}
 .progress-row{display:flex;align-items:center;gap:8px;width:100%}
-.progress-label{font-size:12px;color:#4A4F55;font-weight:600;min-width:40px;text-align:right}
+.progress-label{font-size:12px;color:var(--color-neutral-500);font-weight:600;min-width:40px;text-align:right}
 table{width:100%;border-collapse:collapse;font-size:13px}
-th{text-align:left;padding:8px 10px;font-weight:700;color:#4A4F55;border-bottom:2px solid #E7E6E5}
+th{text-align:left;padding:8px 10px;font-weight:700;color:var(--color-neutral-500);border-bottom:2px solid var(--color-neutral-200)}
 td{padding:10px}
 tr.alt{background:#FAFAFA}
 .status-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
 .priority-badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600}
-.stat-card{padding:16px;background:#F8F9FA;border-radius:8px;border:1px solid #E7E6E5;text-align:center}
+.stat-card{padding:16px;background:#F8F9FA;border-radius:8px;border:1px solid var(--color-neutral-200);text-align:center}
 .stat-icon{font-size:24px;margin-bottom:4px}
 .stat-num{font-size:28px;font-weight:700}
-.stat-label{font-size:13px;font-weight:600;color:#1C1F22}
-.stat-desc{font-size:11px;color:#88888E;margin-top:4px}
+.stat-label{font-size:13px;font-weight:600;color:var(--color-neutral-600)}
+.stat-desc{font-size:11px;color:var(--color-neutral-400);margin-top:4px}
 .stat-inline{text-align:center}
 .stat-inline .val{font-size:24px;font-weight:700}
-.stat-inline .lbl{font-size:11px;color:#88888E}
+.stat-inline .lbl{font-size:11px;color:var(--color-neutral-400)}
 .foundation-card{padding:14px;border-radius:8px}
 .foundation-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .foundation-title{font-size:13px;font-weight:700}
 .foundation-status{font-size:10px;font-weight:600;padding:2px 6px;border-radius:8px}
-.foundation-item{font-size:11px;color:#4A4F55;line-height:1.7}
-.infra-box{padding:16px;border-radius:8px;font-size:12px;color:#4A4F55;line-height:1.6}
+.foundation-item{font-size:11px;color:var(--color-neutral-500);line-height:1.7}
+.infra-box{padding:16px;border-radius:8px;font-size:12px;color:var(--color-neutral-500);line-height:1.6}
 .infra-title{font-weight:700;font-size:14px;margin-bottom:8px}
-.team-card{padding:16px;background:#F8F9FA;border-radius:8px;border:1px solid #E7E6E5}
+.team-card{padding:16px;background:#F8F9FA;border-radius:8px;border:1px solid var(--color-neutral-200)}
 .team-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .team-name{font-weight:700;font-size:14px}
-.team-status{padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;background:#E8F5E9;color:#459D13}
-.team-role{font-size:12px;color:#88888E;margin-bottom:4px}
-.team-metric{font-size:12px;color:#0C79A8;font-weight:600}
-.gap-row{padding:10px 14px;background:#F0FAF0;border-radius:6px;margin-bottom:8px;border-left:3px solid #459D13}
+.team-status{padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;background:#E8F5E9;color:var(--color-status-success-default)}
+.team-role{font-size:12px;color:var(--color-neutral-400);margin-bottom:4px}
+.team-metric{font-size:12px;color:var(--color-primary-500);font-weight:600}
+.gap-row{padding:10px 14px;background:#F0FAF0;border-radius:6px;margin-bottom:8px;border-left:3px solid var(--color-status-success-default)}
 .gap-name{font-weight:600;font-size:13px}
-.gap-by{font-size:12px;color:#88888E;margin-top:3px}
+.gap-by{font-size:12px;color:var(--color-neutral-400);margin-top:3px}
 .readiness-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px}
 .readiness-label span:first-child{font-weight:600}
-.readiness-label span:last-child{color:#88888E}
-.readiness-track{height:6px;background:#E7E6E5;border-radius:3px;overflow:hidden}
+.readiness-label span:last-child{color:var(--color-neutral-400)}
+.readiness-track{height:6px;background:var(--color-neutral-200);border-radius:3px;overflow:hidden}
 .readiness-fill{height:100%;border-radius:3px}
 .readiness-row{margin-bottom:10px}
 /* Chart bars */
-.chart-container{display:flex;justify-content:space-around;align-items:flex-end;height:200px;padding:0 20px;border-bottom:1px solid #E7E6E5}
+.chart-container{display:flex;justify-content:space-around;align-items:flex-end;height:200px;padding:0 20px;border-bottom:1px solid var(--color-neutral-200)}
 .chart-group{display:flex;align-items:flex-end;gap:4px;flex:1;justify-content:center}
 .chart-bar-wrap{display:flex;flex-direction:column;align-items:center;width:32px}
 .chart-bar-val{font-size:11px;font-weight:700;margin-bottom:4px}
 .chart-bar{width:28px;border-radius:4px 4px 0 0;min-height:4px;transition:height .5s ease}
 .chart-labels{display:flex;justify-content:space-around;margin-top:8px}
-.chart-labels div{font-size:12px;color:#4A4F55;text-align:center;flex:1}
+.chart-labels div{font-size:12px;color:var(--color-neutral-500);text-align:center;flex:1}
 .chart-legend{display:flex;justify-content:center;gap:20px;margin-top:14px}
-.chart-legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#4A4F55}
+.chart-legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--color-neutral-500)}
 .chart-legend-swatch{width:12px;height:12px;border-radius:3px;flex-shrink:0}
 .hidden{display:none}
 </style>
@@ -112,7 +113,7 @@ tr.alt{background:#FAFAFA}
   <div class="header-top">
     <div>
       <h1>Blueprint Design System</h1>
-      <p class="sub">Status Dashboard — March 28, 2026</p>
+      <p class="sub">Status Dashboard — April 17, 2026</p>
     </div>
     <div class="badge">v5.8 — Templates Added</div>
   </div>
@@ -122,77 +123,140 @@ tr.alt{background:#FAFAFA}
 
 <script>
 // ═══════════════════════════════════════════════════════
+// DESIGN TOKENS — read from the vendored tokens.css at load time
+// (assets/tokens.css for index.html, ../assets/tokens.css for
+// dashboard/blueprint-status.html). The <link> in <head> is
+// parser-blocking per HTML spec, so this IIFE can safely read
+// CSS custom properties via getComputedStyle on first run.
+// If the stylesheet fails to load (404, wrong deploy path, CSP),
+// every getPropertyValue returns "" — we detect that and render
+// a visible banner instead of letting charts silently render
+// without color. Source: @unified_design_system/design-tokens.
+// ═══════════════════════════════════════════════════════
+
+var TOKENS = (function() {
+  var cs = getComputedStyle(document.documentElement);
+  var g = function(n) { return cs.getPropertyValue(n).trim(); };
+  var t = {
+    primary500: g('--color-primary-500'),
+    primary600: g('--color-primary-600'),
+    primary700: g('--color-primary-700'),
+    neutral400: g('--color-neutral-400'),
+    neutral500: g('--color-neutral-500'),
+    neutral600: g('--color-neutral-600'),
+    neutral200: g('--color-neutral-200'),
+    neutral100: g('--color-neutral-100'),
+    neutral0:   g('--color-neutral-0'),
+    success:    g('--color-status-success-default'),
+    successLt:  g('--color-status-success-light'),
+    warning:    g('--color-status-warning-default'),
+    warningLt:  g('--color-status-warning-light'),
+    error:      g('--color-status-error-default'),
+    errorLt:    g('--color-status-error-light')
+  };
+  var missing = Object.keys(t).filter(function(k) { return !t[k]; });
+  if (missing.length) {
+    console.error('[dashboard] tokens.css failed to load or is missing keys:', missing);
+    document.addEventListener('DOMContentLoaded', function() {
+      var banner = document.createElement('div');
+      banner.setAttribute('role', 'alert');
+      banner.style.cssText = 'background:#b70900;color:#fff;padding:12px 16px;font:13px/1.4 sans-serif';
+      banner.innerHTML =
+        '<strong>Design tokens failed to load.</strong> ' +
+        missing.length + ' missing keys: ' + missing.join(', ') + '. ' +
+        'Run <code>npm run sync:tokens</code> and hard-reload. ' +
+        'Charts will render without color until this is fixed.';
+      document.body.insertBefore(banner, document.body.firstChild);
+    });
+  }
+  return t;
+})();
+
+// ═══════════════════════════════════════════════════════
 // DATA — Edit values here to update dashboard
 // ═══════════════════════════════════════════════════════
 
 var topMetrics = [
-  {label:"Total Components",value:107,sub:"103 core + 4 templates — Excel de-duped from 115",color:"#0C79A8"},
-  {label:"Production-Certified",value:24,sub:"DS team certification",color:"#459D13"},
+  {label:"Total Components",value:107,sub:"103 core + 4 templates — Excel de-duped from 115",color:TOKENS.primary500},
+  {label:"Production-Certified",value:63,sub:"Implemented on UDS main (code + stories + tests)",color:TOKENS.success},
   {label:"Has Tokens",value:107,sub:"Figma design complete",color:"#00838F"},
-  {label:"In NPM Package",value:25,sub:"Published via Cloudsmith",color:"#0C79A8"},
+  {label:"In NPM Package",value:63,sub:"Published via Cloudsmith",color:TOKENS.primary500},
   {label:"Ready to Build",value:107,sub:"Foundations built — dev team to review &amp; finalize",color:"#00838F"},
-  {label:"Blocked",value:0,sub:"All gaps resolved",color:"#B70900"},
+  {label:"Blocked",value:0,sub:"All gaps resolved",color:TOKENS.error},
   {label:"Planned (Roadmap)",value:2,sub:"Button Group + Button Container — future scope",color:"#6B3FA0"},
-  {label:"Dev-Ready Assets",value:107,sub:"Tokens, structure &amp; docs handed off",color:"#0C79A8"},
-  {label:"Active Consumers",value:3,sub:"Teams actively adopting",color:"#185A7D"}
+  {label:"Dev-Ready Assets",value:107,sub:"Tokens, structure &amp; docs handed off",color:TOKENS.primary500},
+  {label:"Active Consumers",value:3,sub:"Teams actively adopting",color:TOKENS.primary600}
 ];
 
-// Pipeline audit counts (gap analysis audit, Mar 28, 2026)
+// Pipeline audit counts (UDS main branch, Apr 17, 2026)
 // Use these for the Implementation Completeness card in Pipeline tab
 var pipelineStats = {
-  docsOnly: 0,     // All components now have foundations built (tokens, structure, docs)
+  docsOnly: 35,    // Components with docs on main but no .tsx yet (1 atom + 24 molecules + 10 organisms)
   missingDocs: 0   // All components now documented
 };
 
 var deliveryStatus = [
-  {name:"Prod-Certified",value:24, color:"#459D13"},
-  {name:"DS Complete",   value:83, color:"#00838F"},
+  {name:"Prod-Certified",value:63, color:TOKENS.success},
+  {name:"DS Complete",   value:44, color:"#00838F"},
   {name:"Future Planned",value:2,  color:"#6B3FA0"}
 ];
 
 var completeComponents = [
-  // Atoms (12) — Production monorepo certified (Vivian's audit)
-  {name:"Checkbox",type:"Atom"},{name:"Input",type:"Atom"},{name:"Icon",type:"Atom"},
-  {name:"Label",type:"Atom"},{name:"Logo",type:"Atom"},{name:"RadioButton",type:"Atom"},
-  {name:"TextArea",type:"Atom"},{name:"Toggle",type:"Atom"},{name:"ProgressRing",type:"Atom"},
-  {name:"Badge",type:"Atom"},{name:"Indicator Counter",type:"Atom"},{name:"Indicator Dot",type:"Atom"},
-  // Molecules (11)
-  {name:"Button",type:"Molecule"},{name:"CheckboxField",type:"Molecule"},{name:"InputField",type:"Molecule"},
-  {name:"RadioButtonField",type:"Molecule"},{name:"TextAreaField",type:"Molecule"},{name:"ToggleField",type:"Molecule"},
-  {name:"CircularIndicator",type:"Molecule"},{name:"LogoLoader",type:"Molecule"},{name:"CircularProgress",type:"Molecule"},
-  {name:"DropdownItem",type:"Molecule"},{name:"Pill",type:"Molecule"},
-  // Organisms (1)
-  {name:"RadioButtonGroup",type:"Organism"}
+  // Atoms (26) — Implemented on UDS main (code + stories + tests)
+  {name:"Badge",type:"Atom"},{name:"Breadcrumb",type:"Atom"},{name:"Checkbox",type:"Atom"},
+  {name:"Divider",type:"Atom"},{name:"FieldMessage",type:"Atom"},{name:"HelperText",type:"Atom"},
+  {name:"Icon",type:"Atom"},{name:"Indicator Counter",type:"Atom"},{name:"Indicator Dot",type:"Atom"},
+  {name:"Input",type:"Atom"},{name:"Label",type:"Atom"},{name:"Logo",type:"Atom"},
+  {name:"MenuToggleIcon",type:"Atom"},{name:"Overlay",type:"Atom"},{name:"ProgressBar",type:"Atom"},
+  {name:"ProgressRing",type:"Atom"},{name:"RadioButton",type:"Atom"},{name:"SkipLink",type:"Atom"},
+  {name:"SliderRail",type:"Atom"},{name:"SliderThumb",type:"Atom"},{name:"SliderTrack",type:"Atom"},
+  {name:"TextArea",type:"Atom"},{name:"Toggle",type:"Atom"},{name:"Tooltip",type:"Atom"},
+  {name:"UserAvatar",type:"Atom"},{name:"VisuallyHidden",type:"Atom"},
+  // Molecules (32)
+  {name:"AccordionHeader",type:"Molecule"},{name:"BreadcrumbItem",type:"Molecule"},{name:"BreadcrumbTrail",type:"Molecule"},
+  {name:"Button",type:"Molecule"},{name:"ButtonIcon",type:"Molecule"},{name:"CheckboxField",type:"Molecule"},
+  {name:"CircularIndicator",type:"Molecule"},{name:"CircularProgress",type:"Molecule"},{name:"DateInput",type:"Molecule"},
+  {name:"DropdownButton",type:"Molecule"},{name:"DropdownItem",type:"Molecule"},{name:"HeaderButton",type:"Molecule"},
+  {name:"InlineSearchField",type:"Molecule"},{name:"InputField",type:"Molecule"},{name:"LoadingMask",type:"Molecule"},
+  {name:"LogoLoader",type:"Molecule"},{name:"ModalHeader",type:"Molecule"},{name:"MultiSelectItem",type:"Molecule"},
+  {name:"NavSubmenuButton",type:"Molecule"},{name:"NumberInputField",type:"Molecule"},{name:"OverflowPanel",type:"Molecule"},
+  {name:"Pill",type:"Molecule"},{name:"QuickSearchField",type:"Molecule"},{name:"RadioButtonField",type:"Molecule"},
+  {name:"SearchField",type:"Molecule"},{name:"Slider",type:"Molecule"},{name:"SliderField",type:"Molecule"},
+  {name:"Tab",type:"Molecule"},{name:"TableCell",type:"Molecule"},{name:"TextAreaField",type:"Molecule"},
+  {name:"ToastMessage",type:"Molecule"},{name:"ToggleField",type:"Molecule"},
+  // Organisms (5)
+  {name:"Accordion",type:"Organism"},{name:"Card",type:"Organism"},{name:"MenuContainer",type:"Organism"},
+  {name:"MenuHeaderOrganism",type:"Organism"},{name:"RadioButtonGroup",type:"Organism"}
 ];
 
 var partialComponents = [];
 
 var atomicComparison = [
-  {level:"Atoms",     extracted:19, monorepo:12, handoff:7},
-  {level:"Molecules", extracted:58, monorepo:11, handoff:47},
-  {level:"Organisms", extracted:26, monorepo:1,  handoff:25},
+  {level:"Atoms",     extracted:19, monorepo:26, handoff:0},
+  {level:"Molecules", extracted:58, monorepo:32, handoff:26},
+  {level:"Organisms", extracted:26, monorepo:5,  handoff:21},
   {level:"Templates", extracted:4,  monorepo:0,  handoff:4}
 ];
 
 var systems = [
   {name:"Boolean Controls",  components:6,  implemented:6, status:"done"},
-  {name:"Form Inputs",       components:7,  implemented:5, status:"partial"},
-  {name:"Buttons",           components:4,  implemented:1, status:"partial"},
-  {name:"Navigation",        components:7,  implemented:0, status:"ready"},
-  {name:"Header",            components:6,  implemented:0, status:"ready"},
-  {name:"Modal/Drawer",      components:4,  implemented:0, status:"ready"},
-  {name:"Dropdown/Filter",   components:12, implemented:1, status:"partial"},
-  {name:"Menu System",       components:4,  implemented:0, status:"ready"},
-  {name:"Loading",           components:4,  implemented:2, status:"partial"},
-  {name:"Accordion",         components:2,  implemented:0, status:"ready"},
-  {name:"Slider",            components:3,  implemented:0, status:"ready"},
-  {name:"Table System",      components:6,  implemented:0, status:"ready"},
-  {name:"Calendar/Date",     components:4,  implemented:0, status:"ready"},
-  {name:"Search",            components:4,  implemented:0, status:"ready"},
+  {name:"Form Inputs",       components:7,  implemented:6, status:"partial"},
+  {name:"Buttons",           components:4,  implemented:3, status:"partial"},
+  {name:"Navigation",        components:7,  implemented:5, status:"partial"},
+  {name:"Header",            components:6,  implemented:1, status:"partial"},
+  {name:"Modal/Drawer",      components:4,  implemented:1, status:"partial"},
+  {name:"Dropdown/Filter",   components:12, implemented:3, status:"partial"},
+  {name:"Menu System",       components:4,  implemented:2, status:"partial"},
+  {name:"Loading",           components:4,  implemented:4, status:"done"},
+  {name:"Accordion",         components:2,  implemented:2, status:"done"},
+  {name:"Slider",            components:3,  implemented:3, status:"done"},
+  {name:"Table System",      components:6,  implemented:1, status:"partial"},
+  {name:"Calendar/Date",     components:4,  implemented:1, status:"partial"},
+  {name:"Search",            components:4,  implemented:3, status:"partial"},
   {name:"File Upload",       components:4,  implemented:0, status:"ready"},
-  {name:"Progress/Steps",    components:5,  implemented:0, status:"ready"},
-  {name:"Notifications",     components:2,  implemented:0, status:"ready"},
-  {name:"Containers/Layout", components:5,  implemented:0, status:"ready"}
+  {name:"Progress/Steps",    components:5,  implemented:1, status:"partial"},
+  {name:"Notifications",     components:2,  implemented:1, status:"partial"},
+  {name:"Containers/Layout", components:5,  implemented:1, status:"partial"}
 ];
 
 var closedGaps = [
@@ -229,9 +293,9 @@ var remainingGaps = [
 
 var popoverData = {
   "Has Tokens": "103 components have complete Figma design specifications (tokens, states, and documentation) — 100% of the design system.<br><br><strong>What 'Has Tokens' Means:</strong><br>Design tokens have been extracted from Figma and exported as CSS files containing colors, spacing, typography, motion, and other design specifications.<br><br><strong>Token Files Include:</strong><br>• Color values (fills, strokes, text)<br>• Spacing/sizing values<br>• Typography specifications<br>• Motion timing &amp; easing<br>• State variations (default, hover, focus, active, disabled)<br><br><strong>Breakdown:</strong> 19 Atoms + 58 Molecules + 26 Organisms — all levels complete as of March 28, 2026.",
-  "Production-Certified": "24 components have complete code implementation in the production monorepo (Vivian's audit: code + Storybook + JSON tokens + tests).<br><br><strong>Atoms (12):</strong> Checkbox, Input, Icon, Label, Logo, RadioButton, TextArea, Toggle, ProgressRing, Badge, Indicator Counter, Indicator Dot<br><br><strong>Molecules (11):</strong> Button, CheckboxField, InputField, RadioButtonField, TextAreaField, ToggleField, CircularIndicator, LogoLoader, CircularProgress, DropdownItem, Pill<br><br><strong>Organisms (1):</strong> RadioButtonGroup<br><br><strong>Certification Requirements:</strong><br>• Coded implementation in monorepo<br>• Storybook documentation<br>• JSON token files verified<br>• Accessibility compliance validated<br><br><em>79 additional components are DS-complete (foundations built) awaiting dev team monorepo integration.</em>",
+  "Production-Certified": "63 components have complete code implementation on the UDS main branch (code + Storybook + tests).<br><br><strong>Atoms (26):</strong> Badge, Breadcrumb, Checkbox, Divider, FieldMessage, HelperText, Icon, Indicator Counter, Indicator Dot, Input, Label, Logo, MenuToggleIcon, Overlay, ProgressBar, ProgressRing, RadioButton, SkipLink, SliderRail, SliderThumb, SliderTrack, TextArea, Toggle, Tooltip, UserAvatar, VisuallyHidden<br><br><strong>Molecules (32):</strong> AccordionHeader, BreadcrumbItem, BreadcrumbTrail, Button, ButtonIcon, CheckboxField, CircularIndicator, CircularProgress, DateInput, DropdownButton, DropdownItem, HeaderButton, InlineSearchField, InputField, LoadingMask, LogoLoader, ModalHeader, MultiSelectItem, NavSubmenuButton, NumberInputField, OverflowPanel, Pill, QuickSearchField, RadioButtonField, SearchField, Slider, SliderField, Tab, TableCell, TextAreaField, ToastMessage, ToggleField<br><br><strong>Organisms (5):</strong> Accordion, Card, MenuContainer, MenuHeaderOrganism, RadioButtonGroup<br><br><strong>Certification Requirements:</strong><br>• Coded implementation on main<br>• Storybook documentation<br>• Vitest unit tests<br>• Accessibility compliance validated<br><br><em>35 additional components are docs-only on main (scaffolded with documentation .md but no .tsx yet) awaiting implementation.</em>",
   "Dev-Ready Assets": "103 components have design tokens, starter code structure, and complete documentation — all foundations built and handed off for the dev team to review, finalize, and integrate.<br><br><strong>What's Included Per Component:</strong><br>• CSS design token files (colors, spacing, sizes)<br>• Styled CSS implementation<br>• TypeScript component (headless + styled wrappers)<br>• Unit tests<br>• Comprehensive documentation with behavioral specs<br>• WCAG AA compliance requirements<br><br><strong>Breakdown:</strong> 19 Atoms + 58 Molecules + 26 Organisms + 4 bonus Templates<br><br><strong>Status:</strong> Design system team has completed all foundation work. Dev team to finalize, review, and integrate into production monorepo.",
-  "In NPM Package": "25 components with code presence in @constructconnect/ui-components monorepo via Cloudsmith NPM registry.<br><br><strong>Complete (24):</strong><br>Atoms: Checkbox, Input, Icon, Label, Logo, RadioButton, TextArea, Toggle, ProgressRing, Badge, Indicator Counter, Indicator Dot<br>Molecules: Button, CheckboxField, InputField, RadioButtonField, TextAreaField, ToggleField, CircularIndicator, LogoLoader, CircularProgress, DropdownItem, Pill<br>Organisms: RadioButtonGroup<br><br><strong>In Progress (1):</strong> MultiselectItem (Molecule)<br><br><em>79 additional components have DS foundations built and are ready for monorepo integration.</em>",
+  "In NPM Package": "63 components with code on the UDS main branch, published via @constructconnect/ui-components Cloudsmith NPM registry.<br><br><strong>Atoms (26):</strong> Badge, Breadcrumb, Checkbox, Divider, FieldMessage, HelperText, Icon, Indicator Counter, Indicator Dot, Input, Label, Logo, MenuToggleIcon, Overlay, ProgressBar, ProgressRing, RadioButton, SkipLink, SliderRail, SliderThumb, SliderTrack, TextArea, Toggle, Tooltip, UserAvatar, VisuallyHidden<br><br><strong>Molecules (32):</strong> AccordionHeader, BreadcrumbItem, BreadcrumbTrail, Button, ButtonIcon, CheckboxField, CircularIndicator, CircularProgress, DateInput, DropdownButton, DropdownItem, HeaderButton, InlineSearchField, InputField, LoadingMask, LogoLoader, ModalHeader, MultiSelectItem, NavSubmenuButton, NumberInputField, OverflowPanel, Pill, QuickSearchField, RadioButtonField, SearchField, Slider, SliderField, Tab, TableCell, TextAreaField, ToastMessage, ToggleField<br><br><strong>Organisms (5):</strong> Accordion, Card, MenuContainer, MenuHeaderOrganism, RadioButtonGroup<br><br><em>35 additional components are docs-only on main and ready for implementation. Source: UDS main branch audit, Apr 17, 2026.</em>",
   "Active Consumers": "3 teams actively engaged with the NPM package (Active + In Progress + On Pause).<br><br><strong>Active:</strong><br>• Payment Portal — Most active adopter (Button, Input, Badge, Checkbox, Toggle, Label confirmed)<br><br><strong>In Progress:</strong><br>• GCV4 — Active conversations, onboarding in progress<br><br><strong>On Pause:</strong><br>• UCMS (Crimson) — On hold pending platform direction<br><br><strong>Planned Pipeline:</strong><br>• OST — HubSpot integration planned<br>• FAI — HubSpot integration planned<br>• Identity Platform (user management + admin portal) — Upcoming",
   "MCP Ready": "103 components have complete behavioral specifications — 100% of the design system foundation documented and ready.<br><br><strong>✅ All Specification Standards Met:</strong><br>1. Component organization ✅<br>2. All states defined ✅<br>3. Token mappings specified ✅<br>4. Motion timing &amp; easing defined ✅<br>5. WCAG AA requirements listed ✅<br><br><strong>📋 What They Are:</strong> Created BEFORE coding to define requirements → Used DURING coding as implementation guide → Applied for QA validation → Serve as ongoing reference for consuming teams.<br><br><strong>Coverage:</strong> 19 Atoms + 58 Molecules + 26 Organisms + 4 bonus Templates (March 28, 2026)"
 };
@@ -354,18 +418,18 @@ function svgDonut(data, size, thickness) {
     cum += pct;
     return '<circle cx="'+size/2+'" cy="'+size/2+'" r="'+r+'" fill="none" stroke="'+d.color+'" stroke-width="'+thickness+'" stroke-dasharray="'+pct*circ+' '+circ+'" stroke-dashoffset="'+ -offset +'" transform="rotate(-90 '+size/2+' '+size/2+')"/>';
   }).join('');
-  return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'">'+circles+'<text x="'+size/2+'" y="'+(size/2-6)+'" text-anchor="middle" style="font-size:22px;font-weight:700;fill:#1C1F22">'+total+'</text><text x="'+size/2+'" y="'+(size/2+12)+'" text-anchor="middle" style="font-size:10px;fill:#88888E">total</text></svg>';
+  return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'">'+circles+'<text x="'+size/2+'" y="'+(size/2-6)+'" text-anchor="middle" style="font-size:22px;font-weight:700;fill:var(--color-neutral-600)">'+total+'</text><text x="'+size/2+'" y="'+(size/2+12)+'" text-anchor="middle" style="font-size:10px;fill:var(--color-neutral-400)">total</text></svg>';
 }
 
 // ── Priority Badge ──────────────────────────────────
 function priorityBadge(p) {
-  var m = {"Critical":{bg:"#FEF1EF",t:"#B70900",b:"#B70900"},"High":{bg:"#FFF3CD",t:"#8B6914",b:"#ED7800"},"Medium-High":{bg:"#FFF3CD",t:"#8B6914",b:"#ED7800"},"Medium":{bg:"#F2FAFE",t:"#0C79A8",b:"#0C79A8"},"Low":{bg:"#F4F4F4",t:"#4A4F55",b:"#DAD8D7"},"Part of Table":{bg:"#F4F4F4",t:"#88888E",b:"#DAD8D7"}};
+  var m = {"Critical":{bg:"var(--color-status-error-light)",t:"var(--color-status-error-default)",b:"var(--color-status-error-default)"},"High":{bg:"#FFF3CD",t:"#8B6914",b:"var(--color-status-warning-default)"},"Medium-High":{bg:"#FFF3CD",t:"#8B6914",b:"var(--color-status-warning-default)"},"Medium":{bg:"var(--color-primary-100)",t:"var(--color-primary-500)",b:"var(--color-primary-500)"},"Low":{bg:"var(--color-neutral-100)",t:"var(--color-neutral-500)",b:"var(--color-neutral-300)"},"Part of Table":{bg:"var(--color-neutral-100)",t:"var(--color-neutral-400)",b:"var(--color-neutral-300)"}};
   var s = m[p] || m["Low"];
   return '<span class="priority-badge" style="background:'+s.bg+';color:'+s.t+';border:1px solid '+s.b+'">'+p+'</span>';
 }
 
 // ── Status color ────────────────────────────────────
-function statusColor(s) { return {done:"#459D13",partial:"#ED7800",ready:"#0C79A8"}[s]||"#88888E"; }
+function statusColor(s) { return {done:"var(--color-status-success-default)",partial:"var(--color-status-warning-default)",ready:"var(--color-primary-500)"}[s]||"var(--color-neutral-400)"; }
 function statusLabel(s) { return {done:"Complete",partial:"Partial",ready:"Ready for Dev"}[s]||s; }
 
 // ── Card wrapper ────────────────────────────────────
@@ -383,11 +447,21 @@ function card(title, sub, content) {
 // ═══════════════════════════════════════════════════════
 function renderOverview(container) {
   // Computed display variables (derived from data — do not hardcode)
-  var pHasTokens = topMetrics.filter(function(m){return m.label==='Has Tokens';})[0].value;
-  var pGrowthBase = 30;
-  var pGrowthIncrease = pHasTokens - pGrowthBase;
-  var pGrowthPct = Math.round(pGrowthIncrease / pGrowthBase * 100);
   var pMonoRepoTotal = completeComponents.length + partialComponents.length + pipelineStats.docsOnly;
+
+  // Implementation trajectory — historical snapshots from UDS main git history.
+  // Baselines count folders with .tsx + _stories/ + _tests/ on origin/main at
+  // each milestone commit. Current value reads live from the dashboard.
+  //   Dec 2025     = commit f9b8070f (2025-12-22) — Button, Input atoms only
+  //   End of March = commit 0794924b (2026-03-31) — 15 atoms + 16 molecules + 2 orgs
+  //   Now          = completeComponents.length
+  var pDecBase = 2;
+  var pEndMarch = 33;
+  var pImplNow = completeComponents.length;
+  var pFoundationIncrease = pEndMarch - pDecBase;
+  var pFoundationPct = pDecBase > 0 ? Math.round(pFoundationIncrease / pDecBase * 100) : 0;
+  var pAprilIncrease = pImplNow - pEndMarch;
+  var pAprilPct = pEndMarch > 0 ? Math.round(pAprilIncrease / pEndMarch * 100) : 0;
 
   // Top metrics
   var metricsGrid = el('div', {className:'grid-3', style:{marginBottom:'24px'}});
@@ -422,7 +496,7 @@ function renderOverview(container) {
   var donutSvg = el('div'); donutSvg.innerHTML = svgDonut(deliveryStatus, 160, 22);
   donutInner.appendChild(donutSvg);
   var legendDiv = el('div', {style:{flex:'1'}});
-  legendDiv.innerHTML = '<div style="font-size:11px;color:#88888E;margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Data Updated — March 28, 2026</div>';
+  legendDiv.innerHTML = '<div style="font-size:11px;color:var(--color-neutral-400);margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Data Updated — April 17, 2026</div>';
   deliveryStatus.forEach(function(g) {
     legendDiv.innerHTML += '<div class="legend-item"><span class="legend-swatch" style="background:'+g.color+'"></span><span class="legend-name">'+g.name+'</span><span class="legend-val">'+g.value+'</span></div>';
   });
@@ -430,13 +504,16 @@ function renderOverview(container) {
   donutCard.appendChild(donutInner);
   row.appendChild(donutCard);
 
-  // Growth card
-  var growthCard = card('Library Growth', 'Since December 2025');
-  growthCard.innerHTML += '<div style="display:flex;gap:16px;margin-bottom:16px"><div class="growth-box" style="background:#F2FAFE"><div class="growth-label">Dec 2025</div><div class="growth-num" style="color:#185A7D">~30</div><div class="growth-label">components</div></div><div style="display:flex;align-items:center;font-size:24px;color:#459D13">→</div><div class="growth-box" style="background:#E8F5E9"><div class="growth-label">Mar 2026</div><div class="growth-num" style="color:#459D13">'+pHasTokens+'</div><div class="growth-label">specs done</div></div></div>';
-  growthCard.innerHTML += '<div class="highlight-bar" style="background:#FFF3CD;color:#8B6914"><strong>+'+pGrowthIncrease+' new components</strong> documented since December — '+pGrowthPct+'% library growth</div>';
-  var atomBars = '<div style="margin-top:16px"><div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#4A4F55">By Atomic Level (Specs Documented)</div>';
+  // Growth card — implementation trajectory
+  var growthCard = card('Library Growth', 'Implementation on UDS main — Dec 2025 → Apr 17, 2026');
+  growthCard.innerHTML += '<div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-neutral-500)">Foundation build — Dec 2025 → end of March 2026</div>';
+  growthCard.innerHTML += '<div style="display:flex;gap:16px;margin-bottom:12px"><div class="growth-box" style="background:var(--color-primary-100)"><div class="growth-label">Dec 2025</div><div class="growth-num" style="color:var(--color-primary-600)">'+pDecBase+'</div><div class="growth-label">implemented</div></div><div style="display:flex;align-items:center;font-size:24px;color:var(--color-status-success-default)">→</div><div class="growth-box" style="background:#E8F5E9"><div class="growth-label">Mar 31, 2026</div><div class="growth-num" style="color:var(--color-status-success-default)">'+pEndMarch+'</div><div class="growth-label">implemented</div></div></div>';
+  growthCard.innerHTML += '<div class="highlight-bar" style="background:#FFF3CD;color:#8B6914"><strong>+'+pFoundationIncrease+' components shipped</strong> over ~3 months — '+pFoundationPct+'% growth</div>';
+  growthCard.innerHTML += '<div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--color-neutral-200)"><div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-neutral-500)">April sprint — Apr 1 → Apr 17, 2026</div><div style="display:flex;gap:16px;margin-bottom:12px"><div class="growth-box" style="background:var(--color-primary-100)"><div class="growth-label">Apr 1, 2026</div><div class="growth-num" style="color:var(--color-primary-600)">'+pEndMarch+'</div><div class="growth-label">implemented</div></div><div style="display:flex;align-items:center;font-size:24px;color:var(--color-status-success-default)">→</div><div class="growth-box" style="background:#E8F5E9"><div class="growth-label">Apr 17, 2026</div><div class="growth-num" style="color:var(--color-status-success-default)">'+pImplNow+'</div><div class="growth-label">implemented</div></div></div><div class="highlight-bar" style="background:#FFF3CD;color:#8B6914"><strong>+'+pAprilIncrease+' components shipped</strong> in 17 days — '+pAprilPct+'% month-over-month</div></div>';
+  var maxMono = Math.max.apply(null, atomicComparison.map(function(a){return a.monorepo;})) || 1;
+  var atomBars = '<div style="margin-top:16px"><div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-neutral-500)">By Atomic Level (Implemented on main)</div>';
   atomicComparison.forEach(function(a) {
-    atomBars += '<div style="margin-bottom:8px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px"><span>'+a.level+'</span><span style="font-weight:600">'+a.extracted+'</span></div><div class="bar-track"><div class="bar-fill" style="width:'+(a.extracted/30*100)+'%;background:#0C79A8"></div></div></div>';
+    atomBars += '<div style="margin-bottom:8px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px"><span>'+a.level+'</span><span style="font-weight:600">'+a.monorepo+'</span></div><div class="bar-track"><div class="bar-fill" style="width:'+(a.monorepo/maxMono*100)+'%;background:var(--color-status-success-default)"></div></div></div>';
   });
   atomBars += '</div>';
   growthCard.innerHTML += atomBars;
@@ -449,7 +526,7 @@ function renderOverview(container) {
   // Complete
   var compCard = card('Fully Complete — Monorepo Audit ('+completeComponents.length+')', "Vivian's audit: code + Storybook + JSON tokens + tests");
   completeComponents.forEach(function(c) {
-    compCard.innerHTML += '<div class="comp-row" style="background:#F0FAF0;border-left:3px solid #459D13"><span class="comp-name">'+c.name+'</span><span class="comp-type">'+c.type+'</span></div>';
+    compCard.innerHTML += '<div class="comp-row" style="background:#F0FAF0;border-left:3px solid var(--color-status-success-default)"><span class="comp-name">'+c.name+'</span><span class="comp-type">'+c.type+'</span></div>';
   });
   listRow.appendChild(compCard);
 
@@ -457,12 +534,12 @@ function renderOverview(container) {
   var rightCol = el('div', {style:{display:'flex',flexDirection:'column',gap:'16px'}});
   var partCard = card('Needs Attention ('+partialComponents.length+')', 'Working but missing tokens, docs, or naming fixes');
   partialComponents.forEach(function(c) {
-    partCard.innerHTML += '<div class="comp-row" style="background:#FFFDF5;border-left:3px solid #ED7800"><div><span class="comp-name">'+c.name+'</span><div class="comp-issue">'+c.issue+'</div></div><span class="comp-type">'+c.type+'</span></div>';
+    partCard.innerHTML += '<div class="comp-row" style="background:#FFFDF5;border-left:3px solid var(--color-status-warning-default)"><div><span class="comp-name">'+c.name+'</span><div class="comp-issue">'+c.issue+'</div></div><span class="comp-type">'+c.type+'</span></div>';
   });
   rightCol.appendChild(partCard);
 
   var missCard = card('Missing Documentation (0)', 'All components now have documentation');
-  missCard.innerHTML += '<div style="padding:10px 12px;color:#459D13;font-size:12px;border-radius:6px;background:#F0FAF0;border-left:3px solid #459D13">✅ All '+pMonoRepoTotal+' components with monorepo presence are documented. Logo documentation was added Feb 25, 2026.</div>';
+  missCard.innerHTML += '<div style="padding:10px 12px;color:var(--color-status-success-default);font-size:12px;border-radius:6px;background:#F0FAF0;border-left:3px solid var(--color-status-success-default)">✅ All '+pMonoRepoTotal+' components with monorepo presence are documented. Logo documentation was added Feb 25, 2026.</div>';
   rightCol.appendChild(missCard);
   listRow.appendChild(rightCol);
   container.appendChild(listRow);
@@ -484,7 +561,7 @@ function renderPipeline(container) {
   var chartHtml = '<div class="chart-container">';
   atomicComparison.forEach(function(d) {
     chartHtml += '<div class="chart-group">';
-    [{k:'extracted',c:'#0C79A8'},{k:'monorepo',c:'#459D13'},{k:'handoff',c:'#ED7800'}].forEach(function(b) {
+    [{k:'extracted',c:'var(--color-primary-500)'},{k:'monorepo',c:'var(--color-status-success-default)'},{k:'handoff',c:'var(--color-status-warning-default)'}].forEach(function(b) {
       var h = (d[b.k]/maxVal)*170;
       chartHtml += '<div class="chart-bar-wrap"><div class="chart-bar-val" style="color:'+b.c+'">'+d[b.k]+'</div><div class="chart-bar" style="height:'+h+'px;background:'+b.c+'"></div></div>';
     });
@@ -492,15 +569,15 @@ function renderPipeline(container) {
   });
   chartHtml += '</div><div class="chart-labels">';
   atomicComparison.forEach(function(d) { chartHtml += '<div>'+d.level+'</div>'; });
-  chartHtml += '</div><div class="chart-legend"><div class="chart-legend-item"><span class="chart-legend-swatch" style="background:#0C79A8"></span>Specs Documented</div><div class="chart-legend-item"><span class="chart-legend-swatch" style="background:#459D13"></span>Coded in Monorepo</div><div class="chart-legend-item"><span class="chart-legend-swatch" style="background:#ED7800"></span>Ready to Code</div></div>';
-  chartHtml += '<div style="margin-top:16px;padding:12px 16px;background:#FFF8E1;border-radius:6px;display:flex;gap:24px;justify-content:center"><div class="stat-inline"><div class="val" style="color:#0C79A8">'+pTotalExtracted+'</div><div class="lbl">Specs Documented</div></div><div class="stat-inline"><div class="val" style="color:#459D13">'+pInNPM+'</div><div class="lbl">In NPM Package</div></div><div class="stat-inline"><div class="val" style="color:#ED7800">'+pReadyToBuild+'</div><div class="lbl">Ready to Build</div></div><div class="stat-inline"><div class="val" style="color:#185A7D">'+pFullyComplete+'</div><div class="lbl">Fully Complete*</div></div></div><div style="margin-top:8px;font-size:10px;color:#88888E;text-align:center">*Fully Complete = Code status "Complete" per Mar 2026 Excel audit (24 components). Production-Certified reflects same criteria — see top metrics for details.</div>';
+  chartHtml += '</div><div class="chart-legend"><div class="chart-legend-item"><span class="chart-legend-swatch" style="background:var(--color-primary-500)"></span>Specs Documented</div><div class="chart-legend-item"><span class="chart-legend-swatch" style="background:var(--color-status-success-default)"></span>Coded in Monorepo</div><div class="chart-legend-item"><span class="chart-legend-swatch" style="background:var(--color-status-warning-default)"></span>Ready to Code</div></div>';
+  chartHtml += '<div style="margin-top:16px;padding:12px 16px;background:#FFF8E1;border-radius:6px;display:flex;gap:24px;justify-content:center"><div class="stat-inline"><div class="val" style="color:var(--color-primary-500)">'+pTotalExtracted+'</div><div class="lbl">Specs Documented</div></div><div class="stat-inline"><div class="val" style="color:var(--color-status-success-default)">'+pInNPM+'</div><div class="lbl">In NPM Package</div></div><div class="stat-inline"><div class="val" style="color:var(--color-status-warning-default)">'+pReadyToBuild+'</div><div class="lbl">Ready to Build</div></div><div class="stat-inline"><div class="val" style="color:var(--color-primary-600)">'+pFullyComplete+'</div><div class="lbl">Fully Complete*</div></div></div><div style="margin-top:8px;font-size:10px;color:var(--color-neutral-400);text-align:center">*Fully Complete = Code status "Complete" per Mar 2026 Excel audit (24 components). Production-Certified reflects same criteria — see top metrics for details.</div>';
   var chartDiv = el('div'); chartDiv.innerHTML = chartHtml;
   chartCard.appendChild(chartDiv);
   container.appendChild(chartCard);
 
   // Status cards
-  var implCard = card('Implementation Completeness', "Gap analysis audit, Mar 28, 2026 · Code status breakdown across all 107 components (103 core + 4 templates)");
-  implCard.innerHTML += '<div class="grid-4"><div class="stat-card"><div class="stat-icon">✅</div><div class="stat-num" style="color:#459D13">'+pFullyComplete+'</div><div class="stat-label">Fully Complete</div><div class="stat-desc">Code + Storybook + tokens + tests</div></div><div class="stat-card"><div class="stat-icon">⚠️</div><div class="stat-num" style="color:#ED7800">'+partialComponents.length+'</div><div class="stat-label">Partial</div><div class="stat-desc">Missing tokens or naming</div></div><div class="stat-card"><div class="stat-icon">📄</div><div class="stat-num" style="color:#0C79A8">'+pipelineStats.docsOnly+'</div><div class="stat-label">Docs Only</div><div class="stat-desc">Awaiting implementation</div></div><div class="stat-card"><div class="stat-icon">📦</div><div class="stat-num" style="color:#88888E">'+pipelineStats.missingDocs+'</div><div class="stat-label">Missing Docs</div><div class="stat-desc">'+(pipelineStats.missingDocs===0?'All components documented ✅':'Has impl, needs docs')+'</div></div></div>';
+  var implCard = card('Implementation Completeness', "UDS main branch audit, Apr 17, 2026 · Code status breakdown across all 107 components (103 core + 4 templates)");
+  implCard.innerHTML += '<div class="grid-4"><div class="stat-card"><div class="stat-icon">✅</div><div class="stat-num" style="color:var(--color-status-success-default)">'+pFullyComplete+'</div><div class="stat-label">Fully Complete</div><div class="stat-desc">Code + Storybook + tokens + tests</div></div><div class="stat-card"><div class="stat-icon">⚠️</div><div class="stat-num" style="color:var(--color-status-warning-default)">'+partialComponents.length+'</div><div class="stat-label">Partial</div><div class="stat-desc">Missing tokens or naming</div></div><div class="stat-card"><div class="stat-icon">📄</div><div class="stat-num" style="color:var(--color-primary-500)">'+pipelineStats.docsOnly+'</div><div class="stat-label">Docs Only</div><div class="stat-desc">Awaiting implementation</div></div><div class="stat-card"><div class="stat-icon">📦</div><div class="stat-num" style="color:var(--color-neutral-400)">'+pipelineStats.missingDocs+'</div><div class="stat-label">Missing Docs</div><div class="stat-desc">'+(pipelineStats.missingDocs===0?'All components documented ✅':'Has impl, needs docs')+'</div></div></div>';
   container.appendChild(implCard);
 
 }
@@ -512,7 +589,7 @@ function renderGaps(container) {
   var gapCard = card('Certification Queue ('+remainingGaps.length+' remaining)', 'Prioritized by platform dependencies');
   var tbl = '<table><thead><tr><th>#</th><th>Component</th><th>Priority</th><th>Category</th><th style="text-align:center">In Figma</th><th style="text-align:center">Tokens</th><th>Notes</th></tr></thead><tbody>';
   remainingGaps.forEach(function(g,i) {
-    tbl += '<tr'+(i%2?' class="alt"':'')+'><td>'+(i+1)+'</td><td style="font-weight:600">'+g.name+'</td><td>'+priorityBadge(g.priority)+'</td><td style="color:#88888E;font-size:12px">'+g.category+'</td><td style="text-align:center">'+(g.inFigma?'✅':'❌')+'</td><td style="text-align:center">'+(g.hasTokens?'🟡':'❌')+'</td><td style="font-size:12px;color:#88888E">'+(g.note||'—')+'</td></tr>';
+    tbl += '<tr'+(i%2?' class="alt"':'')+'><td>'+(i+1)+'</td><td style="font-weight:600">'+g.name+'</td><td>'+priorityBadge(g.priority)+'</td><td style="color:var(--color-neutral-400);font-size:12px">'+g.category+'</td><td style="text-align:center">'+(g.inFigma?'✅':'❌')+'</td><td style="text-align:center">'+(g.hasTokens?'🟡':'❌')+'</td><td style="font-size:12px;color:var(--color-neutral-400)">'+(g.note||'—')+'</td></tr>';
   });
   tbl += '</tbody></table>';
   var tblDiv = el('div'); tblDiv.innerHTML = tbl;
@@ -531,7 +608,7 @@ function renderGaps(container) {
   // Readiness
   var readCard = card('Gap Readiness Assessment', 'How close are remaining gaps to having specs documented?');
   gapReadiness.forEach(function(r) {
-    var color = r.level>=50?'#459D13':r.level>=25?'#ED7800':'#B70900';
+    var color = r.level>=50?'var(--color-status-success-default)':r.level>=25?'var(--color-status-warning-default)':'var(--color-status-error-default)';
     readCard.innerHTML += '<div class="readiness-row"><div class="readiness-label"><span>'+r.label+'</span><span>'+r.note+'</span></div><div class="readiness-track"><div class="readiness-fill" style="width:'+r.level+'%;background:'+color+'"></div></div></div>';
   });
   row.appendChild(readCard);
@@ -558,12 +635,12 @@ function renderSystems(container) {
 
   // Foundation
   var foundCard = card('Foundation Health', 'Token architecture and accessibility status');
-  foundCard.innerHTML += '<div class="grid-4"><div class="foundation-card" style="border:1px solid #C8E6C9;background:#FAFFF9"><div class="foundation-header"><span class="foundation-title">Color System</span><span class="foundation-status" style="background:#E8F5E9;color:#459D13">Complete</span></div><div class="foundation-item">• 3-tier architecture</div><div class="foundation-item">• WCAG contrast verified</div></div><div class="foundation-card" style="border:1px solid #C8E6C9;background:#FAFFF9"><div class="foundation-header"><span class="foundation-title">Typography</span><span class="foundation-status" style="background:#E8F5E9;color:#459D13">Complete</span></div><div class="foundation-item">• Montserrat</div><div class="foundation-item">• 3 weights (500/600/700)</div><div class="foundation-item">• 12 styles total</div></div><div class="foundation-card" style="border:1px solid #FFE0B2;background:#FFFDF5"><div class="foundation-header"><span class="foundation-title">Spacing</span><span class="foundation-status" style="background:#FFF3CD;color:#8B6914">Tokens defined</span></div><div class="foundation-item">• 4px base scale</div><div class="foundation-item">• Component tokens set</div><div class="foundation-item">• Visual docs needed</div></div><div class="foundation-card" style="border:1px solid #C8E6C9;background:#FAFFF9"><div class="foundation-header"><span class="foundation-title">Motion</span><span class="foundation-status" style="background:#E8F5E9;color:#459D13">Complete</span></div><div class="foundation-item">• 200ms standard</div><div class="foundation-item">• 150ms selection</div><div class="foundation-item">• ease-out/in/in-out</div></div></div>';
+  foundCard.innerHTML += '<div class="grid-4"><div class="foundation-card" style="border:1px solid #C8E6C9;background:#FAFFF9"><div class="foundation-header"><span class="foundation-title">Color System</span><span class="foundation-status" style="background:#E8F5E9;color:var(--color-status-success-default)">Complete</span></div><div class="foundation-item">• 3-tier architecture</div><div class="foundation-item">• WCAG contrast verified</div></div><div class="foundation-card" style="border:1px solid #C8E6C9;background:#FAFFF9"><div class="foundation-header"><span class="foundation-title">Typography</span><span class="foundation-status" style="background:#E8F5E9;color:var(--color-status-success-default)">Complete</span></div><div class="foundation-item">• Montserrat</div><div class="foundation-item">• 3 weights (500/600/700)</div><div class="foundation-item">• 12 styles total</div></div><div class="foundation-card" style="border:1px solid #FFE0B2;background:#FFFDF5"><div class="foundation-header"><span class="foundation-title">Spacing</span><span class="foundation-status" style="background:#FFF3CD;color:#8B6914">Tokens defined</span></div><div class="foundation-item">• 4px base scale</div><div class="foundation-item">• Component tokens set</div><div class="foundation-item">• Visual docs needed</div></div><div class="foundation-card" style="border:1px solid #C8E6C9;background:#FAFFF9"><div class="foundation-header"><span class="foundation-title">Motion</span><span class="foundation-status" style="background:#E8F5E9;color:var(--color-status-success-default)">Complete</span></div><div class="foundation-item">• 200ms standard</div><div class="foundation-item">• 150ms selection</div><div class="foundation-item">• ease-out/in/in-out</div></div></div>';
   container.appendChild(foundCard);
 
   // Infrastructure
   var infraCard = card('Infrastructure', 'Storybook and deployment status');
-  infraCard.innerHTML += '<div class="grid-2"><div class="infra-box" style="background:#F0FAF0;border:1px solid #C8E6C9"><div class="infra-title">Storybook (Dev)</div>✅ Live at blueprint-dev.app.constructconnect.com<br>✅ VPN-only access, Cloud Run infrastructure<br>✅ GitLab CI/CD fully operational<br>✅ 50+ components with usage guides</div><div class="infra-box" style="background:#F2FAFE;border:1px solid #CCECF9"><div class="infra-title">NPM Package</div>✅ @constructconnect/ui-components<br>✅ Cloudsmith registry distribution<br>✅ Auto-update via CI/CD (no version pinning)<br>✅ Dual-approval adoption process</div></div>';
+  infraCard.innerHTML += '<div class="grid-2"><div class="infra-box" style="background:#F0FAF0;border:1px solid #C8E6C9"><div class="infra-title">Storybook (Dev)</div>✅ Live at blueprint-dev.app.constructconnect.com<br>✅ VPN-only access, Cloud Run infrastructure<br>✅ GitLab CI/CD fully operational<br>✅ 50+ components with usage guides</div><div class="infra-box" style="background:var(--color-primary-100);border:1px solid var(--color-primary-200)"><div class="infra-title">NPM Package</div>✅ @constructconnect/ui-components<br>✅ Cloudsmith registry distribution<br>✅ Auto-update via CI/CD (no version pinning)<br>✅ Dual-approval adoption process</div></div>';
   container.appendChild(infraCard);
 }
 
@@ -578,20 +655,20 @@ function renderMCPDocs(container) {
 
   // Left: Green metrics box
   headerHTML += '<div style="padding:24px;background:#E8F5E9;border:2px solid #C8E6C9;border-radius:8px;min-width:260px;text-align:center">';
-  headerHTML += '<div style="font-size:48px;font-weight:700;color:#459D13;margin-bottom:8px">27</div>';
-  headerHTML += '<div style="font-size:14px;color:#4A4F55;font-weight:600;margin-bottom:4px">Components</div>';
-  headerHTML += '<div style="font-size:11px;color:#88888E;margin-bottom:20px">With behavioral specs</div>';
-  headerHTML += '<div style="font-size:32px;color:#459D13;margin-bottom:8px">✅</div>';
-  headerHTML += '<div style="font-size:48px;font-weight:700;color:#459D13;margin-bottom:8px">100%</div>';
-  headerHTML += '<div style="font-size:14px;color:#4A4F55;font-weight:600;margin-bottom:4px">Specs Complete</div>';
-  headerHTML += '<div style="font-size:11px;color:#88888E">All standards met</div>';
+  headerHTML += '<div style="font-size:48px;font-weight:700;color:var(--color-status-success-default);margin-bottom:8px">27</div>';
+  headerHTML += '<div style="font-size:14px;color:var(--color-neutral-500);font-weight:600;margin-bottom:4px">Components</div>';
+  headerHTML += '<div style="font-size:11px;color:var(--color-neutral-400);margin-bottom:20px">With behavioral specs</div>';
+  headerHTML += '<div style="font-size:32px;color:var(--color-status-success-default);margin-bottom:8px">✅</div>';
+  headerHTML += '<div style="font-size:48px;font-weight:700;color:var(--color-status-success-default);margin-bottom:8px">100%</div>';
+  headerHTML += '<div style="font-size:14px;color:var(--color-neutral-500);font-weight:600;margin-bottom:4px">Specs Complete</div>';
+  headerHTML += '<div style="font-size:11px;color:var(--color-neutral-400)">All standards met</div>';
   headerHTML += '</div>';
 
   // Right: Three info boxes stacked
   headerHTML += '<div style="display:flex;flex-direction:column;gap:12px">';
   headerHTML += '<div class="highlight-bar" style="background:#E3F2FD;color:#01579B;border:1px solid #90CAF9"><strong>📋 What They Are:</strong> Behavioral specifications define requirements (before coding), guide implementation (during coding), validate completeness (QA testing), and serve as reference (ongoing). Created by design system team for human developers to build components correctly.</div>';
   headerHTML += '<div class="highlight-bar" style="background:#FFF8E1;color:#8B6914;border:1px solid #FFE082"><strong>🧑‍💻 Built by Human Experts:</strong> Components are built by expert developers following specifications. NOT automated code generation. Foundation quality is critical — errors multiply across consuming teams.</div>';
-  headerHTML += '<div class="highlight-bar" style="background:#F2FAFE;color:#0C79A8;border:1px solid #CCECF9"><strong>📅 February 24, 2026:</strong> All 27 component files enhanced with comprehensive specifications including all states, motion properties, token mappings, and WCAG requirements.</div>';
+  headerHTML += '<div class="highlight-bar" style="background:var(--color-primary-100);color:var(--color-primary-500);border:1px solid var(--color-primary-200)"><strong>📅 February 24, 2026:</strong> All 27 component files enhanced with comprehensive specifications including all states, motion properties, token mappings, and WCAG requirements.</div>';
   headerHTML += '</div></div>';
 
   var headerContent = el('div');
@@ -611,15 +688,15 @@ function renderMCPDocs(container) {
 
   var html = '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px">';
   requirements.slice(0,3).forEach(function(r) {
-    html += '<div style="padding:20px;background:#F0FAF0;border:2px solid #C8E6C9;border-radius:8px;text-align:center"><div style="font-size:28px;font-weight:700;color:#459D13;margin-bottom:8px">'+r.num+'</div><div style="font-size:14px;font-weight:700;color:#1C1F22;margin-bottom:6px">'+r.title+'</div><div style="font-size:12px;color:#5F6368;margin-bottom:8px">'+r.desc+'</div><div style="font-size:13px;font-weight:600;color:#459D13">✅ '+r.status+'</div></div>';
+    html += '<div style="padding:20px;background:#F0FAF0;border:2px solid #C8E6C9;border-radius:8px;text-align:center"><div style="font-size:28px;font-weight:700;color:var(--color-status-success-default);margin-bottom:8px">'+r.num+'</div><div style="font-size:14px;font-weight:700;color:var(--color-neutral-600);margin-bottom:6px">'+r.title+'</div><div style="font-size:12px;color:#5F6368;margin-bottom:8px">'+r.desc+'</div><div style="font-size:13px;font-weight:600;color:var(--color-status-success-default)">✅ '+r.status+'</div></div>';
   });
   html += '</div><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px">';
   requirements.slice(3,5).forEach(function(r) {
-    html += '<div style="padding:20px;background:#F0FAF0;border:2px solid #C8E6C9;border-radius:8px;text-align:center"><div style="font-size:28px;font-weight:700;color:#459D13;margin-bottom:8px">'+r.num+'</div><div style="font-size:14px;font-weight:700;color:#1C1F22;margin-bottom:6px">'+r.title+'</div><div style="font-size:12px;color:#5F6368;margin-bottom:8px">'+r.desc+'</div><div style="font-size:13px;font-weight:600;color:#459D13">✅ '+r.status+'</div></div>';
+    html += '<div style="padding:20px;background:#F0FAF0;border:2px solid #C8E6C9;border-radius:8px;text-align:center"><div style="font-size:28px;font-weight:700;color:var(--color-status-success-default);margin-bottom:8px">'+r.num+'</div><div style="font-size:14px;font-weight:700;color:var(--color-neutral-600);margin-bottom:6px">'+r.title+'</div><div style="font-size:12px;color:#5F6368;margin-bottom:8px">'+r.desc+'</div><div style="font-size:13px;font-weight:600;color:var(--color-status-success-default)">✅ '+r.status+'</div></div>';
   });
   html += '</div>';
   html += '<div style="padding:18px;background:#E3F2FD;border:2px solid #90CAF9;border-radius:8px;font-size:14px;color:#01579B;line-height:1.7;margin-bottom:16px"><strong style="font-size:15px">📋 The Complete Lifecycle:</strong><br><br>1. Design in Figma → Token extraction<br>2. <strong>Behavioral spec created</strong> (defines requirements)<br>3. Developer builds <strong>following spec</strong><br>4. QA validates <strong>against spec</strong><br>5. Component published<br>6. Spec serves as <strong>ongoing reference</strong></div>';
-  html += '<div style="padding:18px;background:#FFF3CD;border:2px solid #FFE082;border-radius:8px;font-size:13px;color:#4A4F55;line-height:1.7"><strong style="font-size:14px">⚠️ Why Foundation Quality Matters:</strong><br><br>Design system components are the single source of truth. If 30 flawed components are used by 10 teams, that\'s 300 instances of the same bugs. Human experts build the foundation to prevent errors from compounding across all consuming applications.</div>';
+  html += '<div style="padding:18px;background:#FFF3CD;border:2px solid #FFE082;border-radius:8px;font-size:13px;color:var(--color-neutral-500);line-height:1.7"><strong style="font-size:14px">⚠️ Why Foundation Quality Matters:</strong><br><br>Design system components are the single source of truth. If 30 flawed components are used by 10 teams, that\'s 300 instances of the same bugs. Human experts build the foundation to prevent errors from compounding across all consuming applications.</div>';
 
   var content = el('div');
   content.innerHTML = html;
@@ -634,34 +711,34 @@ function renderMCPDocs(container) {
   var grid = el('div', {className:'grid-4'});
 
   // Atoms column
-  var atomsCard = el('div', {style:{background:'#F8F9FA',border:'1px solid #E7E6E5',borderRadius:'8px',padding:'16px'}});
-  atomsCard.innerHTML = '<div style="font-size:14px;font-weight:700;color:#1C1F22;margin-bottom:8px;display:flex;align-items:center;gap:8px"><span>Atoms</span><span style="background:#0C79A8;color:#fff;padding:2px 8px;border-radius:12px;font-size:11px">'+mcpDocsComponents.atoms.length+'</span></div>';
+  var atomsCard = el('div', {style:{background:'#F8F9FA',border:'1px solid var(--color-neutral-200)',borderRadius:'8px',padding:'16px'}});
+  atomsCard.innerHTML = '<div style="font-size:14px;font-weight:700;color:var(--color-neutral-600);margin-bottom:8px;display:flex;align-items:center;gap:8px"><span>Atoms</span><span style="background:var(--color-primary-500);color:#fff;padding:2px 8px;border-radius:12px;font-size:11px">'+mcpDocsComponents.atoms.length+'</span></div>';
   mcpDocsComponents.atoms.forEach(function(c) {
-    atomsCard.innerHTML += '<div style="padding:6px 10px;background:#fff;border-radius:4px;margin-bottom:4px;font-size:12px;display:flex;justify-content:space-between;align-items:center"><span>'+c.name+'</span><span style="color:#459D13;font-size:14px">✓</span></div>';
+    atomsCard.innerHTML += '<div style="padding:6px 10px;background:#fff;border-radius:4px;margin-bottom:4px;font-size:12px;display:flex;justify-content:space-between;align-items:center"><span>'+c.name+'</span><span style="color:var(--color-status-success-default);font-size:14px">✓</span></div>';
   });
   grid.appendChild(atomsCard);
 
   // Molecules column
-  var molsCard = el('div', {style:{background:'#F8F9FA',border:'1px solid #E7E6E5',borderRadius:'8px',padding:'16px'}});
-  molsCard.innerHTML = '<div style="font-size:14px;font-weight:700;color:#1C1F22;margin-bottom:8px;display:flex;align-items:center;gap:8px"><span>Molecules</span><span style="background:#0C79A8;color:#fff;padding:2px 8px;border-radius:12px;font-size:11px">'+mcpDocsComponents.molecules.length+'</span></div>';
+  var molsCard = el('div', {style:{background:'#F8F9FA',border:'1px solid var(--color-neutral-200)',borderRadius:'8px',padding:'16px'}});
+  molsCard.innerHTML = '<div style="font-size:14px;font-weight:700;color:var(--color-neutral-600);margin-bottom:8px;display:flex;align-items:center;gap:8px"><span>Molecules</span><span style="background:var(--color-primary-500);color:#fff;padding:2px 8px;border-radius:12px;font-size:11px">'+mcpDocsComponents.molecules.length+'</span></div>';
   mcpDocsComponents.molecules.forEach(function(c) {
-    molsCard.innerHTML += '<div style="padding:6px 10px;background:#fff;border-radius:4px;margin-bottom:4px;font-size:12px;display:flex;justify-content:space-between;align-items:center"><span>'+c.name+'</span><span style="color:#459D13;font-size:14px">✓</span></div>';
+    molsCard.innerHTML += '<div style="padding:6px 10px;background:#fff;border-radius:4px;margin-bottom:4px;font-size:12px;display:flex;justify-content:space-between;align-items:center"><span>'+c.name+'</span><span style="color:var(--color-status-success-default);font-size:14px">✓</span></div>';
   });
   grid.appendChild(molsCard);
 
   // Organisms column
-  var orgsCard = el('div', {style:{background:'#F8F9FA',border:'1px solid #E7E6E5',borderRadius:'8px',padding:'16px'}});
-  orgsCard.innerHTML = '<div style="font-size:14px;font-weight:700;color:#1C1F22;margin-bottom:8px;display:flex;align-items:center;gap:8px"><span>Organisms</span><span style="background:#0C79A8;color:#fff;padding:2px 8px;border-radius:12px;font-size:11px">'+mcpDocsComponents.organisms.length+'</span></div>';
+  var orgsCard = el('div', {style:{background:'#F8F9FA',border:'1px solid var(--color-neutral-200)',borderRadius:'8px',padding:'16px'}});
+  orgsCard.innerHTML = '<div style="font-size:14px;font-weight:700;color:var(--color-neutral-600);margin-bottom:8px;display:flex;align-items:center;gap:8px"><span>Organisms</span><span style="background:var(--color-primary-500);color:#fff;padding:2px 8px;border-radius:12px;font-size:11px">'+mcpDocsComponents.organisms.length+'</span></div>';
   mcpDocsComponents.organisms.forEach(function(c) {
-    orgsCard.innerHTML += '<div style="padding:6px 10px;background:#fff;border-radius:4px;margin-bottom:4px;font-size:12px;display:flex;justify-content:space-between;align-items:center"><span>'+c.name+'</span><span style="color:#459D13;font-size:14px">✓</span></div>';
+    orgsCard.innerHTML += '<div style="padding:6px 10px;background:#fff;border-radius:4px;margin-bottom:4px;font-size:12px;display:flex;justify-content:space-between;align-items:center"><span>'+c.name+'</span><span style="color:var(--color-status-success-default);font-size:14px">✓</span></div>';
   });
   grid.appendChild(orgsCard);
 
   // Templates column
-  var tmplsCard = el('div', {style:{background:'#F8F9FA',border:'1px solid #E7E6E5',borderRadius:'8px',padding:'16px'}});
-  tmplsCard.innerHTML = '<div style="font-size:14px;font-weight:700;color:#1C1F22;margin-bottom:8px;display:flex;align-items:center;gap:8px"><span>Templates</span><span style="background:#0C79A8;color:#fff;padding:2px 8px;border-radius:12px;font-size:11px">'+mcpDocsComponents.templates.length+'</span></div>';
+  var tmplsCard = el('div', {style:{background:'#F8F9FA',border:'1px solid var(--color-neutral-200)',borderRadius:'8px',padding:'16px'}});
+  tmplsCard.innerHTML = '<div style="font-size:14px;font-weight:700;color:var(--color-neutral-600);margin-bottom:8px;display:flex;align-items:center;gap:8px"><span>Templates</span><span style="background:var(--color-primary-500);color:#fff;padding:2px 8px;border-radius:12px;font-size:11px">'+mcpDocsComponents.templates.length+'</span></div>';
   mcpDocsComponents.templates.forEach(function(c) {
-    tmplsCard.innerHTML += '<div style="padding:6px 10px;background:#fff;border-radius:4px;margin-bottom:4px;font-size:12px;display:flex;justify-content:space-between;align-items:center"><span>'+c.name+'</span><span style="color:#459D13;font-size:14px">✓</span></div>';
+    tmplsCard.innerHTML += '<div style="padding:6px 10px;background:#fff;border-radius:4px;margin-bottom:4px;font-size:12px;display:flex;justify-content:space-between;align-items:center"><span>'+c.name+'</span><span style="color:var(--color-status-success-default);font-size:14px">✓</span></div>';
   });
   grid.appendChild(tmplsCard);
 
@@ -670,19 +747,19 @@ function renderMCPDocs(container) {
 
   // What's included card
   var includedCard = card('What\'s Included in Behavioral Specifications', 'Comprehensive interaction and accessibility documentation');
-  includedCard.innerHTML += '<div class="grid-2"><div style="padding:16px;background:#F8F9FA;border-radius:8px;border:1px solid #E7E6E5"><div style="font-weight:700;font-size:14px;margin-bottom:10px;color:#1C1F22">For Atoms (Visual-Only)</div><div style="font-size:12px;color:#4A4F55;line-height:1.7">• Atom Role (visual component explanation)<br>• Visual Characteristics (appearance specs)<br>• Composition Patterns (usage in molecules)<br>• Use Case Patterns (when to use)<br>• Accessibility Considerations<br>• Size Guidelines</div></div><div style="padding:16px;background:#F8F9FA;border-radius:8px;border:1px solid #E7E6E5"><div style="font-weight:700;font-size:14px;margin-bottom:10px;color:#1C1F22">For Molecules & Organisms (Interactive)</div><div style="font-size:12px;color:#4A4F55;line-height:1.7">• Visual State Descriptions<br>• <strong>Transition Properties</strong> (duration, easing)<br>• <strong>Trigger Behaviors</strong> (hover, click, focus)<br>• <strong>Keyboard Interactions</strong> (Tab, Enter, Escape)<br>• Touch Interactions (tap, long-press)<br>• Responsive Behavior (breakpoints)<br>• <strong>Accessibility Behaviors</strong> (ARIA, screen readers)</div></div></div>';
+  includedCard.innerHTML += '<div class="grid-2"><div style="padding:16px;background:#F8F9FA;border-radius:8px;border:1px solid var(--color-neutral-200)"><div style="font-weight:700;font-size:14px;margin-bottom:10px;color:var(--color-neutral-600)">For Atoms (Visual-Only)</div><div style="font-size:12px;color:var(--color-neutral-500);line-height:1.7">• Atom Role (visual component explanation)<br>• Visual Characteristics (appearance specs)<br>• Composition Patterns (usage in molecules)<br>• Use Case Patterns (when to use)<br>• Accessibility Considerations<br>• Size Guidelines</div></div><div style="padding:16px;background:#F8F9FA;border-radius:8px;border:1px solid var(--color-neutral-200)"><div style="font-weight:700;font-size:14px;margin-bottom:10px;color:var(--color-neutral-600)">For Molecules & Organisms (Interactive)</div><div style="font-size:12px;color:var(--color-neutral-500);line-height:1.7">• Visual State Descriptions<br>• <strong>Transition Properties</strong> (duration, easing)<br>• <strong>Trigger Behaviors</strong> (hover, click, focus)<br>• <strong>Keyboard Interactions</strong> (Tab, Enter, Escape)<br>• Touch Interactions (tap, long-press)<br>• Responsive Behavior (breakpoints)<br>• <strong>Accessibility Behaviors</strong> (ARIA, screen readers)</div></div></div>';
   container.appendChild(includedCard);
 
   // Future documentation card
   var futureCard = card('Moving Forward', 'All future component documentation will include behavioral specifications');
-  futureCard.innerHTML += '<div style="padding:16px;background:#F2FAFE;border:1px solid #CCECF9;border-radius:8px;margin-bottom:12px"><div style="font-size:14px;font-weight:700;color:#0C79A8;margin-bottom:8px">✓ Template Updated</div><div style="font-size:12px;color:#4A4F55;line-height:1.7">The component documentation template has been updated to include behavioral specifications as a mandatory section. All new component documentation will automatically include these specifications.</div></div>';
-  futureCard.innerHTML += '<div style="padding:16px;background:#FFF3CD;border:1px solid #FFE0B2;border-radius:8px;margin-bottom:12px"><div style="font-size:14px;font-weight:700;color:#8B6914;margin-bottom:8px">📋 Workflow Instructions Updated</div><div style="font-size:12px;color:#4A4F55;line-height:1.7">The <code>figma-workflow-instructions.md</code> file has been updated with mandatory behavioral specifications requirements. Failure to include these specs = incomplete documentation.</div></div>';
-  futureCard.innerHTML += '<div style="padding:16px;background:#E8F5E9;border:1px solid #C8E6C9;border-radius:8px"><div style="font-size:14px;font-weight:700;color:#459D13;margin-bottom:8px">🎯 Standards Documented</div><div style="font-size:12px;color:#4A4F55;line-height:1.7">The <code>Component-Token-Documentation-Standards.md</code> includes the complete behavioral specifications template with examples for atoms, molecules, and organisms.</div></div>';
+  futureCard.innerHTML += '<div style="padding:16px;background:var(--color-primary-100);border:1px solid var(--color-primary-200);border-radius:8px;margin-bottom:12px"><div style="font-size:14px;font-weight:700;color:var(--color-primary-500);margin-bottom:8px">✓ Template Updated</div><div style="font-size:12px;color:var(--color-neutral-500);line-height:1.7">The component documentation template has been updated to include behavioral specifications as a mandatory section. All new component documentation will automatically include these specifications.</div></div>';
+  futureCard.innerHTML += '<div style="padding:16px;background:#FFF3CD;border:1px solid #FFE0B2;border-radius:8px;margin-bottom:12px"><div style="font-size:14px;font-weight:700;color:#8B6914;margin-bottom:8px">📋 Workflow Instructions Updated</div><div style="font-size:12px;color:var(--color-neutral-500);line-height:1.7">The <code>figma-workflow-instructions.md</code> file has been updated with mandatory behavioral specifications requirements. Failure to include these specs = incomplete documentation.</div></div>';
+  futureCard.innerHTML += '<div style="padding:16px;background:#E8F5E9;border:1px solid #C8E6C9;border-radius:8px"><div style="font-size:14px;font-weight:700;color:var(--color-status-success-default);margin-bottom:8px">🎯 Standards Documented</div><div style="font-size:12px;color:var(--color-neutral-500);line-height:1.7">The <code>Component-Token-Documentation-Standards.md</code> includes the complete behavioral specifications template with examples for atoms, molecules, and organisms.</div></div>';
   container.appendChild(futureCard);
 
   // Benefits card
   var benefitsCard = card('Benefits of Behavioral Specifications', 'Why these specifications matter for the design system');
-  benefitsCard.innerHTML += '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px"><div style="padding:16px;background:#F8F9FA;border-radius:8px;text-align:center;border:1px solid #E7E6E5"><div style="font-size:24px;margin-bottom:8px">🤖</div><div style="font-size:13px;font-weight:700;color:#1C1F22;margin-bottom:4px">AI Code Generation</div><div style="font-size:11px;color:#88888E;line-height:1.5">Enables accurate code generation from Figma designs</div></div><div style="padding:16px;background:#F8F9FA;border-radius:8px;text-align:center;border:1px solid #E7E6E5"><div style="font-size:24px;margin-bottom:8px">♿</div><div style="font-size:13px;font-weight:700;color:#1C1F22;margin-bottom:4px">WCAG Compliance</div><div style="font-size:11px;color:#88888E;line-height:1.5">Built-in accessibility requirements documented</div></div><div style="padding:16px;background:#F8F9FA;border-radius:8px;text-align:center;border:1px solid #E7E6E5"><div style="font-size:24px;margin-bottom:8px">⚡</div><div style="font-size:13px;font-weight:700;color:#1C1F22;margin-bottom:4px">Faster Development</div><div style="font-size:11px;color:#88888E;line-height:1.5">Clear specs reduce implementation time</div></div><div style="padding:16px;background:#F8F9FA;border-radius:8px;text-align:center;border:1px solid #E7E6E5"><div style="font-size:24px;margin-bottom:8px">🎯</div><div style="font-size:13px;font-weight:700;color:#1C1F22;margin-bottom:4px">Consistency</div><div style="font-size:11px;color:#88888E;line-height:1.5">Ensures uniform component behavior</div></div></div>';
+  benefitsCard.innerHTML += '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px"><div style="padding:16px;background:#F8F9FA;border-radius:8px;text-align:center;border:1px solid var(--color-neutral-200)"><div style="font-size:24px;margin-bottom:8px">🤖</div><div style="font-size:13px;font-weight:700;color:var(--color-neutral-600);margin-bottom:4px">AI Code Generation</div><div style="font-size:11px;color:var(--color-neutral-400);line-height:1.5">Enables accurate code generation from Figma designs</div></div><div style="padding:16px;background:#F8F9FA;border-radius:8px;text-align:center;border:1px solid var(--color-neutral-200)"><div style="font-size:24px;margin-bottom:8px">♿</div><div style="font-size:13px;font-weight:700;color:var(--color-neutral-600);margin-bottom:4px">WCAG Compliance</div><div style="font-size:11px;color:var(--color-neutral-400);line-height:1.5">Built-in accessibility requirements documented</div></div><div style="padding:16px;background:#F8F9FA;border-radius:8px;text-align:center;border:1px solid var(--color-neutral-200)"><div style="font-size:24px;margin-bottom:8px">⚡</div><div style="font-size:13px;font-weight:700;color:var(--color-neutral-600);margin-bottom:4px">Faster Development</div><div style="font-size:11px;color:var(--color-neutral-400);line-height:1.5">Clear specs reduce implementation time</div></div><div style="padding:16px;background:#F8F9FA;border-radius:8px;text-align:center;border:1px solid var(--color-neutral-200)"><div style="font-size:24px;margin-bottom:8px">🎯</div><div style="font-size:13px;font-weight:700;color:var(--color-neutral-600);margin-bottom:4px">Consistency</div><div style="font-size:11px;color:var(--color-neutral-400);line-height:1.5">Ensures uniform component behavior</div></div></div>';
   container.appendChild(benefitsCard);
 }
 

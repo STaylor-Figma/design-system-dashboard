@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# npm
+package-lock.json
+
+# Claude Code working directories
+.claude/
+.logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
