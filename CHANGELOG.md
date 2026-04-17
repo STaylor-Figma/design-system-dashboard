@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- **Library Growth card is now implementation-focused**, with two non-overlapping trajectories:
+  - **Foundation build — Dec 2025 → end of March 2026** (top) — 2 → 33 implemented. Baselines count folders with `.tsx + _stories/ + _tests/` on UDS `main`: commit `f9b8070f` (2025-12-22, Button + Input only) → commit `0794924b` (2026-03-31, 15 atoms + 16 molecules + 2 organisms).
+  - **April sprint — Apr 1 → Apr 17, 2026** (below, separated by a divider) — 33 → `completeComponents.length` (currently 63).
+- Dropped the previous "Specs documented — Dec 2025 → Mar 2026" block from the card.
+- By-atomic-level bars switched from `a.extracted` (specs) to `a.monorepo` (implemented), with dynamic max scaling and success-green fill.
+- Removed unused derived variables (`pHasTokens`, `pGrowthBase`, `pGrowthIncrease`, `pGrowthPct`) from `renderOverview()`.
+
 ## [2.3.0] - 2026-04-17
 
 ### Added

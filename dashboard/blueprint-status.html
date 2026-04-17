@@ -447,11 +447,21 @@ function card(title, sub, content) {
 // ═══════════════════════════════════════════════════════
 function renderOverview(container) {
   // Computed display variables (derived from data — do not hardcode)
-  var pHasTokens = topMetrics.filter(function(m){return m.label==='Has Tokens';})[0].value;
-  var pGrowthBase = 30;
-  var pGrowthIncrease = pHasTokens - pGrowthBase;
-  var pGrowthPct = Math.round(pGrowthIncrease / pGrowthBase * 100);
   var pMonoRepoTotal = completeComponents.length + partialComponents.length + pipelineStats.docsOnly;
+
+  // Implementation trajectory — historical snapshots from UDS main git history.
+  // Baselines count folders with .tsx + _stories/ + _tests/ on origin/main at
+  // each milestone commit. Current value reads live from the dashboard.
+  //   Dec 2025     = commit f9b8070f (2025-12-22) — Button, Input atoms only
+  //   End of March = commit 0794924b (2026-03-31) — 15 atoms + 16 molecules + 2 orgs
+  //   Now          = completeComponents.length
+  var pDecBase = 2;
+  var pEndMarch = 33;
+  var pImplNow = completeComponents.length;
+  var pFoundationIncrease = pEndMarch - pDecBase;
+  var pFoundationPct = pDecBase > 0 ? Math.round(pFoundationIncrease / pDecBase * 100) : 0;
+  var pAprilIncrease = pImplNow - pEndMarch;
+  var pAprilPct = pEndMarch > 0 ? Math.round(pAprilIncrease / pEndMarch * 100) : 0;
 
   // Top metrics
   var metricsGrid = el('div', {className:'grid-3', style:{marginBottom:'24px'}});
@@ -494,13 +504,16 @@ function renderOverview(container) {
   donutCard.appendChild(donutInner);
   row.appendChild(donutCard);
 
-  // Growth card
-  var growthCard = card('Library Growth', 'Since December 2025');
-  growthCard.innerHTML += '<div style="display:flex;gap:16px;margin-bottom:16px"><div class="growth-box" style="background:var(--color-primary-100)"><div class="growth-label">Dec 2025</div><div class="growth-num" style="color:var(--color-primary-600)">~30</div><div class="growth-label">components</div></div><div style="display:flex;align-items:center;font-size:24px;color:var(--color-status-success-default)">→</div><div class="growth-box" style="background:#E8F5E9"><div class="growth-label">Mar 2026</div><div class="growth-num" style="color:var(--color-status-success-default)">'+pHasTokens+'</div><div class="growth-label">specs done</div></div></div>';
-  growthCard.innerHTML += '<div class="highlight-bar" style="background:#FFF3CD;color:#8B6914"><strong>+'+pGrowthIncrease+' new components</strong> documented since December — '+pGrowthPct+'% library growth</div>';
-  var atomBars = '<div style="margin-top:16px"><div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-neutral-500)">By Atomic Level (Specs Documented)</div>';
+  // Growth card — implementation trajectory
+  var growthCard = card('Library Growth', 'Implementation on UDS main — Dec 2025 → Apr 17, 2026');
+  growthCard.innerHTML += '<div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-neutral-500)">Foundation build — Dec 2025 → end of March 2026</div>';
+  growthCard.innerHTML += '<div style="display:flex;gap:16px;margin-bottom:12px"><div class="growth-box" style="background:var(--color-primary-100)"><div class="growth-label">Dec 2025</div><div class="growth-num" style="color:var(--color-primary-600)">'+pDecBase+'</div><div class="growth-label">implemented</div></div><div style="display:flex;align-items:center;font-size:24px;color:var(--color-status-success-default)">→</div><div class="growth-box" style="background:#E8F5E9"><div class="growth-label">Mar 31, 2026</div><div class="growth-num" style="color:var(--color-status-success-default)">'+pEndMarch+'</div><div class="growth-label">implemented</div></div></div>';
+  growthCard.innerHTML += '<div class="highlight-bar" style="background:#FFF3CD;color:#8B6914"><strong>+'+pFoundationIncrease+' components shipped</strong> over ~3 months — '+pFoundationPct+'% growth</div>';
+  growthCard.innerHTML += '<div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--color-neutral-200)"><div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-neutral-500)">April sprint — Apr 1 → Apr 17, 2026</div><div style="display:flex;gap:16px;margin-bottom:12px"><div class="growth-box" style="background:var(--color-primary-100)"><div class="growth-label">Apr 1, 2026</div><div class="growth-num" style="color:var(--color-primary-600)">'+pEndMarch+'</div><div class="growth-label">implemented</div></div><div style="display:flex;align-items:center;font-size:24px;color:var(--color-status-success-default)">→</div><div class="growth-box" style="background:#E8F5E9"><div class="growth-label">Apr 17, 2026</div><div class="growth-num" style="color:var(--color-status-success-default)">'+pImplNow+'</div><div class="growth-label">implemented</div></div></div><div class="highlight-bar" style="background:#FFF3CD;color:#8B6914"><strong>+'+pAprilIncrease+' components shipped</strong> in 17 days — '+pAprilPct+'% month-over-month</div></div>';
+  var maxMono = Math.max.apply(null, atomicComparison.map(function(a){return a.monorepo;})) || 1;
+  var atomBars = '<div style="margin-top:16px"><div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-neutral-500)">By Atomic Level (Implemented on main)</div>';
   atomicComparison.forEach(function(a) {
-    atomBars += '<div style="margin-bottom:8px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px"><span>'+a.level+'</span><span style="font-weight:600">'+a.extracted+'</span></div><div class="bar-track"><div class="bar-fill" style="width:'+(a.extracted/30*100)+'%;background:var(--color-primary-500)"></div></div></div>';
+    atomBars += '<div style="margin-bottom:8px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px"><span>'+a.level+'</span><span style="font-weight:600">'+a.monorepo+'</span></div><div class="bar-track"><div class="bar-fill" style="width:'+(a.monorepo/maxMono*100)+'%;background:var(--color-status-success-default)"></div></div></div>';
   });
   atomBars += '</div>';
   growthCard.innerHTML += atomBars;
