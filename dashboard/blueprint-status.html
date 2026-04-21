@@ -113,9 +113,9 @@ tr.alt{background:#FAFAFA}
   <div class="header-top">
     <div>
       <h1>Blueprint Design System</h1>
-      <p class="sub">Status Dashboard — April 17, 2026</p>
+      <p class="sub">Status Dashboard — April 21, 2026</p>
     </div>
-    <div class="badge">v5.8 — Templates Added</div>
+    <div class="badge">v5.11 — UDS main sync · +8 Complete</div>
   </div>
   <div class="tabs" id="tabs"></div>
 </div>
@@ -176,35 +176,35 @@ var TOKENS = (function() {
 // DATA — Edit values here to update dashboard
 // ═══════════════════════════════════════════════════════
 
-// Master list source — authoritative PM tracking (Apr 17, 2026).
+// Master list source — authoritative PM tracking (Apr 21, 2026).
 // Roadmap = Complete + In Progress + Planned + Docs Only (excludes N/A + Unplanned).
 var topMetrics = [
-  {label:"Total Components",value:137,sub:"Active roadmap — Complete + In Progress + Planned + Docs Only",color:TOKENS.primary500},
-  {label:"Complete",        value:63, sub:"27 atoms + 32 molecules + 4 organisms",color:TOKENS.success},
-  {label:"In Progress",     value:10, sub:"All molecules — active development",color:TOKENS.warning},
-  {label:"Planned",         value:63, sub:"1 atom + 28 molecules + 28 organisms + 6 templates",color:"#00838F"},
-  {label:"In NPM Package",  value:63, sub:"Published via Cloudsmith (matches Complete)",color:TOKENS.primary500},
+  {label:"Total Components",value:129,sub:"Active roadmap — Complete + In Progress + Planned + Docs Only",color:TOKENS.primary500},
+  {label:"Complete",        value:71, sub:"27 atoms + 39 molecules + 5 organisms",color:TOKENS.success},
+  {label:"In Progress",     value:6,  sub:"All molecules — active development",color:TOKENS.warning},
+  {label:"Planned",         value:51, sub:"21 molecules + 24 organisms + 6 templates",color:"#00838F"},
+  {label:"In NPM Package",  value:71, sub:"Published via Cloudsmith (matches Complete)",color:TOKENS.primary500},
   {label:"Docs Only",       value:1,  sub:"Drawer organism — definition pending",color:"#6B3FA0"},
   {label:"Unplanned",       value:4,  sub:"Requested but not on current roadmap",color:TOKENS.error},
   {label:"Blocked",         value:0,  sub:"No current blockers",color:TOKENS.primary600},
   {label:"Active Consumers",value:3,  sub:"Teams actively adopting",color:TOKENS.primary600}
 ];
 
-// Pipeline audit counts (UDS main branch, Apr 17, 2026)
+// Pipeline audit counts (UDS main branch, Apr 21, 2026)
 var pipelineStats = {
   docsOnly: 1,     // Drawer organism — shares drawer-modal-accessibility.md with DrawerModal
   missingDocs: 0   // All components now documented
 };
 
 var deliveryStatus = [
-  {name:"Complete",    value:63, color:TOKENS.success},
-  {name:"In Progress", value:10, color:TOKENS.warning},
-  {name:"Planned",     value:63, color:"#00838F"},
+  {name:"Complete",    value:71, color:TOKENS.success},
+  {name:"In Progress", value:6,  color:TOKENS.warning},
+  {name:"Planned",     value:51, color:"#00838F"},
   {name:"Docs Only",   value:1,  color:"#6B3FA0"}
 ];
 
-// Complete = design + implementation done per PM master list (Apr 17, 2026).
-// Jira tickets preserved where provided. Count: 27 atoms + 32 molecules + 4 organisms = 63.
+// Complete = design + implementation done per PM master list (Apr 21, 2026).
+// Jira tickets preserved where provided. Count: 27 atoms + 39 molecules + 5 organisms = 71.
 var completeComponents = [
   // Atoms (27)
   {name:"Badge",             type:"Atom", ticket:"PS-1609"},
@@ -232,11 +232,12 @@ var completeComponents = [
   {name:"TextArea",          type:"Atom"},
   {name:"Toggle",            type:"Atom", ticket:"PS-1416"},
   {name:"Tooltip",           type:"Atom", ticket:"PS-1607"},
-  {name:"UserAvatar",        type:"Atom"},
+  {name:"UserAvatar",        type:"Atom", ticket:"PS-2953"},
   {name:"VisuallyHidden",    type:"Atom"},
-  // Molecules (32)
+  // Molecules (39)
   {name:"AccordionHeader",       type:"Molecule"},
   {name:"BreadcrumbItem",        type:"Molecule", ticket:"PS-931"},
+  {name:"BreadcrumbTrail",       type:"Molecule"},
   {name:"Button",                type:"Molecule", ticket:"PS-2324"},
   {name:"ButtonIcon",            type:"Molecule", ticket:"PS-3989"},
   {name:"CheckboxField",         type:"Molecule", ticket:"PS-1751"},
@@ -246,29 +247,36 @@ var completeComponents = [
   {name:"DropdownButton",        type:"Molecule", ticket:"PS-1726"},
   {name:"DropdownItem",          type:"Molecule", ticket:"PS-2357"},
   {name:"DropdownMenuContainer", type:"Molecule", ticket:"PS-2617"},
+  {name:"FileUploadButton",      type:"Molecule", ticket:"PS-3713"},
+  {name:"FilterButton",          type:"Molecule", ticket:"PS-3098"},
   {name:"FormFieldMolecule",     type:"Molecule", ticket:"PS-2873"},
   {name:"HeaderButton",          type:"Molecule"},
+  {name:"InlineSearchField",     type:"Molecule", ticket:"PS-3730"},
   {name:"InputField",            type:"Molecule", ticket:"PS-1758"},
   {name:"LoadingMask",           type:"Molecule", ticket:"PS-2855"},
   {name:"LogoLoader",            type:"Molecule", ticket:"PS-2851"},
   {name:"ModalHeader",           type:"Molecule", ticket:"PS-3099"},
   {name:"MultiselectItem",       type:"Molecule"},
-  {name:"NavSubmenuButton",      type:"Molecule"},
+  {name:"NavSubmenuButton",      type:"Molecule", ticket:"PS-2442"},
   {name:"NumberInput",           type:"Molecule", ticket:"PS-3714"},
   {name:"OverflowPanel",         type:"Molecule"},
   {name:"Pill",                  type:"Molecule", ticket:"PS-1606"},
+  {name:"ProgressBarField",      type:"Molecule", ticket:"PS-3763"},
   {name:"QuickSearchField",      type:"Molecule"},
   {name:"RadioButtonField",      type:"Molecule", ticket:"PS-1761"},
+  {name:"SearchBar",             type:"Molecule", ticket:"PS-3731"},
   {name:"SearchField",           type:"Molecule"},
   {name:"Slider",                type:"Molecule", ticket:"PS-2018"},
   {name:"SliderField",           type:"Molecule", ticket:"PS-2018"},
   {name:"Tab",                   type:"Molecule", ticket:"PS-1608"},
   {name:"TableCell",             type:"Molecule", ticket:"PS-3617"},
+  {name:"TableRowContent",       type:"Molecule", ticket:"PS-3618"},
   {name:"TextAreaField",         type:"Molecule", ticket:"PS-1759"},
   {name:"Toast",                 type:"Molecule"},
   {name:"ToggleField",           type:"Molecule"},
-  // Organisms (4)
+  // Organisms (5)
   {name:"Accordion",          type:"Organism", ticket:"PS-2180"},
+  {name:"MenuContainer",      type:"Organism", ticket:"PS-2448"},
   {name:"MenuHeaderOrganism", type:"Organism", ticket:"PS-3733"},
   {name:"RadioButtonGroup",   type:"Organism", ticket:"PS-2388"},
   {name:"SplitButton",        type:"Organism", ticket:"PS-2658"}
@@ -276,25 +284,21 @@ var completeComponents = [
 
 // In Progress — active development per PM master list. Shown in "Partial" card.
 var partialComponents = [
-  {name:"BreadcrumbTrail",  type:"Molecule", issue:"Ordered BreadcrumbItem group"},
   {name:"DropdownInput",    type:"Molecule", ticket:"PS-3434", issue:"Near-term priority"},
-  {name:"FileUploadButton", type:"Molecule", ticket:"PS-3713", issue:"In progress"},
-  {name:"FilterButton",     type:"Molecule", ticket:"PS-3098", issue:"Possibly FilterDropdownButton"},
-  {name:"InlineSearchField",type:"Molecule", ticket:"PS-3730", issue:"Roadmap conflict vs SearchField/QuickSearchField"},
   {name:"ListItem",         type:"Molecule", ticket:"PS-3791", issue:"Single list row with icon/label/action"},
   {name:"MenuHeader",       type:"Molecule", issue:"No implementation yet"},
-  {name:"ProgressBarField", type:"Molecule", ticket:"PS-3763", issue:"ProgressBarTrack + Fill + Label"},
-  {name:"TableRow",         type:"Molecule", ticket:"PS-3619", issue:"Row with cells and actions"},
-  {name:"TableRowContent",  type:"Molecule", ticket:"PS-3618", issue:"Inner row-content molecule"}
+  {name:"Notifications",    type:"Molecule", ticket:"PS-3516", issue:"No notification/bell pattern in roadmap yet"},
+  {name:"SkeletonLoading",  type:"Molecule", ticket:"PS-3746", issue:"Shimmer loading pattern"},
+  {name:"TableRow",         type:"Molecule", ticket:"PS-3619", issue:"Row with cells and actions"}
 ];
 
 // extracted = on active roadmap (Complete + In Progress + Planned + Docs Only)
 // monorepo = Complete count per level
 // handoff = remaining work (extracted - monorepo)
 var atomicComparison = [
-  {level:"Atoms",     extracted:28, monorepo:27, handoff:1},
-  {level:"Molecules", extracted:70, monorepo:32, handoff:38},
-  {level:"Organisms", extracted:33, monorepo:4,  handoff:29},
+  {level:"Atoms",     extracted:27, monorepo:27, handoff:0},
+  {level:"Molecules", extracted:66, monorepo:39, handoff:27},
+  {level:"Organisms", extracted:30, monorepo:5,  handoff:25},
   {level:"Templates", extracted:6,  monorepo:0,  handoff:6}
 ];
 
@@ -352,11 +356,11 @@ var remainingGaps = [
 ];
 
 var popoverData = {
-  "Total Components": "137 components are on the active roadmap as of Apr 17, 2026.<br><br><strong>Breakdown:</strong><br>• Complete — 63<br>• In Progress — 10<br>• Planned — 63<br>• Docs Only — 1 (Drawer organism)<br><br><strong>Excluded from this count:</strong><br>• No longer applicable — 24 deprecated items (Heading atom, SkeletonBlock atom, Accordion Chevron, TableHeaderRow, PaginationControl, Skeleton* molecules, NavGroup, NavItem, BidCenter Stage Arrow, TreeItem, Project Card, DataGrid, Timeline, TreeView, CalendarLayout organism, and others)<br>• Unplanned — 4 requested items not on roadmap (see Unplanned card)<br><br>Source: PM master tracking sheet, Apr 17, 2026.",
-  "Complete": "63 components with full design + implementation complete per the PM master list.<br><br><strong>Atoms (27):</strong> Badge, Breadcrumb, Checkbox, Divider, FieldMessage, HelperText, Icon, Indicator Counter, Indicator Dot, Input, Label, Logo, MenuToggleIcon, Overlay, ProgressBar, ProgressBarFill, ProgressRing, RadioButton, SkipLink, SliderRail, SliderThumb, SliderTrack, TextArea, Toggle, Tooltip, UserAvatar, VisuallyHidden<br><br><strong>Molecules (32):</strong> AccordionHeader, BreadcrumbItem, Button, ButtonIcon, CheckboxField, CircularIndicator, CircularProgress, DateInput, DropdownButton, DropdownItem, DropdownMenuContainer, FormFieldMolecule, HeaderButton, InputField, LoadingMask, LogoLoader, ModalHeader, MultiselectItem, NavSubmenuButton, NumberInput, OverflowPanel, Pill, QuickSearchField, RadioButtonField, SearchField, Slider, SliderField, Tab, TableCell, TextAreaField, Toast, ToggleField<br><br><strong>Organisms (4):</strong> Accordion (PS-2180), MenuHeaderOrganism (PS-3733), RadioButtonGroup (PS-2388), SplitButton (PS-2658)<br><br><em>Note: \"Complete\" here reflects PM/design status. Some items (e.g. DropdownMenuContainer PS-2617) have Figma/spec work done but no `.tsx` on main yet — verify against `packages/components/src/` before consuming.</em>",
-  "In Progress": "10 molecules currently in active development.<br><br><strong>BreadcrumbTrail</strong> — Ordered BreadcrumbItem group<br><strong>DropdownInput</strong> (PS-3434) — Near-term priority<br><strong>FileUploadButton</strong> (PS-3713)<br><strong>FilterButton</strong> (PS-3098) — Possibly FilterDropdownButton<br><strong>InlineSearchField</strong> (PS-3730) — Roadmap conflict vs SearchField/QuickSearchField<br><strong>ListItem</strong> (PS-3791) — Single list row with icon/label/action<br><strong>MenuHeader</strong> — No implementation yet<br><strong>ProgressBarField</strong> (PS-3763) — ProgressBarTrack + Fill + Label<br><strong>TableRow</strong> (PS-3619) — Row with cells and actions<br><strong>TableRowContent</strong> (PS-3618) — Inner row-content molecule",
-  "Planned": "63 components on the roadmap but not yet started.<br><br><strong>Atoms (1):</strong> Image<br><br><strong>Molecules (28):</strong> CardItem, TablePagination, ChartTooltip, InlineAlert, Popover, DatePicker, DateRangePicker, FileUpload (PS-2732), LoadingButtonState (PS-2935), AccordionItem, AccordionPanel, HeaderLogoTitle (PS-2375), MenuItemContainer (PS-2652), MenuToggleButton (PS-2381), UsernameButton (PS-2383), ContextMenu, StepIndicator (PS-3764), FileUploadProgress (PS-3715), CalendarItemButton (PS-3632), Pagination (PS-3621), TableActionsHeader (PS-3620), Notifications (PS-3516), SearchBar, HeaderLogoButton, Avatar File Upload (PS-2824), Segment Button, NavMenuButton (PS-2441), PageHeader (PS-3643)<br><br><strong>Organisms (28):</strong> DropdownMenuHeader (PS-2651), MenuContainer (PS-2448), SubmenuItemGroup (PS-2446), CardList, ContentContainer (PS-2179), Table (PS-925), ChartDataViz, PopoverContainer (PS-3793), MultiSelectDropdown (PS-2618), PageHeader (PS-2384), StepIndicatorContainer (PS-3765), DatePickerField (PS-3635), QuickSearch (PS-3732), Breadcrumb (PS-3642), MainMenu, Navigation, Sidebar, Submenu, TabBar, SearchBar, DrawerModal (PS-2818), ModalFooter (PS-3100), TabGroup (PS-3515), SingleSelectDropdown (PS-2616), Side Container (PS-2954), DropdownButton (PS-2657), SubmenuContainer (PS-2447), Page Content Container (PS-3644)<br><br><strong>Templates (6):</strong> FormLayout (PS-2875), DatePickerModal (PS-3638), form-template, PageLayout (PS-3645), Modal (PS-2818), Form Layout Templates (PS-3787)",
-  "In NPM Package": "63 components published via @constructconnect/ui-components (Cloudsmith NPM registry). Matches the Complete count.<br><br>See the Complete popover for the full component list. Source: UDS main branch, Apr 17, 2026.",
+  "Total Components": "129 components are on the active roadmap as of Apr 21, 2026.<br><br><strong>Breakdown:</strong><br>• Complete — 71<br>• In Progress — 6<br>• Planned — 51<br>• Docs Only — 1 (Drawer organism)<br><br><strong>Excluded from this count:</strong><br>• No longer applicable — deprecated items (Heading atom, Image atom, SkeletonBlock atom, Accordion Chevron, TableHeaderRow, PaginationControl, Skeleton* molecules, NavGroup, NavItem, BidCenter Stage Arrow, TreeItem, Project Card, DataGrid, Timeline, TreeView, CalendarLayout organism, and others)<br>• Unplanned — 4 requested items not on roadmap (see Unplanned card)<br>• Specialty — ChartTooltip (molecule), ChartDataViz (organism) — tracked separately<br><br>Source: PM master tracking sheet, UDS main branch audit, Apr 21, 2026.",
+  "Complete": "71 components with full design + implementation complete per the PM master list.<br><br><strong>Atoms (27):</strong> Badge, Breadcrumb, Checkbox, Divider, FieldMessage, HelperText, Icon, Indicator Counter, Indicator Dot, Input, Label, Logo, MenuToggleIcon, Overlay, ProgressBar, ProgressBarFill, ProgressRing, RadioButton, SkipLink, SliderRail, SliderThumb, SliderTrack, TextArea, Toggle, Tooltip, UserAvatar, VisuallyHidden<br><br><strong>Molecules (39):</strong> AccordionHeader, BreadcrumbItem, BreadcrumbTrail, Button, ButtonIcon, CheckboxField, CircularIndicator, CircularProgress, DateInput, DropdownButton, DropdownItem, DropdownMenuContainer, FileUploadButton, FilterButton, FormFieldMolecule, HeaderButton, InlineSearchField, InputField, LoadingMask, LogoLoader, ModalHeader, MultiselectItem, NavSubmenuButton, NumberInput, OverflowPanel, Pill, ProgressBarField, QuickSearchField, RadioButtonField, SearchBar, SearchField, Slider, SliderField, Tab, TableCell, TableRowContent, TextAreaField, Toast, ToggleField<br><br><strong>Organisms (5):</strong> Accordion (PS-2180), MenuContainer (PS-2448), MenuHeaderOrganism (PS-3733), RadioButtonGroup (PS-2388), SplitButton (PS-2658)<br><br><em>Note: \"Complete\" here reflects PM/design status. Some items (e.g. DropdownMenuContainer PS-2617, MenuContainer PS-2448) have Figma/spec work done but no `.tsx` on main yet — verify against `packages/components/src/` before consuming.</em>",
+  "In Progress": "6 molecules currently in active development.<br><br><strong>DropdownInput</strong> (PS-3434) — Near-term priority<br><strong>ListItem</strong> (PS-3791) — Single list row with icon/label/action<br><strong>MenuHeader</strong> — No implementation yet<br><strong>Notifications</strong> (PS-3516) — Notification/bell pattern, no precedent in roadmap<br><strong>SkeletonLoading</strong> (PS-3746) — Shimmer loading pattern<br><strong>TableRow</strong> (PS-3619) — Row with cells and actions",
+  "Planned": "51 components on the roadmap but not yet started.<br><br><strong>Molecules (21):</strong> TablePagination (PS-3621), Popover, DatePicker, DateRangePicker, FileUpload (PS-2732), LoadingButtonState (PS-2935), HeaderLogoTitle (PS-2375), MenuItemContainer (PS-2652), MenuToggleButton (PS-2381), UsernameButton (PS-2383), ContextMenu, StepIndicator (PS-3764), FileUploadProgress (PS-3715), CalendarItemButton (PS-3632), TableFooter (PS-3621), TableActionsHeader (PS-3620), HeaderLogoButton (PS-2376), Avatar File Upload (PS-2824), Segment Button, NavMenuButton (PS-2441), PageHeader (PS-3643)<br><br><strong>Organisms (24):</strong> DropdownMenuHeader (PS-2651), SubmenuItemGroup (PS-2446), ContentContainer (PS-2179), Table (PS-925), PopoverContainer (PS-3793), MultiSelectDropdown (PS-2618), PageHeader (PS-2384), StepIndicatorContainer (PS-3765), DatePickerField (PS-3635), QuickSearch (PS-3732), Breadcrumb (PS-3642), MainMenu, Navigation, Sidebar, Submenu, DrawerModal (PS-2818), ModalFooter (PS-3100), TabGroup (PS-3515), SingleSelectDropdown (PS-2616), Side Container (PS-2954), DropdownButton Organism (PS-2657), SubmenuContainer (PS-2447), Page Content Container (PS-3644), Filter Dropdown (PS-2826)<br><br><strong>Templates (6):</strong> FormLayout (PS-2875), DatePickerModal (PS-3638), form-template, PageLayout (PS-3645), Modal (PS-2818), Form Layout Templates (PS-3787)",
+  "In NPM Package": "71 components published via @constructconnect/ui-components (Cloudsmith NPM registry). Matches the Complete count.<br><br>See the Complete popover for the full component list. Source: UDS main branch, Apr 21, 2026.",
   "Docs Only": "1 component — <strong>Drawer (organism)</strong> — has documentation scaffolded but no formal organism definition yet. Shares <code>drawer-modal-accessibility.md</code> with DrawerModal. Needs: decide whether it's a distinct organism or collapses into DrawerModal.",
   "Unplanned": "4 components have been requested or prototyped but are not on the current roadmap.<br><br><strong>ComboBox / AutocompleteInput</strong> (molecule) — similar to DropdownInput but distinct<br><strong>Right Header Button Group</strong> (molecule) — composed button group for app header right-side actions<br><strong>Inline Dropdown Field</strong> (molecule) — spirit similar to InlineSearchField but for dropdowns<br><strong>modal-date-range</strong> (organism) — not on roadmap<br><br>Decide whether to promote to Planned, fold into an existing component, or formally deprecate.",
   "Blocked": "No components are currently blocked. This metric tracks components that have a dependency or design decision preventing work from starting. If a blocker emerges, surface it here.",
@@ -517,7 +521,7 @@ function renderOverview(container) {
   // each milestone commit. Current value reads live from the dashboard.
   //   Dec 2025     = commit f9b8070f (2025-12-22) — Button, Input atoms only
   //   End of March = commit 0794924b (2026-03-31) — 15 atoms + 16 molecules + 2 orgs
-  //   Now          = completeComponents.length
+  //   Now          = completeComponents.length (UDS main audit, Apr 21, 2026)
   var pDecBase = 2;
   var pEndMarch = 33;
   var pImplNow = completeComponents.length;
@@ -552,14 +556,14 @@ function renderOverview(container) {
   // Two-column: Donut + Growth
   var row = el('div', {className:'grid-2'});
 
-  // Donut card
-  var inNPMVal = topMetrics.filter(function(m){return m.label==='In NPM Package';})[0].value;
-  var donutCard = card('NPM Package Delivery Status', inNPMVal+' components in @constructconnect/ui-components');
+  // Donut card — atomic-level breakdown of total roadmap
+  var donutTotal = deliveryStatus.reduce(function(s,d){return s+d.value;},0);
+  var donutCard = card('Component Breakdown by Atomic Level', donutTotal+' components — atoms, molecules, organisms, templates');
   var donutInner = el('div', {style:{display:'flex',alignItems:'center',gap:'20px'}});
   var donutSvg = el('div'); donutSvg.innerHTML = svgDonut(deliveryStatus, 160, 22);
   donutInner.appendChild(donutSvg);
   var legendDiv = el('div', {style:{flex:'1'}});
-  legendDiv.innerHTML = '<div style="font-size:11px;color:var(--color-neutral-400);margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Data Updated — April 17, 2026</div>';
+  legendDiv.innerHTML = '<div style="font-size:11px;color:var(--color-neutral-400);margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Data Updated — April 21, 2026</div>';
   deliveryStatus.forEach(function(g) {
     legendDiv.innerHTML += '<div class="legend-item"><span class="legend-swatch" style="background:'+g.color+'"></span><span class="legend-name">'+g.name+'</span><span class="legend-val">'+g.value+'</span></div>';
   });
@@ -568,15 +572,18 @@ function renderOverview(container) {
   row.appendChild(donutCard);
 
   // Growth card — implementation trajectory
-  var growthCard = card('Library Growth', 'Implementation on UDS main — Dec 2025 → Apr 17, 2026');
+  var growthCard = card('Library Growth', 'Implementation on UDS main — Dec 2025 → Apr 21, 2026');
   growthCard.innerHTML += '<div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-neutral-500)">Foundation build — Dec 2025 → end of March 2026</div>';
   growthCard.innerHTML += '<div style="display:flex;gap:16px;margin-bottom:12px"><div class="growth-box" style="background:var(--color-primary-100)"><div class="growth-label">Dec 2025</div><div class="growth-num" style="color:var(--color-primary-600)">'+pDecBase+'</div><div class="growth-label">implemented</div></div><div style="display:flex;align-items:center;font-size:24px;color:var(--color-status-success-default)">→</div><div class="growth-box" style="background:#E8F5E9"><div class="growth-label">Mar 31, 2026</div><div class="growth-num" style="color:var(--color-status-success-default)">'+pEndMarch+'</div><div class="growth-label">implemented</div></div></div>';
   growthCard.innerHTML += '<div class="highlight-bar" style="background:#FFF3CD;color:#8B6914"><strong>+'+pFoundationIncrease+' components shipped</strong> over ~3 months — '+pFoundationPct+'% growth</div>';
-  growthCard.innerHTML += '<div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--color-neutral-200)"><div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-neutral-500)">April sprint — Apr 1 → Apr 17, 2026</div><div style="display:flex;gap:16px;margin-bottom:12px"><div class="growth-box" style="background:var(--color-primary-100)"><div class="growth-label">Apr 1, 2026</div><div class="growth-num" style="color:var(--color-primary-600)">'+pEndMarch+'</div><div class="growth-label">implemented</div></div><div style="display:flex;align-items:center;font-size:24px;color:var(--color-status-success-default)">→</div><div class="growth-box" style="background:#E8F5E9"><div class="growth-label">Apr 17, 2026</div><div class="growth-num" style="color:var(--color-status-success-default)">'+pImplNow+'</div><div class="growth-label">implemented</div></div></div><div class="highlight-bar" style="background:#FFF3CD;color:#8B6914"><strong>+'+pAprilIncrease+' components shipped</strong> in 17 days — '+pAprilPct+'% month-over-month</div></div>';
-  var maxMono = Math.max.apply(null, atomicComparison.map(function(a){return a.monorepo;})) || 1;
-  var atomBars = '<div style="margin-top:16px"><div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-neutral-500)">By Atomic Level (Implemented on main)</div>';
+  growthCard.innerHTML += '<div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--color-neutral-200)"><div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-neutral-500)">April sprint — Apr 1 → Apr 21, 2026</div><div style="display:flex;gap:16px;margin-bottom:12px"><div class="growth-box" style="background:var(--color-primary-100)"><div class="growth-label">Apr 1, 2026</div><div class="growth-num" style="color:var(--color-primary-600)">'+pEndMarch+'</div><div class="growth-label">implemented</div></div><div style="display:flex;align-items:center;font-size:24px;color:var(--color-status-success-default)">→</div><div class="growth-box" style="background:#E8F5E9"><div class="growth-label">Apr 21, 2026</div><div class="growth-num" style="color:var(--color-status-success-default)">'+pImplNow+'</div><div class="growth-label">implemented</div></div></div><div class="highlight-bar" style="background:#FFF3CD;color:#8B6914"><strong>+'+pAprilIncrease+' components shipped</strong> in 21 days — '+pAprilPct+'% month-over-month</div></div>';
+  // Bar = completion % within each tier (monorepo / extracted). Atoms at 100%, molecules
+  // ~59%, organisms ~17%, templates 0%. Reads as "how done is this tier," not volume.
+  var atomBars = '<div style="margin-top:16px"><div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-neutral-500)">By Atomic Level — % complete per tier (implemented / roadmap)</div>';
   atomicComparison.forEach(function(a) {
-    atomBars += '<div style="margin-bottom:8px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px"><span>'+a.level+'</span><span style="font-weight:600">'+a.monorepo+'</span></div><div class="bar-track"><div class="bar-fill" style="width:'+(a.monorepo/maxMono*100)+'%;background:var(--color-status-success-default)"></div></div></div>';
+    var pct = a.extracted > 0 ? (a.monorepo / a.extracted) * 100 : 0;
+    var pctLabel = Math.round(pct);
+    atomBars += '<div style="margin-bottom:8px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px"><span>'+a.level+'</span><span style="font-weight:600">'+a.monorepo+' / '+a.extracted+' &middot; '+pctLabel+'%</span></div><div class="bar-track"><div class="bar-fill" style="width:'+pct+'%;background:var(--color-status-success-default)"></div></div></div>';
   });
   atomBars += '</div>';
   growthCard.innerHTML += atomBars;
@@ -639,7 +646,7 @@ function renderPipeline(container) {
   container.appendChild(chartCard);
 
   // Status cards
-  var implCard = card('Implementation Completeness', "UDS main branch audit, Apr 17, 2026 · Code status breakdown across all 107 components (103 core + 4 templates)");
+  var implCard = card('Implementation Completeness', "UDS main branch audit, Apr 21, 2026 · Code status breakdown across all 129 roadmap components (123 core + 6 templates)");
   implCard.innerHTML += '<div class="grid-4"><div class="stat-card"><div class="stat-icon">✅</div><div class="stat-num" style="color:var(--color-status-success-default)">'+pFullyComplete+'</div><div class="stat-label">Fully Complete</div><div class="stat-desc">Code + Storybook + tokens + tests</div></div><div class="stat-card"><div class="stat-icon">⚠️</div><div class="stat-num" style="color:var(--color-status-warning-default)">'+partialComponents.length+'</div><div class="stat-label">Partial</div><div class="stat-desc">Missing tokens or naming</div></div><div class="stat-card"><div class="stat-icon">📄</div><div class="stat-num" style="color:var(--color-primary-500)">'+pipelineStats.docsOnly+'</div><div class="stat-label">Docs Only</div><div class="stat-desc">Awaiting implementation</div></div><div class="stat-card"><div class="stat-icon">📦</div><div class="stat-num" style="color:var(--color-neutral-400)">'+pipelineStats.missingDocs+'</div><div class="stat-label">Missing Docs</div><div class="stat-desc">'+(pipelineStats.missingDocs===0?'All components documented ✅':'Has impl, needs docs')+'</div></div></div>';
   container.appendChild(implCard);
 

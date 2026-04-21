@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed — 2026-04-21 · v5.11 UDS main sync
+- **Resynced to UDS `main` branch audit (Apr 21, 2026).** 8 components advanced status:
+  - **Molecules promoted from In Progress → Complete (7):** BreadcrumbTrail, FileUploadButton (PS-3713), FilterButton (PS-3098), InlineSearchField (PS-3730), ProgressBarField (PS-3763), SearchBar (PS-3731), TableRowContent (PS-3618).
+  - **Organism added as Complete:** MenuContainer (PS-2448) — PM marks Complete despite "no implementation" note; flag for verification against `packages/components/src/`.
+  - `UserAvatar` atom Jira ticket filled in (PS-2953).
+- **Recounted topMetrics / deliveryStatus / atomicComparison:**
+  - Total Components: 137 → 129 (roadmap = Complete + In Progress + Planned + Docs Only; excludes Specialty, Unplanned, N/A).
+  - Complete: 63 → 71 (27 atoms + 39 molecules + 5 organisms).
+  - In Progress: 10 → 6 (DropdownInput, ListItem, MenuHeader, Notifications, SkeletonLoading, TableRow).
+  - Planned: 63 → 51 (21 molecules + 24 organisms + 6 templates).
+  - In NPM Package: 63 → 71.
+  - atomicComparison rebuilt: Atoms 27/27/0 · Molecules 66/39/27 · Organisms 30/5/25 · Templates 6/0/6.
+- **Planned list rewritten** to reflect the new PM master: molecules drop items now Complete/In Progress (SearchBar, Notifications, etc.) and pick up TableFooter (PS-3621), TablePagination (PS-3621), HeaderLogoButton (PS-2376). Organisms pick up Filter Dropdown (PS-2826) and correctly list DrawerModal (PS-2818) as Planned.
+- Growth card "April sprint" range extended to Apr 1 → Apr 21, 2026 (21 days, 33 → 71).
+- Pipeline "Implementation Completeness" subtitle updated to reference 129 roadmap components (123 core + 6 templates).
+
 ### Changed
 - **Data source pivoted to PM master tracking sheet.** Dashboard now reflects roadmap status (Complete / In Progress / Planned / Docs Only / Unplanned / N/A) rather than a pure code-on-main audit.
   - `topMetrics` — 9 cards relabeled: Total Components (137), Complete (63), In Progress (10), Planned (62), In NPM Package (63), Docs Only (1 — Drawer), Unplanned (4), Blocked (0), Active Consumers (3).
