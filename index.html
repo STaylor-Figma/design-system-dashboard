@@ -432,6 +432,10 @@ var atomicComparison = [
   {level:"Templates", extracted:6,  monorepo:0,  handoff:6}
 ];
 
+// Tickets merged to main in the last 7 days. Updated by /refresh-uds-dashboard.
+var recentlyMergedTickets = ["PS-3762","PS-3633","PS-3669","PS-2617","PS-3733","PS-3729","PS-1726","PS-2658","PS-2873","PS-3714","PS-3713","PS-3098","PS-3618","PS-3730","PS-3763"];
+var NEW_BADGE = '<span style="display:inline-block;padding:1px 6px;background:#d6f2c7;color:#459d13;border-radius:8px;font-size:9px;font-weight:700;vertical-align:middle;margin-left:5px">New!</span>';
+
 var systems = [
   {name:"Boolean Controls",  components:6,  implemented:6, status:"done"},
   {name:"Form Inputs",       components:7,  implemented:6, status:"partial"},
@@ -464,7 +468,7 @@ var closedGaps = [
   {name:"DatePicker",    closedBy:"DatePickerField organism (PS-3635) — covers both single date and date range (Planned)"},
   {name:"Divider",       closedBy:"Divider atom (PS-3717) — complete, in Figma"},
   {name:"Drawer",        closedBy:"Merged into DrawerModal organism (PS-2818) — unified pattern, same layout / different margins"},
-  {name:"FileUpload",    closedBy:"FileUploadButton complete; FileUploadField + FileUploadAvatar + FileUploadProgress on roadmap (Planned)"},
+  {name:"FileUpload",    closedBy:"FileUploadButton complete; FileUploadField + FileUploadAvatar on roadmap (Planned); FileUploadProgress In Progress (MR !243)"},
   {name:"FormLayout",    closedBy:"FormLayout + form-template + Form Layout Templates (templates) — Planned"},
   {name:"Link",          closedBy:"Native &lt;a&gt; tags — no standalone Link atom by design"},
   {name:"Modal/Dialog",  closedBy:"DrawerModal + ModalHeader (complete) + ModalFooter (Planned)"},
@@ -938,7 +942,8 @@ function renderOverview(container) {
   var compCard = card('Fully Complete — Monorepo Audit ('+completeComponents.length+')', "Vivian's audit: code + Storybook + JSON tokens + tests");
   completeComponents.forEach(function(c) {
     var ticketSuffix = c.ticket ? '<span style="font-size:11px;margin-left:8px">'+jiraLink(c.ticket, 'font-size:11px')+'</span>' : '';
-    compCard.innerHTML += '<div class="comp-row" style="background:#F0FAF0;border-left:3px solid var(--color-status-success-default)"><span style="display:flex;align-items:baseline;gap:0"><span class="comp-name">'+c.name+'</span>'+ticketSuffix+'</span><span class="comp-type">'+c.type+'</span></div>';
+    var badge = (c.ticket && recentlyMergedTickets.indexOf(c.ticket) !== -1) ? NEW_BADGE : '';
+    compCard.innerHTML += '<div class="comp-row" style="background:#F0FAF0;border-left:3px solid var(--color-status-success-default)"><span style="display:flex;align-items:baseline;gap:0"><span class="comp-name">'+c.name+'</span>'+badge+ticketSuffix+'</span><span class="comp-type">'+c.type+'</span></div>';
   });
   listRow.appendChild(compCard);
 
@@ -947,7 +952,8 @@ function renderOverview(container) {
   var partCard = card('Needs Attention ('+partialComponents.length+')', 'Working but missing tokens, docs, or naming fixes');
   partialComponents.forEach(function(c) {
     var ticketSuffix = c.ticket ? ' · ' + jiraLink(c.ticket, 'font-size:11px') : '';
-    partCard.innerHTML += '<div class="comp-row" style="background:#FFFDF5;border-left:3px solid var(--color-status-warning-default)"><div><span class="comp-name">'+c.name+'</span>'+ticketSuffix+'<div class="comp-issue">'+c.issue+'</div></div><span class="comp-type">'+c.type+'</span></div>';
+    var badge = (c.ticket && recentlyMergedTickets.indexOf(c.ticket) !== -1) ? NEW_BADGE : '';
+    partCard.innerHTML += '<div class="comp-row" style="background:#FFFDF5;border-left:3px solid var(--color-status-warning-default)"><div><span class="comp-name">'+c.name+'</span>'+badge+ticketSuffix+'<div class="comp-issue">'+c.issue+'</div></div><span class="comp-type">'+c.type+'</span></div>';
   });
   rightCol.appendChild(partCard);
 
@@ -1217,9 +1223,11 @@ function renderSystems(container) {
     grid += breakdown;
     items.forEach(function(c){
       var ticketHtml = c.ticket ? '<span style="font-size:10px;margin-left:6px">' + jiraLink(c.ticket, 'font-size:10px') + '</span>' : '';
+      var badge = (c.ticket && recentlyMergedTickets.indexOf(c.ticket) !== -1) ? NEW_BADGE : '';
       grid += '<div style="padding:5px 8px;background:#fff;border-radius:4px;margin-bottom:3px;font-size:12px;display:flex;align-items:center;gap:6px">' +
                 '<span class="status-dot" style="background:'+STATUS_COLORS[c.status]+';margin-right:0;flex-shrink:0" title="'+c.status+'"></span>' +
                 '<span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="'+c.name+(c.ticket?' · '+c.ticket:'')+'">'+c.name+'</span>' +
+                badge +
                 ticketHtml +
               '</div>';
     });
