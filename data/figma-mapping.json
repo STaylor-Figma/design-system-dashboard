@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-04-21T22:00:00Z",
+  "source": "GitLab project 74215032 via MCP blob search (local clone read-access denied)",
+  "count": 8,
+  "mappings": {
+    "BreadcrumbItem": {
+      "layer": "molecule",
+      "figma": "https://www.figma.com/design/gPXcCBbv2now1CwDx5TUGG/Blueprint-Component-Library?node-id=17189-8199"
+    },
+    "Button": {
+      "layer": "molecule",
+      "figma": "https://www.figma.com/design/sn2qv5eg6sOMk79oBRELkk/Storybook-Branch?node-id=439-14"
+    },
+    "ButtonIcon": {
+      "layer": "molecule",
+      "figma": "https://www.figma.com/design/D4wgJpVFwWQp6AHElpoJK9/Storybook-Branch?node-id=5901-19526"
+    },
+    "FieldMessage": {
+      "layer": "atom",
+      "figma": "https://www.figma.com/design/gPXcCBbv2now1CwDx5TUGG/Blueprint-Component-Library?node-id=16170-236755"
+    },
+    "Input": {
+      "layer": "atom",
+      "figma": "https://www.figma.com/design/gPXcCBbv2now1CwDx5TUGG/Blueprint-Component-Library?m=auto&node-id=9830-32031"
+    },
+    "ModalHeader": {
+      "layer": "molecule",
+      "figma": "https://www.figma.com/design/D4wgJpVFwWQp6AHElpoJK9/Storybook-Branch?node-id=778-6446"
+    },
+    "NumberInputField": {
+      "layer": "molecule",
+      "figma": "https://www.figma.com/design/gPXcCBbv2now1CwDx5TUGG/Blueprint-Component-Library?node-id=18614-197063"
+    },
+    "OverflowPanel": {
+      "layer": "molecule",
+      "figma": "https://www.figma.com/design/gPXcCBbv2now1CwDx5TUGG/Blueprint-Component-Library?node-id=17189-8199"
+    }
+  }
+}

@@ -115,7 +115,7 @@ tr.alt{background:#FAFAFA}
       <h1>Blueprint Design System</h1>
       <p class="sub">Status Dashboard — April 21, 2026</p>
     </div>
-    <div class="badge">v5.21 — Weekly targets · click row to see components</div>
+    <div class="badge">v5.23 — 4 target weeks + buffer · finish by May 15, deadline May 18</div>
   </div>
   <div class="tabs" id="tabs"></div>
 </div>
@@ -761,22 +761,25 @@ function renderOverview(container) {
   // Distributes cdRemaining across 6 fixed weeks. Math: floor(remaining/6) per
   // week, plus 1 extra on the first `remaining % 6` weeks. Stays dynamic — if
   // components ship between refreshes, cdRemaining drops and targets re-split.
+  // `kind: "target"` = counts toward the cdRemaining split.
+  // `kind: "buffer"` = catch-up week; no work target, cushion for spillover.
   var weeks = [
-    {label:"Week of Apr 20–24",   start:"2026-04-20"},
-    {label:"Week of Apr 27–May 2",start:"2026-04-27"},
-    {label:"Week of May 4–8",     start:"2026-05-04"},
-    {label:"Week of May 11–15",   start:"2026-05-11"},
-    {label:"Week of May 18–22",   start:"2026-05-18"},
-    {label:"Week of May 25–29",   start:"2026-05-25"}
+    {label:"Week of Apr 20–24",   start:"2026-04-20", kind:"target"},
+    {label:"Week of Apr 27–May 2",start:"2026-04-27", kind:"target"},
+    {label:"Week of May 4–8",     start:"2026-05-04", kind:"target"},
+    {label:"Week of May 11–15",   start:"2026-05-11", kind:"target"},
+    {label:"Week of May 18–22",   start:"2026-05-18", kind:"buffer"}
   ];
-  var base   = Math.floor(cdRemaining / weeks.length);
-  var extras = cdRemaining % weeks.length;
+  var targetWeeksCount = weeks.filter(function(w){return w.kind==='target';}).length;
+  var base   = Math.floor(cdRemaining / targetWeeksCount);
+  var extras = cdRemaining % targetWeeksCount;
   var todayISO = new Date().toISOString().slice(0,10);
 
   // Context line — compare target pace against recent April velocity from the
   // growth card (+N over 21 days). Helps the viewer gauge feasibility.
+  // Pace uses target-week count only (buffer weeks don't count toward the plan).
   var aprilPacePerWeek = pAprilIncrease > 0 ? (pAprilIncrease / 21 * 7) : 0;
-  var targetAvg        = cdRemaining / weeks.length;
+  var targetAvg        = cdRemaining / targetWeeksCount;
   var paceVerdict;
   if (aprilPacePerWeek >= targetAvg) {
     paceVerdict = '<span style="color:var(--color-status-success-default);font-weight:700">On track</span> — April pace (~'+aprilPacePerWeek.toFixed(1)+'/week) exceeds the target average of '+targetAvg.toFixed(1)+'/week.';
@@ -796,42 +799,76 @@ function renderOverview(container) {
     .concat(plannedComponents.filter(function(c){return c.type==='Organism';}).slice().sort(function(a,b){return a.name.localeCompare(b.name);}))
     .concat(plannedComponents.filter(function(c){return c.type==='Template';}).slice().sort(function(a,b){return a.name.localeCompare(b.name);}));
 
-  // Assign components to weeks based on the target counts.
+  // Assign components only to target weeks. Buffer weeks get an empty array.
   var weeklyAssignments = [];
   var assignIdx = 0;
-  weeks.forEach(function(_, i){
-    var count = base + (i < extras ? 1 : 0);
-    weeklyAssignments.push(remainingOrdered.slice(assignIdx, assignIdx + count));
-    assignIdx += count;
+  var targetSeen = 0;
+  weeks.forEach(function(w){
+    if (w.kind === 'target') {
+      var count = base + (targetSeen < extras ? 1 : 0);
+      weeklyAssignments.push(remainingOrdered.slice(assignIdx, assignIdx + count));
+      assignIdx += count;
+      targetSeen++;
+    } else {
+      weeklyAssignments.push([]);
+    }
   });
 
-  var targetsCard = card('Weekly Delivery Targets', 'Path to 100% by end of May 2026 · '+cdRemaining+' remaining across '+weeks.length+' weeks · click a week to see its components');
+  var targetsCard = card('Weekly Delivery Targets', 'Path to 100% by May 15 · May 18–22 reserved as catch-up / buffer · '+cdRemaining+' remaining across '+targetWeeksCount+' target weeks · click a week to see its components');
 
   var tHtml = '<div style="padding:12px 14px;background:#F8F9FA;border-radius:6px;margin-bottom:16px;font-size:12px;color:var(--color-neutral-500);line-height:1.5">' + paceVerdict + '</div>';
 
   tHtml += '<div style="display:flex;flex-direction:column;gap:8px">';
   var cumulative = cdDone;
+  var targetIdx = 0;
   weeks.forEach(function(w, i){
-    var target = base + (i < extras ? 1 : 0);
-    cumulative += target;
+    var isBuffer = w.kind === 'buffer';
+    var target = 0;
+    if (!isBuffer) {
+      target = base + (targetIdx < extras ? 1 : 0);
+      cumulative += target;
+      targetIdx++;
+    }
     var cumPct = Math.round(cumulative / cdTotal * 100);
     var isCurrent = w.start <= todayISO && (i === weeks.length - 1 || weeks[i+1].start > todayISO);
     var isOpen   = openWeek === i;
-    var bg     = isCurrent ? '#FFF3CD' : (isOpen ? '#E8F4F6' : '#F8F9FA');
-    var border = isCurrent ? '2px solid var(--color-status-warning-default)' : (isOpen ? '2px solid #00838F' : '1px solid var(--color-neutral-200)');
+    // Buffer rows are visually muted: lighter bg, dashed border, gray text.
+    var bg, border;
+    if (isCurrent) {
+      bg = '#FFF3CD';
+      border = '2px solid var(--color-status-warning-default)';
+    } else if (isOpen && !isBuffer) {
+      bg = '#E8F4F6';
+      border = '2px solid #00838F';
+    } else if (isBuffer) {
+      bg = '#FAFAFA';
+      border = '1px dashed var(--color-neutral-300)';
+    } else {
+      bg = '#F8F9FA';
+      border = '1px solid var(--color-neutral-200)';
+    }
     var currentTag = isCurrent ? ' <span style="font-size:10px;color:var(--color-status-warning-default);font-weight:700;text-transform:uppercase;margin-left:4px">this week</span>' : '';
-    var chevron = '<span style="display:inline-block;transition:transform .2s;transform:rotate('+(isOpen?'90':'0')+'deg);color:var(--color-neutral-400);margin-right:6px">&#9656;</span>';
-    // Row is clickable — stopPropagation so the outer close-on-click doesn't
-    // immediately collapse it.
-    tHtml += '<div onclick="event.stopPropagation();openWeek=openWeek==='+i+'?null:'+i+';renderContent()" style="display:grid;grid-template-columns:190px 70px 1fr 110px;gap:12px;align-items:center;padding:10px 12px;background:'+bg+';border:'+border+';border-radius:6px;cursor:pointer;user-select:none">';
-    tHtml += '<div style="font-size:13px;font-weight:600;color:var(--color-neutral-600)">'+chevron+w.label+currentTag+'</div>';
-    tHtml += '<div style="font-size:22px;font-weight:700;color:#00838F;text-align:center">'+target+'</div>';
-    tHtml += '<div class="bar-track"><div class="bar-fill" style="width:'+cumPct+'%;background:linear-gradient(90deg,var(--color-status-success-default) 0%,#00838F 100%)"></div></div>';
-    tHtml += '<div style="font-size:12px;font-weight:600;color:var(--color-neutral-500);text-align:right">'+cumulative+' / '+cdTotal+' · '+cumPct+'%</div>';
+    var bufferTag  = isBuffer  ? ' <span style="font-size:10px;color:var(--color-neutral-500);font-weight:700;text-transform:uppercase;margin-left:4px;background:var(--color-neutral-200);padding:1px 6px;border-radius:3px">buffer</span>' : '';
+    // Buffer rows are not clickable (nothing to expand).
+    var chevron = isBuffer ? '<span style="display:inline-block;width:12px;color:var(--color-neutral-300);margin-right:6px">·</span>' : '<span style="display:inline-block;transition:transform .2s;transform:rotate('+(isOpen?'90':'0')+'deg);color:var(--color-neutral-400);margin-right:6px">&#9656;</span>';
+    var clickAttr = isBuffer ? '' : ' onclick="event.stopPropagation();openWeek=openWeek==='+i+'?null:'+i+';renderContent()"';
+    var cursorStyle = isBuffer ? 'default' : 'pointer';
+    var labelColor = isBuffer ? 'var(--color-neutral-400)' : 'var(--color-neutral-600)';
+    var targetCell = isBuffer
+      ? '<div style="font-size:12px;font-weight:600;color:var(--color-neutral-400);text-align:center;font-style:italic">catch-up</div>'
+      : '<div style="font-size:22px;font-weight:700;color:#00838F;text-align:center">'+target+'</div>';
+    var trailingCell = isBuffer
+      ? '<div style="font-size:11px;color:var(--color-neutral-400);text-align:right;font-style:italic">deadline ' + (w.start === '2026-05-18' ? 'May 18' : '') + '</div>'
+      : '<div style="font-size:12px;font-weight:600;color:var(--color-neutral-500);text-align:right">'+cumulative+' / '+cdTotal+' · '+cumPct+'%</div>';
+    tHtml += '<div'+clickAttr+' style="display:grid;grid-template-columns:190px 70px 1fr 110px;gap:12px;align-items:center;padding:10px 12px;background:'+bg+';border:'+border+';border-radius:6px;cursor:'+cursorStyle+';user-select:none">';
+    tHtml += '<div style="font-size:13px;font-weight:600;color:'+labelColor+'">'+chevron+w.label+currentTag+bufferTag+'</div>';
+    tHtml += targetCell;
+    tHtml += '<div class="bar-track"' + (isBuffer ? ' style="opacity:.4"' : '') + '><div class="bar-fill" style="width:'+cumPct+'%;background:linear-gradient(90deg,var(--color-status-success-default) 0%,#00838F 100%)"></div></div>';
+    tHtml += trailingCell;
     tHtml += '</div>';
 
-    // Expanded component list for this week.
-    if (isOpen) {
+    // Expanded component list — target weeks only.
+    if (isOpen && !isBuffer) {
       var list = weeklyAssignments[i] || [];
       tHtml += '<div onclick="event.stopPropagation()" style="margin:-4px 0 4px 0;padding:14px 16px;background:#F5FBFC;border:1px solid #00838F;border-top:none;border-radius:0 0 6px 6px">';
       tHtml += '<div style="font-size:11px;font-weight:700;color:#00838F;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">'+list.length+' component'+(list.length===1?'':'s')+' targeted for '+w.label+'</div>';
