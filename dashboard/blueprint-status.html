@@ -115,7 +115,7 @@ tr.alt{background:#FAFAFA}
       <h1>Blueprint Design System</h1>
       <p class="sub">Status Dashboard — April 22, 2026</p>
     </div>
-    <div class="badge">v5.29 — Apr 22 refresh: Pagination Complete · 78 total</div>
+    <div class="badge">v5.30 — Apr 22 refresh: PaginationItem atom added · 79 complete · 127 total</div>
   </div>
   <div class="tabs" id="tabs"></div>
 </div>
@@ -183,10 +183,10 @@ var TOKENS = (function() {
 // as Complete since Mar 24, PM table omitted it).
 // Roadmap = Complete + In Progress + Planned + Docs Only (excludes N/A + Unplanned).
 var topMetrics = [
-  {label:"Total Components",value:126,sub:"Active roadmap — Complete + In Progress + Planned + Docs Only",color:TOKENS.primary500},
-  {label:"Complete",        value:78, sub:"26 atoms + 45 molecules + 7 organisms · atoms tier 100% done",color:TOKENS.success},
+  {label:"Total Components",value:127,sub:"Active roadmap — Complete + In Progress + Planned + Docs Only",color:TOKENS.primary500},
+  {label:"Complete",        value:79, sub:"27 atoms + 45 molecules + 7 organisms · atoms tier 100% done",color:TOKENS.success},
   {label:"In Progress",     value:5,  sub:"4 molecules + 1 organism · 4 open MRs",color:TOKENS.warning},
-  {label:"In NPM Package",  value:70, sub:"70 published via Cloudsmith · release MR !232 pending (+9: CalendarItemButton, DropdownInput, FileUploadProgress, ListItem, NotificationMessage, Pagination, StepIndicator, TabGroup, Toggle)",color:TOKENS.primary500},
+  {label:"In NPM Package",  value:70, sub:"70 published via Cloudsmith · release MR !232 pending (+10: CalendarItemButton, DropdownInput, FileUploadProgress, ListItem, NotificationMessage, Pagination, PaginationItem, StepIndicator, TabGroup, Toggle)",color:TOKENS.primary500},
   {label:"Blocked",         value:0,  sub:"No current blockers",color:TOKENS.primary600},
   {label:"Active Consumers",value:5,  sub:"Payment Portal, UCMS, Automation Support active · GCV4, Identity Platform in progress",color:TOKENS.primary600}
 ];
@@ -198,20 +198,20 @@ var pipelineStats = {
 };
 
 var deliveryStatus = [
-  {name:"Complete",    value:78, color:TOKENS.success},
+  {name:"Complete",    value:79, color:TOKENS.success},
   {name:"In Progress", value:5,  color:TOKENS.warning},
   {name:"Planned",     value:43, color:"#00838F"},
   {name:"Docs Only",   value:0,  color:"#6B3FA0"}
 ];
 
 // Complete = folder on UDS main with .tsx + _stories/ + _tests/ (Apr 22, 2026).
-// Names match actual main folders. Count: 26 atoms + 45 molecules + 7 organisms = 78.
+// Names match actual main folders. Count: 27 atoms + 45 molecules + 7 organisms = 79.
 // Corrections from PM master list:
 //   - ProgressBarFill (PS-3762) demoted: docs-only on main, no .tsx
 //   - DropdownMenuContainer (PS-2617) demoted: no folder on main at all
 //   - Card (PS-3669) added: on main since Mar 24, not in PM master
 var completeComponents = [
-  // Atoms (26)
+  // Atoms (27)
   {name:"Badge",             type:"Atom", ticket:"PS-1609"},
   {name:"Breadcrumb",        type:"Atom", ticket:"PS-4357"},
   {name:"Checkbox",          type:"Atom", ticket:"PS-1414"},
@@ -238,7 +238,8 @@ var completeComponents = [
   {name:"Tooltip",           type:"Atom", ticket:"PS-1607"},
   {name:"UserAvatar",        type:"Atom", ticket:"PS-2953"},
   {name:"VisuallyHidden",    type:"Atom"},
-  // Molecules (38) — folder names on main
+  {name:"PaginationItem",    type:"Atom", ticket:"PS-3621"},
+  // Molecules (45) — folder names on main
   {name:"AccordionHeader",  type:"Molecule"},
   {name:"BreadcrumbItem",   type:"Molecule", ticket:"PS-931"},
   {name:"BreadcrumbTrail",  type:"Molecule", ticket:"PS-4357"},
@@ -311,9 +312,9 @@ var partialComponents = [
 var plannedComponents = [
   // Molecules (15)
   {name:"Avatar File Upload",       type:"Molecule", ticket:"PS-2824"},
-  {name:"ContextMenu",              type:"Molecule"},
+  {name:"ContextMenu",              type:"Molecule", ticket:"PS-4631"},
   {name:"DatePicker",               type:"Molecule"},
-  {name:"DateRangePicker",          type:"Molecule"},
+  {name:"DateRangePicker",          type:"Molecule", ticket:"PS-4627"},
   {name:"DropdownMenuContainer",    type:"Molecule", ticket:"PS-2617"},
   {name:"FileUpload",               type:"Molecule", ticket:"PS-2732"},
   {name:"HeaderLogoButton",         type:"Molecule", ticket:"PS-2376"},
@@ -430,7 +431,7 @@ var gitlabRecentPipelines = [
 // monorepo = Complete count per level (verified on UDS main)
 // handoff = remaining work (extracted - monorepo)
 var atomicComparison = [
-  {level:"Atoms",     extracted:26, monorepo:26, handoff:0},
+  {level:"Atoms",     extracted:27, monorepo:27, handoff:0},
   {level:"Molecules", extracted:64, monorepo:45, handoff:19},
   {level:"Organisms", extracted:30, monorepo:7,  handoff:23},
   {level:"Templates", extracted:6,  monorepo:0,  handoff:6}
@@ -455,7 +456,7 @@ var systems = [
   {name:"Table System",      components:6,  implemented:1, status:"partial"},
   {name:"Calendar/Date",     components:4,  implemented:1, status:"partial"},
   {name:"Search",            components:4,  implemented:3, status:"partial"},
-  {name:"File Upload",       components:4,  implemented:0, status:"ready"},
+  {name:"File Upload",       components:4,  implemented:2, status:"partial"},
   {name:"Progress/Steps",    components:5,  implemented:1, status:"partial"},
   {name:"Notifications",     components:2,  implemented:1, status:"partial"},
   {name:"Containers/Layout", components:5,  implemented:1, status:"partial"}
@@ -766,11 +767,11 @@ function renderOverview(container) {
   // `kind: "target"` = counts toward the cdRemaining split.
   // `kind: "buffer"` = catch-up week; no work target, cushion for spillover.
   var weeks = [
-    {label:"Week of Apr 20–24",   start:"2026-04-20", kind:"target", target:15},
-    {label:"Week of Apr 27–May 1",start:"2026-04-27", kind:"target"},
+    {label:"Week of Apr 20–24",   start:"2026-04-20", kind:"target", target:5, originalTarget:17},
+    {label:"Week of Apr 27–May 1",start:"2026-04-27", kind:"target", target:10},
     {label:"Week of May 4–8",     start:"2026-05-04", kind:"target", target:14},
     {label:"Week of May 11–15",   start:"2026-05-11", kind:"target"},
-    {label:"Week of May 18–22",   start:"2026-05-18", kind:"target", target:2},
+    {label:"Week of May 18–22",   start:"2026-05-18", kind:"target", target:6},
     {label:"Week of May 25–29",   start:"2026-05-25", kind:"buffer"}
   ];
   var targetWeeksCount = weeks.filter(function(w){return w.kind==='target';}).length;
@@ -872,13 +873,13 @@ function renderOverview(container) {
     var targetCell = isBuffer
       ? '<div style="font-size:12px;font-weight:600;color:var(--color-neutral-400);text-align:center;font-style:italic">catch-up</div>'
       : isCurrent
-        ? '<div style="text-align:center;line-height:1.2"><div style="font-size:20px;font-weight:700;color:var(--color-status-success-default)">'+shippedCount+'/'+target+'</div><div style="font-size:10px;font-weight:600;color:var(--color-neutral-400);text-transform:uppercase;letter-spacing:.4px">done</div></div>'
+        ? '<div style="text-align:center;line-height:1.2"><div style="font-size:20px;font-weight:700;color:var(--color-status-success-default)">'+shippedCount+'/'+(w.originalTarget||target)+'</div><div style="font-size:10px;font-weight:600;color:var(--color-neutral-400);text-transform:uppercase;letter-spacing:.4px">done</div></div>'
         : '<div style="text-align:center;line-height:1.2"><div style="font-size:22px;font-weight:700;color:#00838F">'+target+'</div><div style="font-size:10px;font-weight:600;color:var(--color-neutral-400);text-transform:uppercase;letter-spacing:.4px">goal</div></div>';
     var trailingCell = isBuffer
       ? '<div style="font-size:11px;color:var(--color-neutral-400);text-align:right;font-style:italic">deadline ' + (w.start === '2026-05-25' ? 'May 22' : '') + '</div>'
       : isCurrent
         ? '<div style="text-align:right;line-height:1.5">' +
-            '<div style="font-size:12px;font-weight:600;color:var(--color-neutral-500)">'+shippedCount+' / '+target+' <span style="font-weight:400;color:var(--color-neutral-400)">this week</span></div>' +
+            '<div style="font-size:12px;font-weight:600;color:var(--color-neutral-500)">'+shippedCount+' / '+(w.originalTarget||target)+' <span style="font-weight:400;color:var(--color-neutral-400)">this week</span></div>' +
             '<div style="font-size:11px;color:var(--color-neutral-400)">'+cumulative+' shipped by end · '+cumPct+'% of roadmap</div>' +
           '</div>'
         : '<div style="text-align:right;line-height:1.5">' +
@@ -895,7 +896,7 @@ function renderOverview(container) {
     if (isBuffer) {
       barHtml = '<div class="bar-track" style="'+barH+';opacity:.4"><div class="bar-fill" style="width:0%"></div></div>';
     } else if (isCurrent) {
-      var weekDonePct = target > 0 ? Math.round(shippedCount / target * 100) : 0;
+      var weekDonePct = target > 0 ? Math.round(shippedCount / (w.originalTarget||target) * 100) : 0;
       var weekRemPct  = Math.max(0, 100 - weekDonePct);
       barHtml = '<div class="bar-track" style="'+barH+'"><div style="display:flex;height:100%;border-radius:6px;overflow:hidden">' +
         '<div style="width:'+weekDonePct+'%;background:var(--color-status-success-default)"></div>' +
