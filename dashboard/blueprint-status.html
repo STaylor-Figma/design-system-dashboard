@@ -105,7 +105,18 @@ tr.alt{background:#FAFAFA}
 .chart-legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--color-neutral-500)}
 .chart-legend-swatch{width:12px;height:12px;border-radius:3px;flex-shrink:0}
 .hidden{display:none}
+.export-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:20px;padding:12px 16px;background:var(--color-neutral-0);border-radius:8px;border:1px solid var(--color-neutral-200);box-shadow:0 1px 3px rgba(0,0,0,.06);position:relative}
+.export-toolbar-left{display:flex;align-items:center;gap:8px;position:relative;flex:1;min-width:0}
+.export-toolbar-title{font-size:14px;font-weight:600;color:var(--color-neutral-600)}
+.export-toolbar .info-btn{position:static;flex-shrink:0}
+.export-toolbar-left .popover{top:28px;left:0;right:auto;max-width:min(360px,90vw)}
+.export-popover-body{margin:0;font-size:12px;color:var(--color-neutral-500);line-height:1.6}
+.export-btn{padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer;border-radius:6px;border:1px solid #006978;background:linear-gradient(135deg,#00838F 0%,#006978 100%);color:#fff;font-family:inherit;white-space:nowrap}
+.export-btn:hover{filter:brightness(1.05)}
+.export-btn:disabled{opacity:.6;cursor:not-allowed}
+#overview-export-root{max-width:1200px}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -113,9 +124,9 @@ tr.alt{background:#FAFAFA}
   <div class="header-top">
     <div>
       <h1>Blueprint Design System</h1>
-      <p class="sub">Status Dashboard — April 22, 2026</p>
+      <p class="sub">Status Dashboard — April 24, 2026</p>
     </div>
-    <div class="badge">v5.33 — Apr 23 refresh: +3 complete · 85 done · BreadcrumbOrganism, HeaderLogoButton, LoadingButtonState</div>
+    <div class="badge">v5.34 — Apr 24 refresh: +1 complete · 86 done · TableRow</div>
   </div>
   <div class="tabs" id="tabs"></div>
 </div>
@@ -176,7 +187,7 @@ var TOKENS = (function() {
 // DATA — Edit values here to update dashboard
 // ═══════════════════════════════════════════════════════
 
-// UDS main branch audit (Apr 22, 2026). Counts reconciled against actual code in
+// UDS main branch audit (Apr 24, 2026). Counts reconciled against actual code in
 // packages/components/src/ — not the PM master list. See Complete popover for the
 // three discrepancies found: ProgressBarFill (docs-only on main, PM marks Complete),
 // DropdownMenuContainer (absent on main, PM marks Complete), Card organism (on main
@@ -184,9 +195,9 @@ var TOKENS = (function() {
 // Roadmap = Complete + In Progress + Planned + Docs Only (excludes N/A + Unplanned).
 var topMetrics = [
   {label:"Total Components",value:127,sub:"Active roadmap — Complete + In Progress + Planned + Docs Only",color:TOKENS.primary500},
-  {label:"Complete",        value:85, sub:"27 atoms + 49 molecules + 9 organisms · atoms tier 100% done",color:TOKENS.success},
-  {label:"In Progress",     value:6,  sub:"5 molecules + 1 organism · 4 open MRs",color:TOKENS.warning},
-  {label:"In NPM Package",  value:70, sub:"70 published via Cloudsmith · release MR !232 pending (+12: CalendarItemButton, DropdownButton, DropdownInput, FileUploadField, FileUploadProgress, ListItem, MenuItemContainer, NotificationMessage, Pagination, PaginationItem, StepIndicator, TabGroup) · +3 newly complete not yet in release: BreadcrumbOrganism, HeaderLogoButton, LoadingButtonState",color:TOKENS.primary500},
+  {label:"Complete",        value:86, sub:"27 atoms + 50 molecules + 9 organisms · atoms tier 100% done",color:TOKENS.success},
+  {label:"In Progress",     value:5,  sub:"4 molecules + 1 organism · 3 open MRs",color:TOKENS.warning},
+  {label:"In NPM Package",  value:70, sub:"70 published via Cloudsmith · release MR !232 pending (+12: CalendarItemButton, DropdownButton, DropdownInput, FileUploadField, FileUploadProgress, ListItem, MenuItemContainer, NotificationMessage, Pagination, PaginationItem, StepIndicator, TabGroup) · +4 newly complete not yet in release: BreadcrumbOrganism, HeaderLogoButton, LoadingButtonState, TableRow",color:TOKENS.primary500},
   {label:"Blocked",         value:0,  sub:"No current blockers",color:TOKENS.primary600},
   {label:"Active Consumers",value:5,  sub:"Payment Portal, UCMS, Automation Support active · GCV4, Identity Platform in progress",color:TOKENS.primary600}
 ];
@@ -198,13 +209,13 @@ var pipelineStats = {
 };
 
 var deliveryStatus = [
-  {name:"Complete",    value:85, color:TOKENS.success},
-  {name:"In Progress", value:6,  color:TOKENS.warning},
+  {name:"Complete",    value:86, color:TOKENS.success},
+  {name:"In Progress", value:5,  color:TOKENS.warning},
   {name:"Planned",     value:36, color:"#00838F"},
   {name:"Docs Only",   value:0,  color:"#6B3FA0"}
 ];
 
-// Complete = folder on UDS main with .tsx + _stories/ + _tests/ (Apr 23, 2026).
+// Complete = folder on UDS main with .tsx + _stories/ + _tests/ (Apr 24, 2026).
 // Names match actual main folders. Count: 27 atoms + 49 molecules + 9 organisms = 85.
 // Corrections from PM master list:
 //   - ProgressBarFill (PS-3762) demoted: docs-only on main, no .tsx
@@ -284,6 +295,7 @@ var completeComponents = [
   {name:"SliderField",      type:"Molecule", ticket:"PS-2018"},
   {name:"StepIndicator",   type:"Molecule", ticket:"PS-3764"},
   {name:"Tab",             type:"Molecule", ticket:"PS-1608"},
+  {name:"TableRow",        type:"Molecule", ticket:"PS-3619"},
   {name:"TableCell",        type:"Molecule", ticket:"PS-3617"},
   {name:"TableRowContent",  type:"Molecule", ticket:"PS-3618"},
   {name:"TextAreaField",    type:"Molecule", ticket:"PS-1759"},
@@ -304,12 +316,11 @@ var completeComponents = [
 // In Progress — active development per PM master list. Shown in "Partial" card.
 // "issue" includes UDS main state: docs-only = .md in folder, no code = no folder.
 var partialComponents = [
-  {name:"FileUploadAvatar",     type:"Molecule", ticket:"PS-2824", issue:"Main: scaffold only (!251 merged) · MR !257 open"},
+  {name:"FileUploadAvatar",     type:"Molecule", ticket:"PS-2824", issue:"Main: implementation open in MR !257 · Icon atom integration + Chromatic pseudo-state update"},
   {name:"MenuHeader",           type:"Molecule", ticket:"PS-4634", issue:"Main: docs-only"},
   {name:"SingleSelectDropdown", type:"Organism", ticket:"PS-2616", issue:"Main: no folder · MR !236 open · DropdownInput now on main"},
   {name:"SkeletonLoading",      type:"Molecule", ticket:"PS-3746", issue:"Main: CSS utility .is-loading shipped · Full molecule pending"},
-  {name:"TableActionsHeader",   type:"Molecule", ticket:"PS-3620", issue:"Main: no folder · MR !238 open"},
-  {name:"TableRow",             type:"Molecule", ticket:"PS-3619", issue:"Main: docs-only · MR !234 open · Row with cells + actions"}
+  {name:"TableActionsHeader",   type:"Molecule", ticket:"PS-3620", issue:"Main: no folder · MR !238 open"}
 ];
 
 // Planned — on roadmap, not yet started. Includes DropdownMenuContainer (PS-2617)
@@ -372,40 +383,42 @@ var docsOnlyComponents = [];
 var gitlabProject = {
   path:     "constructconnect/product-development/unified-design/unified_design_system",
   url:      "https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system",
-  snapshotAt: "2026-04-23T22:55:00Z",
+  snapshotAt: "2026-04-24T13:48:00Z",
   branch:   "main"
 };
 
 // Latest pipeline on main — stages derived from get_pipeline_jobs response.
 // Stage duration = sum of job durations in that stage (approximate; ignores parallelism).
 var gitlabLatestPipeline = {
-  iid: 3812,
-  id: 2475643419,
-  sha: "722a1552",
+  iid: 3854,
+  id: 2475832584,
+  sha: "660bc804",
   status: "success",
   source: "push",
-  created_at: "2026-04-23T20:37:59Z",
-  updated_at: "2026-04-23T20:51:52Z",
-  duration_seconds: 833,
-  commit_title: "Merge branch 'gs/PS-3636/fix/Update-InputField-Focus-Styling' into 'main'",
-  commit_ref:   "PS-3636 · InputField focus ring fix",
+  created_at: "2026-04-23T22:49:15Z",
+  updated_at: "2026-04-23T22:59:55Z",
+  duration_seconds: 640,
+  commit_title: "Merge branch 'vc/PS-3642/feat/Breadcrumb-Organism' into 'main'",
+  commit_ref:   "PS-3642 · BreadcrumbOrganism responsive overflow",
   author: "Vivian Conrad",
-  web_url: "https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2475643419",
+  web_url: "https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2475832584",
   stages: [
-    {name:"lint",    jobs:2, duration:39,  status:"success"},
-    {name:"prepare", jobs:1, duration:72,  status:"success"},
-    {name:"test",    jobs:3, duration:199, status:"success"},
-    {name:"release", jobs:1, duration:103, status:"success"},
-    {name:"build",   jobs:1, duration:149, status:"success"},
-    {name:"patch",   jobs:1, duration:118, status:"success"},
-    {name:"push",    jobs:1, duration:89,  status:"success"},
-    {name:"deploy",  jobs:1, duration:124, status:"success"}
+    {name:"lint",    jobs:2, duration:25,  status:"success"},
+    {name:"prepare", jobs:1, duration:74,  status:"success"},
+    {name:"test",    jobs:3, duration:167, status:"success"},
+    {name:"release", jobs:1, duration:73,  status:"success"},
+    {name:"build",   jobs:1, duration:134, status:"success"},
+    {name:"patch",   jobs:1, duration:121, status:"success"},
+    {name:"push",    jobs:1, duration:37,  status:"success"},
+    {name:"deploy",  jobs:1, duration:80,  status:"success"}
   ]
 };
 
 // Last 20 pipelines on main (newest first). Duration = updated_at - created_at in seconds.
 var gitlabRecentPipelines = [
-  {iid:3854, sha:"660bc804", status:"running",  source:"push",     created_at:"2026-04-23T22:49:15Z", duration:0,    web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2475832584"},
+  {iid:3860, sha:"04558826", status:"running",  source:"push",     created_at:"2026-04-24T13:30:49Z", duration:0,    web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2477521962"},
+  {iid:3857, sha:"660bc804", status:"failed",   source:"schedule", created_at:"2026-04-24T02:59:21Z", duration:222,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2476129426"},
+  {iid:3854, sha:"660bc804", status:"success",  source:"push",     created_at:"2026-04-23T22:49:15Z", duration:640,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2475832584"},
   {iid:3823, sha:"1f2dc4fb", status:"failed",   source:"web",      created_at:"2026-04-23T21:19:28Z", duration:204,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2475711926"},
   {iid:3822, sha:"1f2dc4fb", status:"failed",   source:"push",     created_at:"2026-04-23T21:17:25Z", duration:460,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2475709008"},
   {iid:3817, sha:"722a1552", status:"failed",   source:"web",      created_at:"2026-04-23T20:45:03Z", duration:857,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2475653732"},
@@ -422,9 +435,7 @@ var gitlabRecentPipelines = [
   {iid:3730, sha:"e7edeaac", status:"success",  source:"push",     created_at:"2026-04-23T13:27:41Z", duration:875,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2474715628"},
   {iid:3729, sha:"080ec9a5", status:"success",  source:"push",     created_at:"2026-04-23T13:24:10Z", duration:968,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2474706130"},
   {iid:3714, sha:"14269f2f", status:"failed",   source:"schedule", created_at:"2026-04-23T02:59:19Z", duration:288,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2473321715"},
-  {iid:3691, sha:"14269f2f", status:"success",  source:"push",     created_at:"2026-04-22T22:20:51Z", duration:669,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2472992959"},
-  {iid:3686, sha:"58d4bfca", status:"success",  source:"push",     created_at:"2026-04-22T21:11:48Z", duration:748,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2472818416"},
-  {iid:3683, sha:"76e439a8", status:"success",  source:"push",     created_at:"2026-04-22T20:39:24Z", duration:671,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2472716168"}
+  {iid:3691, sha:"14269f2f", status:"success",  source:"push",     created_at:"2026-04-22T22:20:51Z", duration:669,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2472992959"}
 ];
 
 // extracted = on active roadmap (Complete + In Progress + Planned + Docs Only)
@@ -432,13 +443,13 @@ var gitlabRecentPipelines = [
 // handoff = remaining work (extracted - monorepo)
 var atomicComparison = [
   {level:"Atoms",     extracted:27, monorepo:27, handoff:0},
-  {level:"Molecules", extracted:64, monorepo:49, handoff:15},
+  {level:"Molecules", extracted:64, monorepo:50, handoff:14},
   {level:"Organisms", extracted:30, monorepo:9,  handoff:21},
   {level:"Templates", extracted:6,  monorepo:0,  handoff:6}
 ];
 
 // Tickets confirmed merged to main this week (Apr 20–24). Updated by /refresh-uds-dashboard.
-var recentlyMergedTickets = ["PS-3642","PS-2376","PS-2935","PS-3621","PS-3434","PS-3763","PS-3713","PS-3618","PS-3098","PS-3516","PS-3515","PS-3715","PS-3764","PS-3632","PS-3791","PS-2657","PS-2652","PS-2732"];
+var recentlyMergedTickets = ["PS-3619","PS-3642","PS-2376","PS-2935","PS-3621","PS-3434","PS-3763","PS-3713","PS-3618","PS-3098","PS-3516","PS-3515","PS-3715","PS-3764","PS-3632","PS-3791","PS-2657","PS-2652","PS-2732"];
 var NEW_BADGE = '<span style="display:inline-block;padding:1px 6px;background:#d6f2c7;color:#459d13;border-radius:8px;font-size:9px;font-weight:700;vertical-align:middle;margin-left:5px">New!</span>';
 
 var systems = [
@@ -693,6 +704,117 @@ function jiraLink(ticket, extraStyle) {
   return '<a href="' + JIRA_BASE + ticket + '" target="_blank" rel="noopener" style="' + s + '" title="Open ' + ticket + ' in Jira">' + ticket + '</a>';
 }
 
+// Weekly plan config: same object shape as in render (clone per compute).
+function getDefaultWeeks() {
+  return [
+    {label:"Week of Apr 20–24",   start:"2026-04-20", kind:"target", target:0, originalTarget:19},
+    {label:"Week of Apr 27–May 1",start:"2026-04-27", kind:"target", target:10},
+    {label:"Week of May 4–8",     start:"2026-05-04", kind:"target", target:14},
+    {label:"Week of May 11–15",   start:"2026-05-11", kind:"target"},
+    {label:"Week of May 18–22",   start:"2026-05-18", kind:"target", target:6},
+    {label:"Week of May 25–29",   start:"2026-05-25", kind:"buffer"}
+  ];
+}
+// Countdown + normalized weekT — single source for render, console.assert, and PNG preflight.
+function computeDeliveryInvariants(atomicComparison, weeksIn) {
+  var weeks = weeksIn.map(function(w) { return Object.assign({}, w); });
+  var cdTotal = atomicComparison.reduce(function(s,a){return s + a.extracted;}, 0);
+  var cdDone = atomicComparison.reduce(function(s,a){return s + a.monorepo;}, 0);
+  var cdRemaining = cdTotal - cdDone;
+  var cdPct = cdTotal > 0 ? Math.round(cdDone / cdTotal * 100) : 0;
+  var targetWeeksCount = weeks.filter(function(w){return w.kind==='target';}).length;
+  var fixedTotal   = weeks.reduce(function(s,w){return s+(w.kind==='target'&&w.target!==undefined?w.target:0);},0);
+  var dynamicCount = weeks.filter(function(w){return w.kind==='target'&&w.target===undefined;}).length;
+  var dynamicPool  = Math.max(0, cdRemaining - fixedTotal);
+  var base   = dynamicCount > 0 ? Math.floor(dynamicPool / dynamicCount) : 0;
+  var extras = dynamicCount > 0 ? dynamicPool % dynamicCount : 0;
+  var weekT = new Array(weeks.length);
+  (function() {
+    var dSeen = 0;
+    for (var wi = 0; wi < weeks.length; wi++) {
+      if (weeks[wi].kind === 'buffer') { weekT[wi] = 0; continue; }
+      if (weeks[wi].target !== undefined) {
+        weekT[wi] = weeks[wi].target|0;
+      } else {
+        weekT[wi] = dynamicCount > 0 ? (base + (dSeen < extras ? 1 : 0)) : 0;
+        dSeen++;
+      }
+    }
+    var twIdx = [];
+    for (var j = 0; j < weeks.length; j++) { if (weeks[j].kind === 'target') twIdx.push(j); }
+    if (twIdx.length === 0) return;
+    var s = 0;
+    for (var t = 0; t < twIdx.length; t++) { s += weekT[twIdx[t]]; }
+    if (s === cdRemaining) return;
+    if (cdRemaining < 0) return;
+    if (cdRemaining === 0) {
+      for (t = 0; t < twIdx.length; t++) { weekT[twIdx[t]] = 0; }
+      return;
+    }
+    if (s === 0) {
+      var b = Math.floor(cdRemaining / twIdx.length);
+      var r = cdRemaining % twIdx.length;
+      for (t = 0; t < twIdx.length; t++) { weekT[twIdx[t]] = b + (t < r ? 1 : 0); }
+      return;
+    }
+    var parts = twIdx.map(function(idx) {
+      var exact = (weekT[idx] * cdRemaining) / s;
+      return { i: idx, n: Math.floor(exact), rem: exact - Math.floor(exact) };
+    });
+    var ksum = 0;
+    for (t = 0; t < parts.length; t++) { ksum += parts[t].n; }
+    var need = cdRemaining - ksum;
+    for (t = 0; t < parts.length; t++) { weekT[parts[t].i] = parts[t].n; }
+    parts.sort(function(a, b) { return b.rem - a.rem; });
+    for (t = 0; t < need; t++) { if (t < parts.length) weekT[parts[t].i]++; }
+  })();
+  return { cdTotal:cdTotal, cdDone:cdDone, cdRemaining:cdRemaining, cdPct:cdPct, weekT:weekT, weeks:weeks, targetWeeksCount:targetWeeksCount };
+}
+function exportOverviewPng() {
+  var inv = computeDeliveryInvariants(atomicComparison, getDefaultWeeks());
+  var sw = 0;
+  for (var wi = 0; wi < inv.weeks.length; wi++) {
+    if (inv.weeks[wi].kind === 'target') sw += inv.weekT[wi];
+  }
+  if (inv.cdRemaining >= 0 && sw !== inv.cdRemaining) {
+    var errMsg = 'Weekly targets sum (' + sw + ') does not match components remaining (' + inv.cdRemaining + '). PNG export blocked.';
+    console.error('[dashboard]', errMsg);
+    alert(errMsg);
+    return;
+  }
+  var h2i = window.htmlToImage;
+  if (!h2i || typeof h2i.toPng !== 'function') {
+    alert('Image export library not loaded. Check your network and reload the page.');
+    return;
+  }
+  var root = document.getElementById('overview-export-root');
+  if (!root) {
+    alert('Export region not found. Open the Overview tab.');
+    return;
+  }
+  var btn = document.getElementById('overview-export-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Generating…'; }
+  closeAllPopovers();
+  setTimeout(function() {
+    h2i.toPng(root, { pixelRatio: 2, backgroundColor: '#F8F9FA' })
+      .then(function(dataUrl) {
+        var a = document.createElement('a');
+        a.href = dataUrl;
+        a.download = 'uds-overview-' + new Date().toISOString().slice(0, 10) + '.png';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      })
+      .catch(function(e) {
+        console.error(e);
+        alert('Export failed: ' + (e && e.message ? e.message : String(e)));
+      })
+      .then(function() {
+        if (btn) { btn.disabled = false; btn.textContent = 'Download overview PNG'; }
+      });
+  }, 0);
+}
+
 // ═══════════════════════════════════════════════════════
 // OVERVIEW TAB
 // ═══════════════════════════════════════════════════════
@@ -737,14 +859,36 @@ function renderOverview(container) {
   });
   container.appendChild(metricsGrid);
 
+  var exportToolbar = el('div', { className: 'export-toolbar' });
+  var exportLeft = el('div', { className: 'export-toolbar-left' });
+  var exportTitle = el('span', { className: 'export-toolbar-title' });
+  exportTitle.textContent = 'Export daily progress report';
+  var exportInfoBtn = el('button', { className: 'info-btn', type: 'button', onclick: function(e) {
+    e.stopPropagation();
+    togglePopover('pop-export-overview', this);
+  } }, 'i');
+  var exportPop = el('div', { className: 'popover left', id: 'pop-export-overview' });
+  exportPop.innerHTML = '<div class="popover-title"><span>Overview export</span><button class="popover-close" onclick="closeAllPopovers()">×</button></div><p class="export-popover-body">Save the four cards below (countdown, weekly schedule, atomic breakdown, library growth) as one PNG. A math check runs first.</p>';
+  exportLeft.appendChild(exportTitle);
+  exportLeft.appendChild(exportInfoBtn);
+  exportLeft.appendChild(exportPop);
+  var exportBtn = el('button', { type: 'button', className: 'export-btn', id: 'overview-export-btn', onclick: function(e) { e.stopPropagation(); exportOverviewPng(); } }, 'Download overview PNG');
+  exportToolbar.appendChild(exportLeft);
+  exportToolbar.appendChild(exportBtn);
+  container.appendChild(exportToolbar);
+
+  var inv = computeDeliveryInvariants(atomicComparison, getDefaultWeeks());
+  var cdTotal     = inv.cdTotal;
+  var cdDone      = inv.cdDone;
+  var cdRemaining = inv.cdRemaining;
+  var cdPct       = inv.cdPct;
+  var weeks         = inv.weeks;
+  var weekT         = inv.weekT;
+  var targetWeeksCount = inv.targetWeeksCount;
+
   // ── Component Countdown — how many left until 100% ─────────────────────
   // "Remaining" = on roadmap but not yet .tsx on main (In Progress + Planned + Docs Only).
-  // Computed per-tier from atomicComparison so it stays in sync with the source arrays.
-  var cdTotal     = atomicComparison.reduce(function(s,a){return s + a.extracted;}, 0);
-  var cdDone      = atomicComparison.reduce(function(s,a){return s + a.monorepo;}, 0);
-  var cdRemaining = cdTotal - cdDone;
-  var cdPct       = cdTotal > 0 ? Math.round(cdDone / cdTotal * 100) : 0;
-
+  // Computed per-tier from atomicComparison (via inv) so it stays in sync with the source arrays.
   var countdownCard = card('Component Countdown', cdRemaining+' components remaining on the roadmap · '+cdPct+'% shipped');
   var cdHtml = '<div style="display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center">';
 
@@ -785,29 +929,16 @@ function renderOverview(container) {
   var cdDiv = el('div'); cdDiv.innerHTML = cdHtml;
   countdownCard.appendChild(cdDiv);
   countdownCard.style.marginBottom = '16px';
-  container.appendChild(countdownCard);
 
   // ── Weekly Delivery Targets — path to 100% by May 22 ──────────────
-  // Distributes cdRemaining evenly across 5 target weeks. Math: floor(remaining/5)
-  // per week, plus 1 extra on the first `remaining % 5` weeks. Stays dynamic —
-  // as components ship, cdRemaining drops and all week targets re-split automatically.
-  // `kind: "target"` = counts toward the cdRemaining split.
-  // `kind: "buffer"` = catch-up week; no work target, cushion for spillover.
-  var weeks = [
-    {label:"Week of Apr 20–24",   start:"2026-04-20", kind:"target", target:0, originalTarget:19},
-    {label:"Week of Apr 27–May 1",start:"2026-04-27", kind:"target", target:10},
-    {label:"Week of May 4–8",     start:"2026-05-04", kind:"target", target:14},
-    {label:"Week of May 11–15",   start:"2026-05-11", kind:"target"},
-    {label:"Week of May 18–22",   start:"2026-05-18", kind:"target", target:6},
-    {label:"Week of May 25–29",   start:"2026-05-25", kind:"buffer"}
-  ];
-  var targetWeeksCount = weeks.filter(function(w){return w.kind==='target';}).length;
-  // Weeks with explicit targets use those; remaining pool distributes across unset weeks.
-  var fixedTotal   = weeks.reduce(function(s,w){return s+(w.kind==='target'&&w.target!==undefined?w.target:0);},0);
-  var dynamicCount = weeks.filter(function(w){return w.kind==='target'&&w.target===undefined;}).length;
-  var dynamicPool  = Math.max(0, cdRemaining - fixedTotal);
-  var base   = dynamicCount > 0 ? Math.floor(dynamicPool / dynamicCount) : 0;
-  var extras = dynamicCount > 0 ? dynamicPool % dynamicCount : 0;
+  // weeks + weekT come from computeDeliveryInvariants; normalized so sum(weekT on target weeks) === cdRemaining.
+  if (cdRemaining >= 0) {
+    var _swCheck = 0;
+    for (var _wix = 0; _wix < weeks.length; _wix++) {
+      if (weeks[_wix].kind === 'target') _swCheck += weekT[_wix];
+    }
+    console.assert(_swCheck === cdRemaining, '[dashboard] Weekly targets: sum weekT (' + _swCheck + ') !== cdRemaining (' + cdRemaining + ')');
+  }
   var todayISO = new Date().toISOString().slice(0,10);
 
   // Context line — compare target pace against recent April velocity from the
@@ -837,17 +968,15 @@ function renderOverview(container) {
   // Assign components only to target weeks. Buffer weeks get an empty array.
   var weeklyAssignments = [];
   var assignIdx = 0;
-  var dynamicSeen = 0;
-  weeks.forEach(function(w){
-    if (w.kind === 'target') {
-      var count = w.target !== undefined ? w.target : base + (dynamicSeen < extras ? 1 : 0);
-      if (w.target === undefined) dynamicSeen++;
-      weeklyAssignments.push(remainingOrdered.slice(assignIdx, assignIdx + count));
-      assignIdx += count;
+  for (var wix = 0; wix < weeks.length; wix++) {
+    if (weeks[wix].kind === 'target') {
+      var cnt = weekT[wix];
+      weeklyAssignments.push(remainingOrdered.slice(assignIdx, assignIdx + cnt));
+      assignIdx += cnt;
     } else {
       weeklyAssignments.push([]);
     }
-  });
+  }
 
   var targetsCard = card('Weekly Delivery Targets', 'Path to 100% by May 22 · May 25–29 reserved as catch-up / buffer · '+cdRemaining+' remaining across '+targetWeeksCount+' target weeks · click a week to see its components');
 
@@ -859,13 +988,10 @@ function renderOverview(container) {
   tHtml += '</div>';
   tHtml += '<div style="display:flex;flex-direction:column;gap:8px">';
   var cumulative = cdDone;
-  var dynamicIdx = 0;
   weeks.forEach(function(w, i){
     var isBuffer = w.kind === 'buffer';
-    var target = 0;
+    var target = isBuffer ? 0 : weekT[i];
     if (!isBuffer) {
-      target = w.target !== undefined ? w.target : base + (dynamicIdx < extras ? 1 : 0);
-      if (w.target === undefined) dynamicIdx++;
       cumulative += target;
     }
     var cumPct = Math.round(cumulative / cdTotal * 100);
@@ -988,7 +1114,6 @@ function renderOverview(container) {
   var tDiv = el('div'); tDiv.innerHTML = tHtml;
   targetsCard.appendChild(tDiv);
   targetsCard.style.marginBottom = '16px';
-  container.appendChild(targetsCard);
 
   // Two-column: Donut + Growth
   var row = el('div', {className:'grid-2'});
@@ -1026,7 +1151,12 @@ function renderOverview(container) {
   atomBars += '</div>';
   growthCard.innerHTML += atomBars;
   row.appendChild(growthCard);
-  container.appendChild(row);
+
+  var exportRoot = el('div', { id: 'overview-export-root' });
+  exportRoot.appendChild(countdownCard);
+  exportRoot.appendChild(targetsCard);
+  exportRoot.appendChild(row);
+  container.appendChild(exportRoot);
 
   // Component lists
   var listRow = el('div', {className:'grid-2', style:{marginTop:'16px'}});
