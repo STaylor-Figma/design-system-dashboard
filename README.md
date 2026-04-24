@@ -93,7 +93,7 @@ Current counts live in the JS data variables inside `index.html` / `dashboard/bl
 ### Key Data Variables:
 
 ```javascript
-var topMetrics = [...]           // 5 metric cards at top
+var topMetrics = [...]           // Overview metric cards at top
 var deliveryStatus = [...]       // Donut chart (Complete/Partial/Docs/Missing)
 var completeComponents = [...]   // List of 9 complete
 var partialComponents = [...]    // List of 8 partial

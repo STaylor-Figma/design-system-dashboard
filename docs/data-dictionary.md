@@ -120,6 +120,26 @@
 
 ---
 
+### Merged Today
+
+**Definition:** Merge requests confirmed merged to UDS `main` since 12:00am for the daily progress report.
+
+**Current Value:** 7 merge requests for Apr 24, 2026
+**Source:** `mergedTodayMergeRequests` in `index.html` / `dashboard/blueprint-status.html`, displayed only in the downloaded overview PNG section
+
+**Includes:**
+
+- Merge requests merged to `main` after the local 12:00am daily cutoff
+- Component, docs, chore, and fix MRs included in the daily progress report
+
+**Does NOT include:**
+
+- Open merge requests
+- MRs merged before today's 12:00am cutoff
+- Weekly ticket-linked merge data used for component "New!" badges
+
+---
+
 ## Component Status Categories
 
 ### Complete

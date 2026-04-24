@@ -237,6 +237,10 @@ These 22 components are fully designed and ready to build:
 | **MCP Ready** | 57 | MCP Readiness Status |
 | **Pilot Teams** | 3 | Known: Admin Portal, Crimson, Web Takeoff |
 
+### Daily Overview Export
+
+- **Merged Today:** 7 merge requests from `mergedTodayMergeRequests`, using the Apr 24 daily progress report cutoff.
+
 ### Delivery Status Donut Chart
 
 | Status | Count | Source |

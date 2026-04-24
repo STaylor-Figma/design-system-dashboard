@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added — 2026-04-24 · merged today count
+
+- **New "Merged Today" export card** showing the daily merged-to-main MR count in the downloadable overview PNG.
+- The card value is derived from `mergedTodayMergeRequests.length`, keeping the daily progress card separate from `recentlyMergedTickets`, which still drives component "New!" badges.
+- Placed the smaller "Merged Today" card on the same export row as the component countdown.
+
 ### Added — 2026-04-21 · v5.17 Jira ticket links everywhere
 - **New `jiraLink(ticket, extraStyle)` helper** near the `card()` wrapper. Generates `<a href="https://constructconnect.atlassian.net/browse/<TICKET>" target="_blank" rel="noopener">` with the primary color, open-in-new-tab semantics, and a "Open PS-XXX in Jira" tooltip. Returns empty string when `ticket` is falsy so it's safe to interpolate unconditionally.
 - **`JIRA_BASE`** constant (`https://constructconnect.atlassian.net/browse/`) — update here if the Atlassian tenant ever changes.
