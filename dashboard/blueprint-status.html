@@ -115,7 +115,7 @@ tr.alt{background:#FAFAFA}
       <h1>Blueprint Design System</h1>
       <p class="sub">Status Dashboard — April 22, 2026</p>
     </div>
-    <div class="badge">v5.30 — Apr 22 refresh: PaginationItem atom added · 79 complete · 127 total</div>
+    <div class="badge">v5.33 — Apr 23 refresh: +3 complete · 85 done · BreadcrumbOrganism, HeaderLogoButton, LoadingButtonState</div>
   </div>
   <div class="tabs" id="tabs"></div>
 </div>
@@ -184,9 +184,9 @@ var TOKENS = (function() {
 // Roadmap = Complete + In Progress + Planned + Docs Only (excludes N/A + Unplanned).
 var topMetrics = [
   {label:"Total Components",value:127,sub:"Active roadmap — Complete + In Progress + Planned + Docs Only",color:TOKENS.primary500},
-  {label:"Complete",        value:79, sub:"27 atoms + 45 molecules + 7 organisms · atoms tier 100% done",color:TOKENS.success},
-  {label:"In Progress",     value:5,  sub:"4 molecules + 1 organism · 4 open MRs",color:TOKENS.warning},
-  {label:"In NPM Package",  value:70, sub:"70 published via Cloudsmith · release MR !232 pending (+10: CalendarItemButton, DropdownInput, FileUploadProgress, ListItem, NotificationMessage, Pagination, PaginationItem, StepIndicator, TabGroup, Toggle)",color:TOKENS.primary500},
+  {label:"Complete",        value:85, sub:"27 atoms + 49 molecules + 9 organisms · atoms tier 100% done",color:TOKENS.success},
+  {label:"In Progress",     value:6,  sub:"5 molecules + 1 organism · 4 open MRs",color:TOKENS.warning},
+  {label:"In NPM Package",  value:70, sub:"70 published via Cloudsmith · release MR !232 pending (+12: CalendarItemButton, DropdownButton, DropdownInput, FileUploadField, FileUploadProgress, ListItem, MenuItemContainer, NotificationMessage, Pagination, PaginationItem, StepIndicator, TabGroup) · +3 newly complete not yet in release: BreadcrumbOrganism, HeaderLogoButton, LoadingButtonState",color:TOKENS.primary500},
   {label:"Blocked",         value:0,  sub:"No current blockers",color:TOKENS.primary600},
   {label:"Active Consumers",value:5,  sub:"Payment Portal, UCMS, Automation Support active · GCV4, Identity Platform in progress",color:TOKENS.primary600}
 ];
@@ -198,14 +198,14 @@ var pipelineStats = {
 };
 
 var deliveryStatus = [
-  {name:"Complete",    value:79, color:TOKENS.success},
-  {name:"In Progress", value:5,  color:TOKENS.warning},
-  {name:"Planned",     value:43, color:"#00838F"},
+  {name:"Complete",    value:85, color:TOKENS.success},
+  {name:"In Progress", value:6,  color:TOKENS.warning},
+  {name:"Planned",     value:36, color:"#00838F"},
   {name:"Docs Only",   value:0,  color:"#6B3FA0"}
 ];
 
-// Complete = folder on UDS main with .tsx + _stories/ + _tests/ (Apr 22, 2026).
-// Names match actual main folders. Count: 27 atoms + 45 molecules + 7 organisms = 79.
+// Complete = folder on UDS main with .tsx + _stories/ + _tests/ (Apr 23, 2026).
+// Names match actual main folders. Count: 27 atoms + 49 molecules + 9 organisms = 85.
 // Corrections from PM master list:
 //   - ProgressBarFill (PS-3762) demoted: docs-only on main, no .tsx
 //   - DropdownMenuContainer (PS-2617) demoted: no folder on main at all
@@ -239,7 +239,7 @@ var completeComponents = [
   {name:"UserAvatar",        type:"Atom", ticket:"PS-2953"},
   {name:"VisuallyHidden",    type:"Atom"},
   {name:"PaginationItem",    type:"Atom", ticket:"PS-3621"},
-  // Molecules (45) — folder names on main
+  // Molecules (49) — folder names on main
   {name:"AccordionHeader",  type:"Molecule"},
   {name:"BreadcrumbItem",   type:"Molecule", ticket:"PS-931"},
   {name:"BreadcrumbTrail",  type:"Molecule", ticket:"PS-4357"},
@@ -254,16 +254,20 @@ var completeComponents = [
   {name:"DropdownInput",      type:"Molecule", ticket:"PS-3434"},
   {name:"DropdownItem",       type:"Molecule", ticket:"PS-2357"},
   {name:"FileUploadButton",   type:"Molecule", ticket:"PS-3713"},
+  {name:"FileUploadField",    type:"Molecule", ticket:"PS-2732"},
   {name:"FileUploadProgress", type:"Molecule", ticket:"PS-3715"},
   {name:"FilterButton",       type:"Molecule", ticket:"PS-3098"},
   {name:"FormField",        type:"Molecule", ticket:"PS-2873"},
   {name:"HeaderButton",     type:"Molecule"},
+  {name:"HeaderLogoButton",   type:"Molecule", ticket:"PS-2376"},
   {name:"InlineSearchField",type:"Molecule", ticket:"PS-3730"},
   {name:"InputField",       type:"Molecule", ticket:"PS-1758"},
   {name:"ListItem",         type:"Molecule", ticket:"PS-3791"},
+  {name:"LoadingButtonState", type:"Molecule", ticket:"PS-2935"},
   {name:"LoadingMask",      type:"Molecule", ticket:"PS-2855"},
-  {name:"LogoLoader",       type:"Molecule", ticket:"PS-2851"},
-  {name:"ModalHeader",      type:"Molecule", ticket:"PS-3099"},
+  {name:"LogoLoader",         type:"Molecule", ticket:"PS-2851"},
+  {name:"MenuItemContainer",  type:"Molecule", ticket:"PS-2652"},
+  {name:"ModalHeader",        type:"Molecule", ticket:"PS-3099"},
   {name:"MultiSelectItem",  type:"Molecule"},
   {name:"NavSubmenuButton",   type:"Molecule", ticket:"PS-2442"},
   {name:"NotificationMessage",type:"Molecule", ticket:"PS-3516"},
@@ -285,9 +289,11 @@ var completeComponents = [
   {name:"TextAreaField",    type:"Molecule", ticket:"PS-1759"},
   {name:"ToastMessage",     type:"Molecule"},
   {name:"ToggleField",      type:"Molecule"},
-  // Organisms (6)
+  // Organisms (9)
   {name:"Accordion",          type:"Organism", ticket:"PS-2180"},
+  {name:"BreadcrumbOrganism",  type:"Organism", ticket:"PS-3642"},
   {name:"Card",               type:"Organism", ticket:"PS-3669"},
+  {name:"DropdownButton",     type:"Organism", ticket:"PS-2657"},
   {name:"MenuContainer",      type:"Organism", ticket:"PS-2448"},
   {name:"MenuHeaderOrganism", type:"Organism", ticket:"PS-3733"},
   {name:"RadioButtonGroup",   type:"Organism", ticket:"PS-2388"},
@@ -298,8 +304,9 @@ var completeComponents = [
 // In Progress — active development per PM master list. Shown in "Partial" card.
 // "issue" includes UDS main state: docs-only = .md in folder, no code = no folder.
 var partialComponents = [
+  {name:"FileUploadAvatar",     type:"Molecule", ticket:"PS-2824", issue:"Main: scaffold only (!251 merged) · MR !257 open"},
   {name:"MenuHeader",           type:"Molecule", ticket:"PS-4634", issue:"Main: docs-only"},
-  {name:"SingleSelectDropdown", type:"Organism", ticket:"PS-2616", issue:"Main: no folder · MR !236 Draft (scaffold) · DropdownInput now on main"},
+  {name:"SingleSelectDropdown", type:"Organism", ticket:"PS-2616", issue:"Main: no folder · MR !236 open · DropdownInput now on main"},
   {name:"SkeletonLoading",      type:"Molecule", ticket:"PS-3746", issue:"Main: CSS utility .is-loading shipped · Full molecule pending"},
   {name:"TableActionsHeader",   type:"Molecule", ticket:"PS-3620", issue:"Main: no folder · MR !238 open"},
   {name:"TableRow",             type:"Molecule", ticket:"PS-3619", issue:"Main: docs-only · MR !234 open · Row with cells + actions"}
@@ -310,28 +317,21 @@ var partialComponents = [
 // retired to "No longer applicable" — its responsibility lives inside the ProgressBar
 // atom, so a separate Fill atom was redundant.
 var plannedComponents = [
-  // Molecules (15)
-  {name:"Avatar File Upload",       type:"Molecule", ticket:"PS-2824"},
+  // Molecules (10)
   {name:"ContextMenu",              type:"Molecule", ticket:"PS-4631"},
   {name:"DatePicker",               type:"Molecule"},
   {name:"DateRangePicker",          type:"Molecule", ticket:"PS-4627"},
   {name:"DropdownMenuContainer",    type:"Molecule", ticket:"PS-2617"},
-  {name:"FileUpload",               type:"Molecule", ticket:"PS-2732"},
-  {name:"HeaderLogoButton",         type:"Molecule", ticket:"PS-2376"},
   {name:"HeaderLogoTitle",          type:"Molecule", ticket:"PS-2375"},
-  {name:"LoadingButtonState",       type:"Molecule", ticket:"PS-2935"},
-  {name:"MenuItemContainer",        type:"Molecule", ticket:"PS-2652"},
   {name:"MenuToggleButton",         type:"Molecule", ticket:"PS-2381"},
   {name:"NavMenuButton",            type:"Molecule", ticket:"PS-2441"},
   {name:"PageHeader",               type:"Molecule", ticket:"PS-3643"},
   {name:"Segment Button",           type:"Molecule"},
   {name:"UsernameButton",           type:"Molecule", ticket:"PS-2383"},
-  // Organisms (24)
-  {name:"Breadcrumb",               type:"Organism", ticket:"PS-3642"},
+  // Organisms (20)
   {name:"ContentContainer",         type:"Organism", ticket:"PS-2179"},
   {name:"DatePickerField",          type:"Organism", ticket:"PS-3635"},
   {name:"DrawerModal",              type:"Organism", ticket:"PS-2818", note:"Unified pattern — covers both Drawer and Modal variants (same layout, different margins)"},
-  {name:"DropdownButton Organism",  type:"Organism", ticket:"PS-2657"},
   {name:"DropdownMenuHeader",       type:"Organism", ticket:"PS-2651"},
   {name:"Filter Dropdown",          type:"Organism", ticket:"PS-2826"},
   {name:"MainMenu",                 type:"Organism"},
@@ -366,65 +366,65 @@ var docsOnlyComponents = [];
 // ═══════════════════════════════════════════════════════
 // GITLAB PIPELINE SNAPSHOT (for Pipeline tab)
 // Source: GitLab API /projects/.../pipelines?ref=main
-// Snapshot taken Apr 22, 2026 — to refresh, re-run the dashboard update with
+// Snapshot taken Apr 23, 2026 — to refresh, re-run the dashboard update with
 // GitLab MCP tools (manage_pipeline list + get_pipeline_jobs for latest).
 // ═══════════════════════════════════════════════════════
 var gitlabProject = {
   path:     "constructconnect/product-development/unified-design/unified_design_system",
   url:      "https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system",
-  snapshotAt: "2026-04-22T21:20:00Z",
+  snapshotAt: "2026-04-23T22:55:00Z",
   branch:   "main"
 };
 
 // Latest pipeline on main — stages derived from get_pipeline_jobs response.
 // Stage duration = sum of job durations in that stage (approximate; ignores parallelism).
 var gitlabLatestPipeline = {
-  iid: 3686,
-  id: 2472818416,
-  sha: "58d4bfca",
-  status: "running",
+  iid: 3812,
+  id: 2475643419,
+  sha: "722a1552",
+  status: "success",
   source: "push",
-  created_at: "2026-04-22T21:11:48Z",
-  updated_at: "2026-04-22T21:11:48Z",
-  duration_seconds: 0,
-  commit_title: "Merge branch 'vc/PS-3621/feat/Pagination-Molecule' into 'main'",
-  commit_ref:   "PS-3621 · Add Pagination molecule",
+  created_at: "2026-04-23T20:37:59Z",
+  updated_at: "2026-04-23T20:51:52Z",
+  duration_seconds: 833,
+  commit_title: "Merge branch 'gs/PS-3636/fix/Update-InputField-Focus-Styling' into 'main'",
+  commit_ref:   "PS-3636 · InputField focus ring fix",
   author: "Vivian Conrad",
-  web_url: "https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2472818416",
+  web_url: "https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2475643419",
   stages: [
-    {name:"lint",    jobs:2, duration:19,  status:"success"},
-    {name:"test",    jobs:3, duration:240, status:"success"},
-    {name:"release", jobs:1, duration:68,  status:"success"},
-    {name:"prepare", jobs:1, duration:74,  status:"success"},
-    {name:"build",   jobs:1, duration:137, status:"success"},
-    {name:"patch",   jobs:1, duration:121, status:"success"},
-    {name:"push",    jobs:1, duration:41,  status:"success"},
-    {name:"deploy",  jobs:1, duration:88,  status:"success"}
+    {name:"lint",    jobs:2, duration:39,  status:"success"},
+    {name:"prepare", jobs:1, duration:72,  status:"success"},
+    {name:"test",    jobs:3, duration:199, status:"success"},
+    {name:"release", jobs:1, duration:103, status:"success"},
+    {name:"build",   jobs:1, duration:149, status:"success"},
+    {name:"patch",   jobs:1, duration:118, status:"success"},
+    {name:"push",    jobs:1, duration:89,  status:"success"},
+    {name:"deploy",  jobs:1, duration:124, status:"success"}
   ]
 };
 
 // Last 20 pipelines on main (newest first). Duration = updated_at - created_at in seconds.
 var gitlabRecentPipelines = [
-  {iid:3686, sha:"58d4bfca", status:"running",  source:"push",     created_at:"2026-04-22T21:11:48Z", duration:0,    web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2472818416"},
-  {iid:3683, sha:"76e439a8", status:"success",  source:"push",     created_at:"2026-04-22T20:39:24Z", duration:671,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2472716168"},
-  {iid:3667, sha:"0af314a0", status:"success",  source:"push",     created_at:"2026-04-22T20:05:55Z", duration:781,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2472597479"},
-  {iid:3656, sha:"0f600c15", status:"success",  source:"push",     created_at:"2026-04-22T19:34:29Z", duration:868,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2472536340"},
-  {iid:3653, sha:"3a68d1dc", status:"success",  source:"push",     created_at:"2026-04-22T19:32:31Z", duration:836,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2472532072"},
-  {iid:3619, sha:"536865f8", status:"success",  source:"push",     created_at:"2026-04-22T17:35:10Z", duration:847,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2472289458"},
-  {iid:3607, sha:"ffc32f80", status:"success",  source:"push",     created_at:"2026-04-22T16:33:49Z", duration:944,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2472171245"},
-  {iid:3595, sha:"42a3a13a", status:"success",  source:"push",     created_at:"2026-04-22T16:19:30Z", duration:913,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2472131617"},
-  {iid:3590, sha:"60e644af", status:"success",  source:"push",     created_at:"2026-04-22T15:51:29Z", duration:1257, web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2472043789"},
-  {iid:3581, sha:"c6ffa46b", status:"success",  source:"push",     created_at:"2026-04-22T15:39:55Z", duration:869,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2472016865"},
-  {iid:3578, sha:"a75054ad", status:"success",  source:"push",     created_at:"2026-04-22T15:32:25Z", duration:940,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2471998462"},
-  {iid:3569, sha:"943bc86b", status:"success",  source:"push",     created_at:"2026-04-22T15:25:26Z", duration:810,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2471980478"},
-  {iid:3568, sha:"f300c72d", status:"success",  source:"push",     created_at:"2026-04-22T15:24:06Z", duration:865,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2471975692"},
-  {iid:3503, sha:"64cf60d8", status:"failed",   source:"schedule", created_at:"2026-04-22T03:00:44Z", duration:349,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2470187755"},
-  {iid:3437, sha:"64cf60d8", status:"success",  source:"push",     created_at:"2026-04-21T19:02:53Z", duration:845,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2469265678"},
-  {iid:3436, sha:"09cdff82", status:"success",  source:"push",     created_at:"2026-04-21T19:02:36Z", duration:861,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2469265206"},
-  {iid:3435, sha:"88792289", status:"success",  source:"push",     created_at:"2026-04-21T19:02:16Z", duration:883,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2469264586"},
-  {iid:3424, sha:"9ef37daf", status:"success",  source:"push",     created_at:"2026-04-21T13:44:32Z", duration:780,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2468434384"},
-  {iid:3423, sha:"61c54fae", status:"failed",   source:"schedule", created_at:"2026-04-21T02:59:24Z", duration:0,    web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2466981684"},
-  {iid:3418, sha:"61c54fae", status:"failed",   source:"push",     created_at:"2026-04-20T21:52:26Z", duration:714,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2466608041"}
+  {iid:3854, sha:"660bc804", status:"running",  source:"push",     created_at:"2026-04-23T22:49:15Z", duration:0,    web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2475832584"},
+  {iid:3823, sha:"1f2dc4fb", status:"failed",   source:"web",      created_at:"2026-04-23T21:19:28Z", duration:204,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2475711926"},
+  {iid:3822, sha:"1f2dc4fb", status:"failed",   source:"push",     created_at:"2026-04-23T21:17:25Z", duration:460,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2475709008"},
+  {iid:3817, sha:"722a1552", status:"failed",   source:"web",      created_at:"2026-04-23T20:45:03Z", duration:857,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2475653732"},
+  {iid:3812, sha:"722a1552", status:"success",  source:"push",     created_at:"2026-04-23T20:37:59Z", duration:833,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2475643419"},
+  {iid:3811, sha:"cb791aa0", status:"success",  source:"push",     created_at:"2026-04-23T20:37:43Z", duration:769,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2475643046"},
+  {iid:3802, sha:"41df9d0b", status:"success",  source:"api",      created_at:"2026-04-23T20:29:36Z", duration:770,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2475629468"},
+  {iid:3791, sha:"41df9d0b", status:"success",  source:"push",     created_at:"2026-04-23T18:04:55Z", duration:778,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2475374467"},
+  {iid:3777, sha:"f6a59962", status:"success",  source:"push",     created_at:"2026-04-23T17:40:12Z", duration:871,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2475330482"},
+  {iid:3772, sha:"0160976c", status:"success",  source:"push",     created_at:"2026-04-23T17:09:48Z", duration:842,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2475275771"},
+  {iid:3767, sha:"385493a7", status:"success",  source:"push",     created_at:"2026-04-23T16:57:24Z", duration:866,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2475246542"},
+  {iid:3747, sha:"ea66c18b", status:"success",  source:"push",     created_at:"2026-04-23T14:55:20Z", duration:1018, web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2474960319"},
+  {iid:3744, sha:"1dfa7a15", status:"success",  source:"push",     created_at:"2026-04-23T14:46:57Z", duration:728,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2474937872"},
+  {iid:3739, sha:"c66b3f09", status:"success",  source:"push",     created_at:"2026-04-23T13:52:59Z", duration:696,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2474783690"},
+  {iid:3730, sha:"e7edeaac", status:"success",  source:"push",     created_at:"2026-04-23T13:27:41Z", duration:875,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2474715628"},
+  {iid:3729, sha:"080ec9a5", status:"success",  source:"push",     created_at:"2026-04-23T13:24:10Z", duration:968,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2474706130"},
+  {iid:3714, sha:"14269f2f", status:"failed",   source:"schedule", created_at:"2026-04-23T02:59:19Z", duration:288,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2473321715"},
+  {iid:3691, sha:"14269f2f", status:"success",  source:"push",     created_at:"2026-04-22T22:20:51Z", duration:669,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2472992959"},
+  {iid:3686, sha:"58d4bfca", status:"success",  source:"push",     created_at:"2026-04-22T21:11:48Z", duration:748,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2472818416"},
+  {iid:3683, sha:"76e439a8", status:"success",  source:"push",     created_at:"2026-04-22T20:39:24Z", duration:671,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2472716168"}
 ];
 
 // extracted = on active roadmap (Complete + In Progress + Planned + Docs Only)
@@ -432,21 +432,21 @@ var gitlabRecentPipelines = [
 // handoff = remaining work (extracted - monorepo)
 var atomicComparison = [
   {level:"Atoms",     extracted:27, monorepo:27, handoff:0},
-  {level:"Molecules", extracted:64, monorepo:45, handoff:19},
-  {level:"Organisms", extracted:30, monorepo:7,  handoff:23},
+  {level:"Molecules", extracted:64, monorepo:49, handoff:15},
+  {level:"Organisms", extracted:30, monorepo:9,  handoff:21},
   {level:"Templates", extracted:6,  monorepo:0,  handoff:6}
 ];
 
 // Tickets confirmed merged to main this week (Apr 20–24). Updated by /refresh-uds-dashboard.
-var recentlyMergedTickets = ["PS-3621","PS-3434","PS-3763","PS-3713","PS-3618","PS-3098","PS-3516","PS-3515","PS-3715","PS-3764","PS-3632","PS-3791"];
+var recentlyMergedTickets = ["PS-3642","PS-2376","PS-2935","PS-3621","PS-3434","PS-3763","PS-3713","PS-3618","PS-3098","PS-3516","PS-3515","PS-3715","PS-3764","PS-3632","PS-3791","PS-2657","PS-2652","PS-2732"];
 var NEW_BADGE = '<span style="display:inline-block;padding:1px 6px;background:#d6f2c7;color:#459d13;border-radius:8px;font-size:9px;font-weight:700;vertical-align:middle;margin-left:5px">New!</span>';
 
 var systems = [
   {name:"Boolean Controls",  components:6,  implemented:6, status:"done"},
   {name:"Form Inputs",       components:7,  implemented:6, status:"partial"},
-  {name:"Buttons",           components:4,  implemented:3, status:"partial"},
-  {name:"Navigation",        components:7,  implemented:5, status:"partial"},
-  {name:"Header",            components:6,  implemented:1, status:"partial"},
+  {name:"Buttons",           components:4,  implemented:4, status:"done"},
+  {name:"Navigation",        components:7,  implemented:6, status:"partial"},
+  {name:"Header",            components:6,  implemented:2, status:"partial"},
   {name:"Modal/Drawer",      components:4,  implemented:1, status:"partial"},
   {name:"Dropdown/Filter",   components:12, implemented:3, status:"partial"},
   {name:"Menu System",       components:4,  implemented:2, status:"partial"},
@@ -456,7 +456,7 @@ var systems = [
   {name:"Table System",      components:6,  implemented:1, status:"partial"},
   {name:"Calendar/Date",     components:4,  implemented:1, status:"partial"},
   {name:"Search",            components:4,  implemented:3, status:"partial"},
-  {name:"File Upload",       components:4,  implemented:2, status:"partial"},
+  {name:"File Upload",       components:4,  implemented:3, status:"partial"},
   {name:"Progress/Steps",    components:5,  implemented:1, status:"partial"},
   {name:"Notifications",     components:2,  implemented:1, status:"partial"},
   {name:"Containers/Layout", components:5,  implemented:1, status:"partial"}
@@ -473,11 +473,11 @@ var closedGaps = [
   {name:"DatePicker",    closedBy:"DatePickerField organism (PS-3635) — covers both single date and date range (Planned)"},
   {name:"Divider",       closedBy:"Divider atom (PS-3717) — complete, in Figma"},
   {name:"Drawer",        closedBy:"Merged into DrawerModal organism (PS-2818) — unified pattern, same layout / different margins"},
-  {name:"FileUpload",    closedBy:"FileUploadButton + FileUploadProgress (PS-3715) complete; FileUploadField + FileUploadAvatar on roadmap (Planned)"},
+  {name:"FileUpload",    closedBy:"FileUploadButton + FileUploadProgress (PS-3715) + FileUploadField (PS-2732) complete; FileUploadAvatar (PS-2824) In Progress"},
   {name:"FormLayout",    closedBy:"FormLayout + form-template + Form Layout Templates (templates) — Planned"},
   {name:"Link",          closedBy:"Native &lt;a&gt; tags — no standalone Link atom by design"},
   {name:"Modal/Dialog",  closedBy:"DrawerModal + ModalHeader (complete) + ModalFooter (Planned)"},
-  {name:"Pagination",    closedBy:"Pagination molecule (PS-3621) — MR !241 open (In Progress). Rows-per-page dropdown placeholder pending PS-2616 (DropdownInput organism). TableFooter/TablePagination names retired."},
+  {name:"Pagination",    closedBy:"Pagination molecule (PS-3621) — complete (MR !241 merged). Rows-per-page dropdown placeholder pending PS-2616 (DropdownInput organism). TableFooter/TablePagination names retired."},
   {name:"Popover",       closedBy:"PopoverContainer organism (PS-3793) — Planned. No separate Popover molecule; the organism is the component."},
   {name:"ProgressBar",   closedBy:"ProgressBar atom (PS-3762) + ProgressBarField molecule (PS-3763) complete. StepIndicator (PS-3764) complete. StepIndicatorContainer (PS-3765) planned. ProgressBarFill atom retired — PS-3762 was repurposed from PBF to ProgressBar itself"},
   {name:"SearchBar",     closedBy:"SearchBar + SearchField + InlineSearchField + QuickSearchField molecules complete; QuickSearch organism (PS-3732) Planned"},
@@ -485,9 +485,9 @@ var closedGaps = [
   {name:"Skeleton",      closedBy:"Skeleton CSS utility (.is-loading) + semantic tokens in skeleton.css. SkeletonLoading molecule (PS-3746) In Progress"},
   {name:"Slider",        closedBy:"SliderRail + SliderThumb + SliderTrack atoms + Slider + SliderField molecules (PS-2018) — all complete"},
   {name:"Spinner",       closedBy:"LoadingMask (PS-2855) + LogoLoader (PS-2851) + CircularIndicator (PS-2853) — all complete"},
-  {name:"Table",         closedBy:"TableCell + TableRowContent complete; TableRow + TableActionsHeader + Pagination (PS-3621) In Progress; Table organism Planned"},
+  {name:"Table",         closedBy:"TableCell + TableRowContent + Pagination complete; TableRow (MR !234) + TableActionsHeader (MR !238) In Progress; Table organism Planned"},
   {name:"Toast / Notifications", closedBy:"ToastMessage molecule complete; NotificationMessage molecule (PS-3516) complete — five semantic variants, four behavioral modes (Toast/Snackbar/Banner/Inline)"},
-  {name:"TopNav",        closedBy:"PageHeader organism (PS-2384) + HeaderButton + HeaderLogoButton + HeaderLogoTitle + UsernameButton + MenuToggleButton molecules — HeaderButton complete, rest Planned"}
+  {name:"TopNav",        closedBy:"PageHeader organism (PS-2384) + HeaderButton + HeaderLogoButton + HeaderLogoTitle + UsernameButton + MenuToggleButton molecules — HeaderButton + HeaderLogoButton complete (PS-2376 · MR !263 merged); HeaderLogoTitle + UsernameButton + MenuToggleButton Planned"}
 ];
 
 // Certification Queue — items requested or prototyped but not on the roadmap.
@@ -501,10 +501,10 @@ var remainingGaps = [
 ];
 
 var popoverData = {
-  "Total Components": "126 components are on the active roadmap as of Apr 22, 2026 (UDS main audit).<br><br><strong>Breakdown:</strong><br>• Complete — 73 (verified on main)<br>• In Progress — 10<br>• Planned — 43<br>• Docs Only — 0<br><br><strong>Merged components (single entry, multiple variants):</strong><br>• <strong>Drawer + DrawerModal</strong> &#8594; single DrawerModal organism (PS-2818). Same layout, different margin/setup; tracked as one roadmap item under Planned.<br>• <strong>TableHeaderRow + TableHeader</strong> &#8594; same component, two variants (both N/A on current roadmap).<br><br><strong>Excluded from this count:</strong><br>• No longer applicable — deprecated items (Heading atom, Image atom, SkeletonBlock atom, <strong>ProgressBarFill atom</strong> [responsibility lives inside ProgressBar], Accordion Chevron, TableHeaderRow, PaginationControl, Skeleton* molecules, NavGroup, NavItem, BidCenter Stage Arrow, TreeItem, Project Card, DataGrid, Timeline, TreeView, CalendarLayout organism, and others)<br>• Unplanned — 4 requested items not on roadmap (see Gaps tab)<br>• Specialty — ChartTooltip (molecule), ChartDataViz (organism) — tracked separately<br><br>Source: PM master list reconciled against UDS main commit c6ffa46b (Apr 22, 2026).",
-  "Complete": "78 components with <code>.tsx + _stories/ + _tests/</code> on UDS main branch (Apr 22, 2026). Names match main folder names.<br><br><strong>Atoms (26):</strong> Badge, Breadcrumb, Checkbox, Divider, FieldMessage, HelperText, Icon, IndicatorCounter, IndicatorDot, Input, Label, Logo, MenuToggleIcon, Overlay, ProgressBar, ProgressRing, RadioButton, SkipLink, SliderRail, SliderThumb, SliderTrack, TextArea, Toggle, Tooltip, UserAvatar, VisuallyHidden<br><br><strong>Molecules (45):</strong> AccordionHeader, BreadcrumbItem, BreadcrumbTrail, Button, ButtonIcon, CalendarItemButton, CheckboxField, CircularIndicator, CircularProgress, DateInput, DropdownButton, DropdownInput, DropdownItem, FileUploadButton, FileUploadProgress, FilterButton, FormField, HeaderButton, InlineSearchField, InputField, ListItem, LoadingMask, LogoLoader, ModalHeader, MultiSelectItem, NavSubmenuButton, NotificationMessage, NumberInputField, OverflowPanel, Pagination, Pill, ProgressBarField, QuickSearchField, RadioButtonField, SearchBar, SearchField, Slider, SliderField, StepIndicator, Tab, TableCell, TableRowContent, TextAreaField, ToastMessage, ToggleField<br><br><strong>Organisms (7):</strong> Accordion (PS-2180), Card (PS-3669), MenuContainer (PS-2448), MenuHeaderOrganism (PS-3733), RadioButtonGroup (PS-2388), SplitButton (PS-2658), TabGroup (PS-3515)<br><br><strong>Discrepancies vs PM master list:</strong><br>• <strong>ProgressBarFill</strong> — PM listed this as its own atom with ticket PS-3762. On main, PS-3762 is the ticket for the <strong>ProgressBar atom itself</strong>, not a separate Fill atom. ProgressBarFill retired to <strong>No longer applicable</strong>: fill is an internal detail of ProgressBar (unlike Slider, where Rail/Thumb/Track are distinct reusable atoms).<br>• <strong>DropdownMenuContainer</strong> (PS-2617) — PM: Complete &#8594; Main: no folder at all. Demoted to Planned.<br>• <strong>Card</strong> (PS-3669) — Main: Complete since Mar 24 &#8594; PM master omitted it. Added here.",
-  "In Progress": "5 components in active development (cross-checked against UDS main + open MRs on project 74215032, Apr 22, 2026).<br><br><strong>PM-tracked In Progress (2):</strong><br>• <strong>MenuHeader</strong> (PS-4634) — Main: docs-only<br>• <strong>SkeletonLoading</strong> (PS-3746) — Main: CSS utility .is-loading shipped · Full molecule pending<br><br><strong>MR-driven In Progress (3, updated 2026-04-22):</strong><br>• <strong>SingleSelectDropdown</strong> (PS-2616, organism) — MR !236 Draft · DropdownInput now on main, unblocked<br>• <strong>TableActionsHeader</strong> (PS-3620, molecule) — MR !238 open<br>• <strong>TableRow</strong> (PS-3619, molecule) — MR !234 open · all 16/16 checklist done, discussions pending",
-  "In NPM Package": "70 components published via @unified_design_system/components (Cloudsmith NPM registry). <strong>Release MR !232 pending</strong> — will publish 9 more (CalendarItemButton PS-3632, DropdownInput PS-3434, FileUploadProgress PS-3715, ListItem PS-3791, NotificationMessage PS-3516, Pagination PS-3621, StepIndicator PS-3764, TabGroup PS-3515, plus Toggle/ToggleField patch) plus a v5.0.0 major version bump (Toggle/ToggleField breaking changes) once merged.<br><br>See the Complete popover for the full component list. Source: UDS main branch, Apr 22, 2026.",
+  "Total Components": "127 components are on the active roadmap as of Apr 23, 2026 (UDS main audit).<br><br><strong>Breakdown:</strong><br>• Complete — 85 (verified on main)<br>• In Progress — 6<br>• Planned — 36<br>• Docs Only — 0<br><br><strong>Merged components (single entry, multiple variants):</strong><br>• <strong>Drawer + DrawerModal</strong> &#8594; single DrawerModal organism (PS-2818). Same layout, different margin/setup; tracked as one roadmap item under Planned.<br>• <strong>TableHeaderRow + TableHeader</strong> &#8594; same component, two variants (both N/A on current roadmap).<br><br><strong>Excluded from this count:</strong><br>• No longer applicable — deprecated items (Heading atom, Image atom, SkeletonBlock atom, <strong>ProgressBarFill atom</strong> [responsibility lives inside ProgressBar], Accordion Chevron, TableHeaderRow, PaginationControl, Skeleton* molecules, NavGroup, NavItem, BidCenter Stage Arrow, TreeItem, Project Card, DataGrid, Timeline, TreeView, CalendarLayout organism, and others)<br>• Unplanned — 4 requested items not on roadmap (see Gaps tab)<br>• Specialty — ChartTooltip (molecule), ChartDataViz (organism) — tracked separately<br><br>Source: PM master list reconciled against UDS main commit c6ffa46b (Apr 22, 2026).",
+  "Complete": "85 components with <code>.tsx + _stories/ + _tests/</code> on UDS main branch (Apr 23, 2026). Names match main folder names.<br><br><strong>Atoms (27):</strong> Badge, Breadcrumb, Checkbox, Divider, FieldMessage, HelperText, Icon, IndicatorCounter, IndicatorDot, Input, Label, Logo, MenuToggleIcon, Overlay, PaginationItem, ProgressBar, ProgressRing, RadioButton, SkipLink, SliderRail, SliderThumb, SliderTrack, TextArea, Toggle, Tooltip, UserAvatar, VisuallyHidden<br><br><strong>Molecules (49):</strong> AccordionHeader, BreadcrumbItem, BreadcrumbTrail, Button, ButtonIcon, CalendarItemButton, CheckboxField, CircularIndicator, CircularProgress, DateInput, DropdownButton, DropdownInput, DropdownItem, FileUploadButton, FileUploadField, FileUploadProgress, FilterButton, FormField, HeaderButton, HeaderLogoButton, InlineSearchField, InputField, ListItem, LoadingButtonState, LoadingMask, LogoLoader, MenuItemContainer, ModalHeader, MultiSelectItem, NavSubmenuButton, NotificationMessage, NumberInputField, OverflowPanel, Pagination, Pill, ProgressBarField, QuickSearchField, RadioButtonField, SearchBar, SearchField, Slider, SliderField, StepIndicator, Tab, TableCell, TableRowContent, TextAreaField, ToastMessage, ToggleField<br><br><strong>Organisms (9):</strong> Accordion (PS-2180), BreadcrumbOrganism (PS-3642), Card (PS-3669), DropdownButton (PS-2657), MenuContainer (PS-2448), MenuHeaderOrganism (PS-3733), RadioButtonGroup (PS-2388), SplitButton (PS-2658), TabGroup (PS-3515)<br><br><strong>Discrepancies vs PM master list:</strong><br>• <strong>ProgressBarFill</strong> — PM listed this as its own atom with ticket PS-3762. On main, PS-3762 is the ticket for the <strong>ProgressBar atom itself</strong>, not a separate Fill atom. ProgressBarFill retired to <strong>No longer applicable</strong>: fill is an internal detail of ProgressBar (unlike Slider, where Rail/Thumb/Track are distinct reusable atoms).<br>• <strong>DropdownMenuContainer</strong> (PS-2617) — PM: Complete &#8594; Main: no folder at all. Demoted to Planned.<br>• <strong>Card</strong> (PS-3669) — Main: Complete since Mar 24 &#8594; PM master omitted it. Added here.",
+  "In Progress": "6 components in active development (cross-checked against UDS main + open MRs on project 74215032, Apr 23, 2026).<br><br><strong>PM-tracked In Progress (2):</strong><br>• <strong>MenuHeader</strong> (PS-4634) — Main: docs-only<br>• <strong>SkeletonLoading</strong> (PS-3746) — Main: CSS utility .is-loading shipped · Full molecule pending<br><br><strong>MR-driven In Progress (4, updated 2026-04-23):</strong><br>• <strong>FileUploadAvatar</strong> (PS-2824, molecule) — scaffold MR !251 merged · full implementation MR !257 open<br>• <strong>SingleSelectDropdown</strong> (PS-2616, organism) — MR !236 open · DropdownInput now on main, unblocked<br>• <strong>TableActionsHeader</strong> (PS-3620, molecule) — MR !238 open<br>• <strong>TableRow</strong> (PS-3619, molecule) — MR !234 open · all 16/16 checklist done, discussions pending<br><br><strong>Recently completed:</strong> BreadcrumbOrganism (MR !260), HeaderLogoButton (MR !263), LoadingButtonState (MR !245) — all merged Apr 23.",
+  "In NPM Package": "70 components published via @unified_design_system/components (Cloudsmith NPM registry). <strong>Release MR !232 pending</strong> — will publish 12 more (CalendarItemButton PS-3632, DropdownButton PS-2657, DropdownInput PS-3434, FileUploadField PS-2732, FileUploadProgress PS-3715, ListItem PS-3791, MenuItemContainer PS-2652, NotificationMessage PS-3516, Pagination PS-3621, PaginationItem PS-3621, StepIndicator PS-3764, TabGroup PS-3515) plus a v5.0.0 major version bump (Toggle/ToggleField breaking changes) once merged.<br><br><strong>+3 newly complete (not yet in !232):</strong> BreadcrumbOrganism (PS-3642, MR !260), HeaderLogoButton (PS-2376, MR !263), LoadingButtonState (PS-2935, MR !245) — will need a follow-up release MR or amendment to !232.<br><br>See the Complete popover for the full component list. Source: UDS main branch, Apr 23, 2026.",
   "Blocked": "No components are currently blocked. This metric tracks components that have a dependency or design decision preventing work from starting. If a blocker emerges, surface it here.",
   "Active Consumers": "5 teams engaged with the UDS NPM package (Active + In Progress). Status tracked via GitLab API (code scans) and manual (HubSpot integrations).<br><br><strong>Active (NPM Package):</strong><br>• <strong>Payment Portal</strong> — Most active adopter (Button, Input, Badge, Checkbox, Toggle, Label). Source: GitLab API · Mar 2026 Cloudsmith data.<br>• <strong>UCMS (Crimson)</strong> — Working with Khay as the team makes Crimson React. Two repos consuming: ucms-frontend + crimson-v2-frontend (\"Fusion\").<br>• <strong>Automation Support</strong> — qhub-portal depends on @unified_design_system/components (confirmed via GitLab, Apr 2026).<br><br><strong>In Progress (NPM Package):</strong><br>• <strong>GCV4</strong> — Active conversations, onboarding in progress. Component list pending scan.<br>• <strong>Identity Platform</strong> (user management + admin portal) — Using buttons. Component list pending scan.<br><br><strong>Informal / experimental (not counted):</strong><br>• <strong>AI Center of Excellence</strong> (SWE AI Enablement) — ai-marketplace-webapp depends on UDS in package.json. Not on the formal adoption list; confirm with team whether to promote.<br>• <strong>Takeoff (WebTakeOff FE)</strong> — components@^0.1.1 on develop branch; likely informal.<br>• <strong>Hackfest 2026</strong> — construct-pilot-ui and hackathon-whats-that are internal hackathon prototypes.<br><br><strong>Planned Pipeline:</strong><br>• <strong>OST</strong> — HubSpot integration, onboarding planned (manual tracking)<br>• <strong>FAI</strong> — HubSpot integration, onboarding planned (manual tracking)<br>• <strong>API Services</strong> (Developers Portal)<br>• <strong>Planswift</strong> — Reach out to Brandin Thomas re: components used"
 };
@@ -595,6 +595,37 @@ function el(tag, attrs, children) {
   else if (Array.isArray(children)) children.forEach(function(c) { if (c) e.appendChild(c); });
   else if (children instanceof HTMLElement) e.appendChild(children);
   return e;
+}
+
+function closeAllPopovers() {
+  var pops = document.querySelectorAll('.popover.show');
+  for (var i = 0; i < pops.length; i++) pops[i].classList.remove('show');
+  var btns = document.querySelectorAll('.info-btn.open');
+  for (var i = 0; i < btns.length; i++) btns[i].classList.remove('open');
+}
+function togglePopover(popId, btnEl) {
+  var pop = document.getElementById(popId);
+  if (!pop) return;
+  var willOpen = !pop.classList.contains('show');
+  closeAllPopovers();
+  if (willOpen) { pop.classList.add('show'); if (btnEl) btnEl.classList.add('open'); }
+}
+function toggleWeek(idx) {
+  var detail = document.getElementById('week-detail-' + idx);
+  if (!detail) return;
+  var willOpen = detail.style.display === 'none';
+  for (var j = 0; j < 6; j++) {
+    var d = document.getElementById('week-detail-' + j);
+    var ch = document.getElementById('week-chevron-' + j);
+    if (d) d.style.display = 'none';
+    if (ch) ch.style.transform = 'rotate(0deg)';
+  }
+  if (willOpen) {
+    detail.style.display = 'block';
+    var ch = document.getElementById('week-chevron-' + idx);
+    if (ch) ch.style.transform = 'rotate(90deg)';
+  }
+  openWeek = willOpen ? idx : null;
 }
 
 function renderTabs() {
@@ -689,21 +720,17 @@ function renderOverview(container) {
     var mc = el('div', {className:'metric-card', style:{'--accent':m.color}});
     mc.innerHTML = '<div class="metric-val">'+m.value+'</div><div class="metric-label">'+m.label+'</div><div class="metric-sub">'+m.sub+'</div>';
 
-    // Info button + popover
-    var btn = el('button', {className:'info-btn' + (openPopover===m.label?' open':''), onclick:function(e) {
+    // Info button + popover (always rendered; toggle .show class directly, no full re-render)
+    var btn = el('button', {className:'info-btn', onclick:function(e) {
       e.stopPropagation();
-      openPopover = openPopover===m.label ? null : m.label;
-      renderContent();
+      togglePopover('pop-metric-'+i, this);
     }}, 'i');
     mc.appendChild(btn);
 
-    if (openPopover === m.label && popoverData[m.label]) {
-      var pop = el('div', {className:'popover show ' + (i>=3?'right':'left')});
-      // Auto-linkify PS-XXXX tickets in popover body. Popover data is authored
-      // as plain text (no pre-existing <a> tags around PS-*), so a simple global
-      // replace is safe and avoids the browser-compat cost of lookbehind.
+    if (popoverData[m.label]) {
+      var pop = el('div', {className:'popover ' + (i>=3?'right':'left'), id:'pop-metric-'+i});
       var bodyHtml = popoverData[m.label].replace(/\b(PS-\d+)\b/g, function(t){return jiraLink(t);});
-      pop.innerHTML = '<div class="popover-title"><span>'+m.label+'</span><button class="popover-close" onclick="openPopover=null;renderContent()">×</button></div>' + bodyHtml;
+      pop.innerHTML = '<div class="popover-title"><span>'+m.label+'</span><button class="popover-close" onclick="closeAllPopovers()">×</button></div>' + bodyHtml;
       mc.appendChild(pop);
     }
     metricsGrid.appendChild(mc);
@@ -767,7 +794,7 @@ function renderOverview(container) {
   // `kind: "target"` = counts toward the cdRemaining split.
   // `kind: "buffer"` = catch-up week; no work target, cushion for spillover.
   var weeks = [
-    {label:"Week of Apr 20–24",   start:"2026-04-20", kind:"target", target:5, originalTarget:17},
+    {label:"Week of Apr 20–24",   start:"2026-04-20", kind:"target", target:0, originalTarget:19},
     {label:"Week of Apr 27–May 1",start:"2026-04-27", kind:"target", target:10},
     {label:"Week of May 4–8",     start:"2026-05-04", kind:"target", target:14},
     {label:"Week of May 11–15",   start:"2026-05-11", kind:"target"},
@@ -862,8 +889,8 @@ function renderOverview(container) {
     var currentTag = isCurrent ? '<div style="font-size:10px;color:var(--color-status-warning-default);font-weight:700;text-transform:uppercase;margin-top:2px;margin-left:18px">this week</div>' : '';
     var bufferTag  = isBuffer  ? ' <span style="font-size:10px;color:var(--color-neutral-500);font-weight:700;text-transform:uppercase;margin-left:4px;background:var(--color-neutral-200);padding:1px 6px;border-radius:3px">buffer</span>' : '';
     // Buffer rows are not clickable (nothing to expand).
-    var chevron = isBuffer ? '<span style="display:inline-block;width:12px;color:var(--color-neutral-300);margin-right:6px">·</span>' : '<span style="display:inline-block;transition:transform .2s;transform:rotate('+(isOpen?'90':'0')+'deg);color:var(--color-neutral-400);margin-right:6px">&#9656;</span>';
-    var clickAttr = isBuffer ? '' : ' onclick="event.stopPropagation();openWeek=openWeek==='+i+'?null:'+i+';renderContent()"';
+    var chevron = isBuffer ? '<span style="display:inline-block;width:12px;color:var(--color-neutral-300);margin-right:6px">·</span>' : '<span id="week-chevron-'+i+'" style="display:inline-block;transition:transform .2s;transform:rotate('+(isOpen?'90':'0')+'deg);color:var(--color-neutral-400);margin-right:6px">&#9656;</span>';
+    var clickAttr = isBuffer ? '' : ' onclick="event.stopPropagation();toggleWeek('+i+')"';
     var cursorStyle = isBuffer ? 'default' : 'pointer';
     var labelColor = isBuffer ? 'var(--color-neutral-400)' : 'var(--color-neutral-600)';
     // For the current week, compute shipped count to show ✓ done vs remaining.
@@ -909,15 +936,13 @@ function renderOverview(container) {
     tHtml += trailingCell;
     tHtml += '</div>';
 
-    // Expanded component list — target weeks only.
-    if (isOpen && !isBuffer) {
+    // Expanded component list — always in DOM, hidden/shown via display toggle (no re-render).
+    if (!isBuffer) {
       var list = weeklyAssignments[i] || [];
-      // Shipped: cross-reference recentlyMergedTickets against completeComponents.
-      // Only populated for the current week (recentlyMergedTickets is a rolling ~7-day window).
       var shipped = isCurrent
         ? completeComponents.filter(function(c){ return c.ticket && recentlyMergedTickets.indexOf(c.ticket) !== -1; })
         : [];
-      tHtml += '<div onclick="event.stopPropagation()" style="margin:-4px 0 4px 0;padding:14px 16px;background:#F5FBFC;border:1px solid #00838F;border-top:none;border-radius:0 0 6px 6px">';
+      tHtml += '<div id="week-detail-'+i+'" onclick="event.stopPropagation()" style="display:'+(isOpen?'block':'none')+';margin:-4px 0 4px 0;padding:14px 16px;background:#F5FBFC;border:1px solid #00838F;border-top:none;border-radius:0 0 6px 6px">';
 
       // ── Shipped section ──────────────────────────────────────
       if (shipped.length > 0) {
@@ -975,10 +1000,11 @@ function renderOverview(container) {
   var donutSvg = el('div'); donutSvg.innerHTML = svgDonut(deliveryStatus, 160, 22);
   donutInner.appendChild(donutSvg);
   var legendDiv = el('div', {style:{flex:'1'}});
-  legendDiv.innerHTML = '<div style="font-size:11px;color:var(--color-neutral-400);margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Data Updated — April 22, 2026</div>';
+  var legendHtml = '<div style="font-size:11px;color:var(--color-neutral-400);margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Data Updated — April 22, 2026</div>';
   deliveryStatus.forEach(function(g) {
-    legendDiv.innerHTML += '<div class="legend-item"><span class="legend-swatch" style="background:'+g.color+'"></span><span class="legend-name">'+g.name+'</span><span class="legend-val">'+g.value+'</span></div>';
+    legendHtml += '<div class="legend-item"><span class="legend-swatch" style="background:'+g.color+'"></span><span class="legend-name">'+g.name+'</span><span class="legend-val">'+g.value+'</span></div>';
   });
+  legendDiv.innerHTML = legendHtml;
   donutInner.appendChild(legendDiv);
   donutCard.appendChild(donutInner);
   row.appendChild(donutCard);
@@ -1007,21 +1033,25 @@ function renderOverview(container) {
 
   // Complete
   var compCard = card('Fully Complete — Monorepo Audit ('+completeComponents.length+')', "Vivian's audit: code + Storybook + JSON tokens + tests");
+  var compRows = '';
   completeComponents.forEach(function(c) {
     var ticketSuffix = c.ticket ? '<span style="font-size:11px;margin-left:8px">'+jiraLink(c.ticket, 'font-size:11px')+'</span>' : '';
     var badge = (c.ticket && recentlyMergedTickets.indexOf(c.ticket) !== -1) ? NEW_BADGE : '';
-    compCard.innerHTML += '<div class="comp-row" style="background:#F0FAF0;border-left:3px solid var(--color-status-success-default)"><span style="display:flex;align-items:baseline;gap:0"><span class="comp-name">'+c.name+'</span>'+badge+ticketSuffix+'</span><span class="comp-type">'+c.type+'</span></div>';
+    compRows += '<div class="comp-row" style="background:#F0FAF0;border-left:3px solid var(--color-status-success-default)"><span style="display:flex;align-items:baseline;gap:0"><span class="comp-name">'+c.name+'</span>'+badge+ticketSuffix+'</span><span class="comp-type">'+c.type+'</span></div>';
   });
+  compCard.innerHTML += compRows;
   listRow.appendChild(compCard);
 
   // Partial + Missing
   var rightCol = el('div', {style:{display:'flex',flexDirection:'column',gap:'16px'}});
   var partCard = card('Needs Attention ('+partialComponents.length+')', 'Working but missing tokens, docs, or naming fixes');
+  var partRows = '';
   partialComponents.forEach(function(c) {
     var ticketSuffix = c.ticket ? ' · ' + jiraLink(c.ticket, 'font-size:11px') : '';
     var badge = (c.ticket && recentlyMergedTickets.indexOf(c.ticket) !== -1) ? NEW_BADGE : '';
-    partCard.innerHTML += '<div class="comp-row" style="background:#FFFDF5;border-left:3px solid var(--color-status-warning-default)"><div><span class="comp-name">'+c.name+'</span>'+badge+ticketSuffix+'<div class="comp-issue">'+c.issue+'</div></div><span class="comp-type">'+c.type+'</span></div>';
+    partRows += '<div class="comp-row" style="background:#FFFDF5;border-left:3px solid var(--color-status-warning-default)"><div><span class="comp-name">'+c.name+'</span>'+badge+ticketSuffix+'<div class="comp-issue">'+c.issue+'</div></div><span class="comp-type">'+c.type+'</span></div>';
   });
+  partCard.innerHTML += partRows;
   rightCol.appendChild(partCard);
 
   var missCard = card('Missing Documentation (0)', 'All components now have documentation');
@@ -1224,18 +1254,22 @@ function renderGaps(container) {
 
   // Closed
   var closedCard = card('Closed Gaps ('+closedGaps.length+' resolved)', 'System-level decisions on how each pattern is addressed — decomposition or rejection. Not every piece has shipped, but the approach is decided.');
+  var closedRows = '';
   closedGaps.forEach(function(g) {
     var closedByHtml = g.closedBy.replace(/\b(PS-\d+)\b/g, function(t){return jiraLink(t, 'font-size:11px');});
-    closedCard.innerHTML += '<div class="gap-row"><div class="gap-name">'+g.name+'</div><div class="gap-by">'+closedByHtml+'</div></div>';
+    closedRows += '<div class="gap-row"><div class="gap-name">'+g.name+'</div><div class="gap-by">'+closedByHtml+'</div></div>';
   });
+  closedCard.innerHTML += closedRows;
   row.appendChild(closedCard);
 
   // Readiness
   var readCard = card('Post-Roadmap Readiness', 'Items beyond the current roadmap — how close each is to having specs documented');
+  var readRows = '';
   gapReadiness.forEach(function(r) {
     var color = r.level>=50?'var(--color-status-success-default)':r.level>=25?'var(--color-status-warning-default)':'var(--color-status-error-default)';
-    readCard.innerHTML += '<div class="readiness-row"><div class="readiness-label"><span>'+r.label+'</span><span>'+r.note+'</span></div><div class="readiness-track"><div class="readiness-fill" style="width:'+r.level+'%;background:'+color+'"></div></div></div>';
+    readRows += '<div class="readiness-row"><div class="readiness-label"><span>'+r.label+'</span><span>'+r.note+'</span></div><div class="readiness-track"><div class="readiness-fill" style="width:'+r.level+'%;background:'+color+'"></div></div></div>';
   });
+  readCard.innerHTML += readRows;
   row.appendChild(readCard);
   container.appendChild(row);
 }
@@ -1337,16 +1371,16 @@ function renderSystems(container) {
 // MCP DOCS TAB
 // ═══════════════════════════════════════════════════════
 function renderMCPDocs(container) {
-  // ── Blueprint MCP (UDS MCP servers) — live state + PS-4357 roadmap, pulled 2026-04-21 ──
-  var bpCard = card('Blueprint MCP — UDS MCP Servers', 'Live at apps/uds-mcp-server-{remote,local}/ in unified_design_system repo · 8 tools today · 4 more + skills + plugin coming in PS-4357');
+  // ── Blueprint MCP (UDS MCP servers) — live state + PS-4357 roadmap, pulled 2026-04-23 ──
+  var bpCard = card('Blueprint MCP — UDS MCP Servers', 'Live at apps/uds-mcp-server-{remote,local}/ in unified_design_system repo · 4 tools live · 4 intake tools temporarily removed (prod env pending) · 4 more + skills + plugin coming in PS-4357');
   var bpHTML = '';
 
   // Headline: tool counts
   bpHTML += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">';
   bpHTML += '<div style="padding:20px;background:#E8F5E9;border:2px solid #C8E6C9;border-radius:8px;text-align:center">';
-  bpHTML += '<div style="font-size:40px;font-weight:700;color:var(--color-status-success-default);margin-bottom:4px">8</div>';
+  bpHTML += '<div style="font-size:40px;font-weight:700;color:var(--color-status-success-default);margin-bottom:4px">4</div>';
   bpHTML += '<div style="font-size:13px;font-weight:600;color:var(--color-neutral-600)">Tools live today</div>';
-  bpHTML += '<div style="font-size:11px;color:var(--color-neutral-400);margin-top:4px">6 remote (HTTP, Cloud Run) + 2 local (stdio)</div>';
+  bpHTML += '<div style="font-size:11px;color:var(--color-neutral-400);margin-top:4px">2 remote (HTTP, Cloud Run) + 2 local (stdio)</div>';
   bpHTML += '</div>';
   bpHTML += '<div style="padding:20px;background:#FFF8E1;border:2px solid #FFE082;border-radius:8px;text-align:center">';
   bpHTML += '<div style="font-size:40px;font-weight:700;color:#8B6914;margin-bottom:4px">+4 tools, +2 skills</div>';
@@ -1359,14 +1393,10 @@ function renderMCPDocs(container) {
   bpHTML += '<div style="margin-bottom:8px"><strong style="font-size:14px;color:var(--color-status-success-default)">🟢 Live Today</strong> — <code>apps/uds-mcp-server-remote</code> &amp; <code>apps/uds-mcp-server-local</code></div>';
   bpHTML += '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px">';
   var liveTools = [
-    {server:'Remote', name:'get_design_tokens',       desc:'Browse/search design tokens by category, component, or keyword'},
-    {server:'Remote', name:'get_component_context',   desc:'Component props, stories, and usage examples'},
-    {server:'Remote', name:'component_manifest',      desc:'List UDS components or search by name (via uds-intake-app API)'},
-    {server:'Remote', name:'request_component',       desc:'File a component request ticket'},
-    {server:'Remote', name:'report_issue',            desc:'Report an issue with an existing component'},
-    {server:'Remote', name:'contribute_component',    desc:'Submit a community contribution'},
-    {server:'Local',  name:'verify_setup',            desc:'Validate .env, .npmrc, env vars, Cloudsmith registry'},
-    {server:'Local',  name:'setup_consumer_environment', desc:'One-shot project setup for UDS consumers'}
+    {server:'Remote', name:'get_design_tokens',           desc:'Browse/search design tokens by category, component, or keyword'},
+    {server:'Remote', name:'get_component_context',       desc:'Component props, stories, and usage examples'},
+    {server:'Local',  name:'verify_setup',                desc:'Validate .env, .npmrc, env vars, Cloudsmith registry'},
+    {server:'Local',  name:'setup_consumer_environment',  desc:'One-shot project setup for UDS consumers'}
   ];
   liveTools.forEach(function(t){
     var badge = t.server==='Remote' ? '#C8E6C9' : '#B3E5FC';
@@ -1377,6 +1407,26 @@ function renderMCPDocs(container) {
     bpHTML += '<span style="font-size:10px;font-weight:700;color:'+badgeFg+';background:'+badge+';padding:2px 8px;border-radius:10px">'+t.server+'</span>';
     bpHTML += '</div>';
     bpHTML += '<div style="font-size:11px;color:var(--color-neutral-500);line-height:1.4">'+t.desc+'</div>';
+    bpHTML += '</div>';
+  });
+  bpHTML += '</div>';
+
+  // TEMPORARILY REMOVED
+  bpHTML += '<div style="margin-bottom:8px"><strong style="font-size:14px;color:var(--color-neutral-500)">⚪ Temporarily Removed — intake-app pending</strong> — code preserved in <code>remote-platform-tools.ts</code>; will re-register once prod <code>uds-intake-app</code> is available</div>';
+  bpHTML += '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px">';
+  var removedTools = [
+    {server:'Remote', name:'component_manifest',   desc:'List UDS components or search by name (via uds-intake-app API)'},
+    {server:'Remote', name:'request_component',    desc:'File a component request ticket'},
+    {server:'Remote', name:'report_issue',         desc:'Report an issue with an existing component'},
+    {server:'Remote', name:'contribute_component', desc:'Submit a community contribution'}
+  ];
+  removedTools.forEach(function(t){
+    bpHTML += '<div style="padding:12px;background:#F5F5F5;border:1px solid #E0E0E0;border-radius:8px;opacity:0.7">';
+    bpHTML += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">';
+    bpHTML += '<span style="font-family:monospace;font-size:12px;font-weight:700;color:var(--color-neutral-500)">'+t.name+'</span>';
+    bpHTML += '<span style="font-size:10px;font-weight:700;color:var(--color-neutral-500);background:#E0E0E0;padding:2px 8px;border-radius:10px">'+t.server+'</span>';
+    bpHTML += '</div>';
+    bpHTML += '<div style="font-size:11px;color:var(--color-neutral-400);line-height:1.4">'+t.desc+'</div>';
     bpHTML += '</div>';
   });
   bpHTML += '</div>';
@@ -1543,12 +1593,18 @@ function renderMCPDocs(container) {
   container.appendChild(benefitsCard);
 }
 
-// Close popover / expanded week on outside click
+// Close popover / expanded week on outside click — direct DOM update, no re-render
 document.addEventListener('click', function() {
-  var changed = false;
-  if (openPopover)    { openPopover = null; changed = true; }
-  if (openWeek !== null) { openWeek = null; changed = true; }
-  if (changed) renderContent();
+  closeAllPopovers();
+  for (var j = 0; j < 6; j++) {
+    var d = document.getElementById('week-detail-' + j);
+    if (d && d.style.display !== 'none') {
+      d.style.display = 'none';
+      var ch = document.getElementById('week-chevron-' + j);
+      if (ch) ch.style.transform = 'rotate(0deg)';
+      openWeek = null;
+    }
+  }
 });
 
 // ── INIT ───────────────────────────────────────────
