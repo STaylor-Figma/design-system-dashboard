@@ -1,6 +1,6 @@
 # Blueprint Dashboard - Data Sources Inventory
 
-**Last Updated:** April 17, 2026 (Synced with UDS `main` branch)
+**Last Updated:** April 27, 2026 (Synced with UDS `main` branch)
 
 ## Overview
 
@@ -99,11 +99,13 @@ All components now have documentation
 **Primary source (live):** GitLab code search of `apps/uds-mcp-server-remote/src/tools/` and `apps/uds-mcp-server-local/src/tools/` via `mcp__plugin_coco-ai-core_gitlab__semantic_code_search` on project 74215032 (`constructconnect/product-development/unified-design/unified_design_system`). Architecture docs: `apps/MCP_ARCHITECTURE.md`, plus per-server `ARCHITECTURE.md` files.
 **Secondary source (historical):** `/Users/taylors/Desktop/ConstructConnect-Projects/Design-System-Work/FIGMA-MCP-REQUIREMENTS-STATUS.md` (static markdown — about a different "MCP Readiness" concept, i.e. Figma MCP file-structure readiness; kept for reference only).
 
-### Live Inventory (pulled 2026-04-21) — 8 tools
+### Live Inventory (pulled 2026-04-27) — 4 tools
 
-**Remote server** (`apps/uds-mcp-server-remote/`, HTTP/Cloud Run, 6 tools):
+**Remote server** (`apps/uds-mcp-server-remote/`, HTTP/Cloud Run, 2 tools):
 - `get_design_tokens` — browse/search design tokens
 - `get_component_context` — component props, stories, usage examples
+
+**Temporarily removed from registration** (code preserved in `remote-platform-tools.ts`; pending production `uds-intake-app` environment):
 - `component_manifest` — list UDS components or search by name (via uds-intake-app API)
 - `request_component` — file a component request
 - `report_issue` — report a bug on an existing component
