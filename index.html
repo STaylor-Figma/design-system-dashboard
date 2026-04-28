@@ -126,7 +126,7 @@ tr.alt{background:#FAFAFA}
       <h1>Blueprint Design System</h1>
       <p class="sub">Status Dashboard — April 27, 2026</p>
     </div>
-    <div class="badge">v5.39 — pipeline: iid 4213 · Typography docs</div>
+    <div class="badge">v5.40 — component roadmap sync</div>
   </div>
   <div class="tabs" id="tabs"></div>
 </div>
@@ -285,7 +285,7 @@ var completeComponents = [
   {name:"CheckboxField",      type:"Molecule", ticket:"PS-1751"},
   {name:"CircularIndicator",type:"Molecule", ticket:"PS-2853"},
   {name:"CircularProgress", type:"Molecule"},
-  {name:"DateInput",        type:"Molecule"},
+  {name:"DateInput",        type:"Molecule", ticket:"PS-3633"},
   {name:"DropdownButton",   type:"Molecule", ticket:"PS-1726"},
   {name:"DropdownInput",      type:"Molecule", ticket:"PS-3434"},
   {name:"DropdownItem",       type:"Molecule", ticket:"PS-2357"},
@@ -295,7 +295,7 @@ var completeComponents = [
   {name:"FileUploadProgress", type:"Molecule", ticket:"PS-3715"},
   {name:"FilterButton",       type:"Molecule", ticket:"PS-3098"},
   {name:"FormField",        type:"Molecule", ticket:"PS-2873"},
-  {name:"HeaderButton",     type:"Molecule"},
+  {name:"HeaderButton",     type:"Molecule", ticket:"PS-2382"},
   {name:"HeaderLogoButton",   type:"Molecule", ticket:"PS-2376"},
   {name:"HeaderLogoTitle",    type:"Molecule", ticket:"PS-2375"},
   {name:"InlineSearchField",type:"Molecule", ticket:"PS-3730"},
@@ -305,7 +305,7 @@ var completeComponents = [
   {name:"LogoLoader",         type:"Molecule", ticket:"PS-2851"},
   {name:"MenuItemContainer",  type:"Molecule", ticket:"PS-2652"},
   {name:"ModalHeader",        type:"Molecule", ticket:"PS-3099"},
-  {name:"MultiSelectItem",  type:"Molecule"},
+  {name:"MultiSelectItem",  type:"Molecule", ticket:"PS-1610"},
   {name:"NavSubmenuButton",   type:"Molecule", ticket:"PS-2442"},
   {name:"NotificationMessage",type:"Molecule", ticket:"PS-3516"},
   {name:"NumberInputField",   type:"Molecule", ticket:"PS-3714"},
@@ -314,10 +314,10 @@ var completeComponents = [
   {name:"Pagination",       type:"Molecule", ticket:"PS-3621"},
   {name:"Pill",             type:"Molecule", ticket:"PS-1606"},
   {name:"ProgressBarField", type:"Molecule", ticket:"PS-3763"},
-  {name:"QuickSearchField", type:"Molecule"},
+  {name:"QuickSearchField", type:"Molecule", ticket:"PS-1760"},
   {name:"RadioButtonField", type:"Molecule", ticket:"PS-1761"},
   {name:"SearchBar",        type:"Molecule", ticket:"PS-3731"},
-  {name:"SearchField",      type:"Molecule"},
+  {name:"SearchField",      type:"Molecule", ticket:"PS-1760"},
   {name:"Slider",           type:"Molecule", ticket:"PS-2018"},
   {name:"SliderField",      type:"Molecule", ticket:"PS-2018"},
   {name:"StepIndicator",   type:"Molecule", ticket:"PS-3764"},
@@ -354,35 +354,36 @@ var partialComponents = [
 // retired to "No longer applicable" — its responsibility lives inside the ProgressBar
 // atom, so a separate Fill atom was redundant.
 var plannedComponents = [
-  // Molecules (3)
+  // Atoms (1)
+  {name:"Link",                     type:"Atom", ticket:"PS-4864"},
+  // Molecules (5)
+  {name:"Autocomplete",             type:"Molecule", ticket:"PS-4863", note:"Headless/non-UI autocomplete behavior for input-based components"},
   {name:"DropdownMenuContainer",    type:"Molecule", ticket:"PS-2617"},
   {name:"MenuToggleButton",         type:"Molecule", ticket:"PS-2381"},
   {name:"Segment Button",           type:"Molecule", ticket:"PS-4633"},
-  // Organisms (17)
+  {name:"StageNavItem",             type:"Molecule", ticket:"PS-4644", note:"Reusable BidCenter Stage Arrow pattern"},
+  // Organisms (15)
   {name:"ContentContainer",         type:"Organism", ticket:"PS-2179"},
   {name:"DateRangePicker",          type:"Organism", ticket:"PS-4627"},
   {name:"DatePickerField",          type:"Organism", ticket:"PS-3635"},
   {name:"DrawerModal",              type:"Organism", ticket:"PS-2818", note:"Unified pattern — covers both Drawer and Modal variants (same layout, different margins)"},
-  {name:"DropdownMenuHeader",       type:"Organism", ticket:"PS-2651"},
   {name:"Filter Dropdown",          type:"Organism", ticket:"PS-2826"},
   {name:"ModalFooter",              type:"Organism", ticket:"PS-3100"},
   {name:"MultiSelectDropdown",      type:"Organism", ticket:"PS-2618"},
-  {name:"Navigation",               type:"Organism"},
+  {name:"Navigation",               type:"Organism", ticket:"PS-4640"},
   {name:"Page Content Container",   type:"Organism", ticket:"PS-3644"},
   {name:"PageHeader",               type:"Organism", ticket:"PS-2384"},
-  {name:"Side Container",           type:"Organism", ticket:"PS-2954"},
-  {name:"Sidebar",                  type:"Organism"},
-  {name:"Submenu",                  type:"Organism"},
+  {name:"Side Container",           type:"Organism", ticket:"PS-2954", note:"Covers Sidebar / left or right rail usage"},
+  {name:"Submenu",                  type:"Organism", ticket:"PS-4638"},
   {name:"SubmenuContainer",         type:"Organism", ticket:"PS-2447"},
   {name:"SubmenuItemGroup",         type:"Organism", ticket:"PS-2446"},
   {name:"Table",                    type:"Organism", ticket:"PS-925"},
-  // Templates (6)
+  // Templates (5)
   {name:"DatePickerModal",          type:"Template", ticket:"PS-3638"},
-  {name:"Form Layout Templates",    type:"Template", ticket:"PS-3787"},
-  {name:"FormLayout",               type:"Template", ticket:"PS-3787"},
+  {name:"FormLayout",               type:"Template", ticket:"PS-3787", note:"Covers Form Layout Templates"},
+  {name:"ModalDateRange",           type:"Template", ticket:"PS-4867", note:"Blueprint Modal Date Range content template"},
   {name:"Modal",                    type:"Template", ticket:"PS-2818"},
-  {name:"PageLayout",               type:"Template", ticket:"PS-3645"},
-  {name:"form-template",            type:"Template"}
+  {name:"PageLayout",               type:"Template", ticket:"PS-3645"}
 ];
 
 // Docs Only — has docs scaffolded but no formal definition.
@@ -459,10 +460,10 @@ var gitlabRecentPipelines = [
 // monorepo = Complete count per level (verified on UDS main)
 // handoff = remaining work (extracted - monorepo)
 var atomicComparison = [
-  {level:"Atoms",     extracted:27, monorepo:27, handoff:0},
-  {level:"Molecules", extracted:58, monorepo:54, handoff:4},
-  {level:"Organisms", extracted:29, monorepo:12, handoff:17},
-  {level:"Templates", extracted:6,  monorepo:0,  handoff:6}
+  {level:"Atoms",     extracted:28, monorepo:27, handoff:1},
+  {level:"Molecules", extracted:60, monorepo:54, handoff:6},
+  {level:"Organisms", extracted:27, monorepo:12, handoff:15},
+  {level:"Templates", extracted:5,  monorepo:0,  handoff:5}
 ];
 
 var NEW_BADGE = '<span style="display:inline-block;padding:1px 6px;background:#d6f2c7;color:#459d13;border-radius:8px;font-size:9px;font-weight:700;vertical-align:middle;margin-left:5px">New!</span>';
@@ -500,14 +501,14 @@ var closedGaps = [
   {name:"Divider",       closedBy:"Divider atom (PS-3717) — complete, in Figma"},
   {name:"Drawer",        closedBy:"Merged into DrawerModal organism (PS-2818) — unified pattern, same layout / different margins"},
   {name:"FileUpload",    closedBy:"FileUploadButton + FileUploadProgress (PS-3715) + FileUploadField (PS-2732) + FileUploadAvatar (PS-2824) complete"},
-  {name:"FormLayout",    closedBy:"FormLayout + form-template + Form Layout Templates (templates) — Planned"},
-  {name:"Link",          closedBy:"Native &lt;a&gt; tags — no standalone Link atom by design"},
+  {name:"FormLayout",    closedBy:"FormLayout template (PS-3787) — covers Form Layout Templates and form-template"},
+  {name:"Link",          closedBy:"Link atom planned (PS-4864)"},
   {name:"Modal/Dialog",  closedBy:"DrawerModal + ModalHeader (complete) + ModalFooter (Planned)"},
   {name:"Pagination",    closedBy:"Pagination molecule (PS-3621) — complete (MR !241 merged). Rows-per-page dropdown placeholder pending PS-2616 (DropdownInput organism). TableFooter/TablePagination names retired."},
   {name:"Popover",       closedBy:"Popover organism (PS-3793) — complete. No separate Popover molecule; the organism is the component."},
   {name:"ProgressBar",   closedBy:"ProgressBar atom (PS-3762) + ProgressBarField molecule (PS-3763) complete. StepIndicator (PS-3764) + StepperContainer (PS-3765) complete. ProgressBarFill atom retired — PS-3762 was repurposed from PBF to ProgressBar itself"},
   {name:"SearchBar",     closedBy:"SearchBar + SearchField + InlineSearchField + QuickSearchField molecules complete; QuickSearch organism retired from roadmap"},
-  {name:"SideNav",       closedBy:"Navigation covers MainMenu needs; Sidebar + SubmenuContainer + SubmenuItemGroup organisms + NavMenuButton / NavSubmenuButton molecules remain on the roadmap"},
+  {name:"SideNav",       closedBy:"MainMenu organism retired; Side Container (PS-2954) covers Sidebar / left or right rail usage. Submenu, SubmenuContainer, SubmenuItemGroup, NavMenuButton, and NavSubmenuButton remain on the roadmap"},
   {name:"Skeleton",      closedBy:"Skeleton Loading System semantic CSS layer (.is-loading + skeleton.css tokens) is complete; no standalone SkeletonLoading component is currently tracked"},
   {name:"Slider",        closedBy:"SliderRail + SliderThumb + SliderTrack atoms + Slider + SliderField molecules (PS-2018) — all complete"},
   {name:"Spinner",       closedBy:"LoadingMask (PS-2855) + LogoLoader (PS-2851) + CircularIndicator (PS-2853) — all complete"},
@@ -520,10 +521,8 @@ var closedGaps = [
 // Drawer was previously here as "docs-only" — now merged into DrawerModal variant
 // (tracked under Planned, not a gap anymore).
 var remainingGaps = [
-  {name:"ComboBox / AutocompleteInput",   priority:"Low",   category:"Input",    inFigma:false,hasTokens:false,note:"Unplanned molecule — similar to DropdownInput but distinct; not on roadmap"},
   {name:"Right Header Button Group",      priority:"Low",   category:"Header",   inFigma:false,hasTokens:false,note:"Unplanned molecule — composed button group for app header right-side actions"},
   {name:"Inline Dropdown Field",          priority:"Low",   category:"Input",    inFigma:false,hasTokens:false,note:"Unplanned molecule — spirit similar to InlineSearchField but for dropdowns"},
-  {name:"modal-date-range",               priority:"Low",   category:"Overlay",  inFigma:false,hasTokens:false,note:"Unplanned organism — not on roadmap"}
 ];
 
 var popoverData = {
