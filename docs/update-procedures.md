@@ -107,7 +107,7 @@ var systems = [
 #### Variable 6: popoverData (if content needs updating)
 ```javascript
 var popoverData = {
-  "In NPM Package": "32 components in @constructconnect/ui-components...", // Update text
+  "In NPM Package": "32 components in @unified_design_system/components...", // Update text
   "Fully Shippable": "13 complete: Checkbox, Indicator...", // Update text
   // ... rest of popovers
 };
