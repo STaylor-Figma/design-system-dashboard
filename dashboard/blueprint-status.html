@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -126,7 +126,7 @@ tr.alt{background:#FAFAFA}
       <h1>Blueprint Design System</h1>
       <p class="sub">Status Dashboard — April 27, 2026</p>
     </div>
-    <div class="badge">v5.40 — component roadmap sync</div>
+    <div class="badge">v5.43 — merged MR sync · Apr 28</div>
   </div>
   <div class="tabs" id="tabs"></div>
 </div>
@@ -194,33 +194,25 @@ var TOKENS = (function() {
 // as Complete since Mar 24, PM table omitted it).
 // Roadmap = Complete + In Progress + Planned + Docs Only (excludes N/A + Unplanned).
 // Tickets confirmed merged to main this week (Apr 27–May 1). Updated by /refresh-uds-dashboard.
-var recentlyMergedTickets = ["PS-3619","PS-3642","PS-2376","PS-2935","PS-3621","PS-3434","PS-3763","PS-3713","PS-3618","PS-3098","PS-3516","PS-3515","PS-3715","PS-3764","PS-3632","PS-3791","PS-2657","PS-2652","PS-2732","PS-2824","PS-2616","PS-3793","PS-2375","PS-3620","PS-3643","PS-3765","PS-2383"];
+var recentlyMergedTickets = ["PS-4878","PS-4870","PS-4868","PS-4828","PS-4373","PS-2381","PS-3619","PS-3642","PS-2376","PS-2935","PS-3621","PS-3434","PS-3763","PS-3713","PS-3618","PS-3098","PS-3516","PS-3515","PS-3715","PS-3764","PS-3632","PS-3791","PS-2657","PS-2652","PS-2732","PS-2824","PS-2616","PS-3793","PS-2375","PS-3620","PS-3643","PS-3765","PS-2383"];
 // Tickets completed in the current week (Apr 27–May 1). Starts at 0 for the week.
-var currentWeekMergedTickets = ["PS-3620","PS-4407","PS-3643","PS-3765","PS-4372","PS-2383","PS-4772","PS-4449","PS-4458","PS-3632","PS-4457","PS-2375","PS-2616","PS-3793","PS-2824"];
-// Merge requests merged to UDS main today since 12:00am. Updated with the daily progress report.
+var currentWeekMergedTickets = ["PS-4878","PS-4870","PS-4868","PS-4828","PS-4373","PS-2381","PS-3620","PS-4407","PS-3643","PS-3765","PS-4372","PS-2383","PS-4772","PS-4449","PS-4458","PS-3632","PS-4457","PS-2375","PS-2616","PS-3793","PS-2824"];
+// Merge requests merged to UDS main today since 12:00am. Updated with the daily progress report (Apr 28, 2026).
 var mergedTodayMergeRequests = [
-  {iid:238, title:"[PS-3620] Add Actions Header molecule"},
-  {iid:280, title:"[PS-4407] Add typography foundation documentation to UDS Storybook"},
-  {iid:275, title:"[PS-3643] Scaffold PageHeader molecule"},
-  {iid:277, title:"[PS-3765] Scaffold StepperContainer organism"},
-  {iid:278, title:"[PS-4372] Add company branding color tokens to primitives"},
-  {iid:286, title:"[PS-2383] feat(UsernameButton): add UsernameButton molecule with design tokens, stories, tests"},
-  {iid:283, title:"[PS-4772] Add 119 Blueprint reference MDX files for AI accuracy context"},
-  {iid:284, title:"[PS-4449] Add Motion Guidelines story to UDS Storybook foundation"},
-  {iid:285, title:"[PS-4458] Add Voice and Tone documentation to UDS Storybook foundation"},
-  {iid:276, title:"[PS-3632] Complete CalendarItemButton molecule scaffold"},
-  {iid:282, title:"[PS-4457] Update Getting Started docs - fix tokens, add DesignTokens page"},
-  {iid:270, title:"feat(HeaderLogoTitle): add molecule composing Logo atom with optional title text [PS-2375]"},
-  {iid:236, title:"[PS-2616] Add SingleSelectDropdown organism"},
-  {iid:269, title:"[PS-3793] Add Popover organism with 8 pointer variants"},
-  {iid:257, title:"[PS-2824] Add FileUploadAvatar molecule"}
+  {iid:292, title:"[PS-4878] Remove Ark UI runtime dependency"},
+  {iid:294, title:"[PS-4870] Add reusable hooks to system package"},
+  {iid:290, title:"[PS-4868] Deprecate and remove ToastMessage in favour of NotificationMessage"},
+  {iid:288, title:"[PS-4828] fix(Popover): tokenise padding/gap, align arrow offset, add per-variant tests"},
+  {iid:289, title:"[PS-2381] Add MenuToggleButton molecule with animated hamburger-to-X morph"},
+  {iid:279, title:"[PS-4373] Add color foundation documentation to UDS Storybook"},
+  {iid:291, title:"chore: Align CLAUDE component snapshot with dashboard"}
 ];
 
 var topMetrics = [
   {label:"Total Components",value:119,sub:"Active roadmap — Complete + In Progress + Planned + Docs Only",color:TOKENS.primary500},
-  {label:"Complete",        value:92, sub:"27 atoms + 53 molecules + 12 organisms",color:TOKENS.success},
-  {label:"In Progress",     value:2,  sub:"2 molecules in active development",color:TOKENS.warning},
-  {label:"In NPM Package",  value:70, sub:"70 published via Cloudsmith · release MR !232 pending @components 5.0.0 with today's merged component batch",color:TOKENS.primary500},
+  {label:"Complete",        value:93, sub:"27 atoms + 54 molecules + 12 organisms",color:TOKENS.success},
+  {label:"In Progress",     value:1,  sub:"1 molecule in active development",color:TOKENS.warning},
+  {label:"In NPM Package",  value:70, sub:"70 published via Cloudsmith · release MR !232 pending @components 5.0.0 · Apr 27–28 component batch",color:TOKENS.primary500},
   {label:"Blocked",         value:0,  sub:"No current blockers",color:TOKENS.primary600},
   {label:"Active Consumers",value:5,  sub:"Payment Portal, UCMS, Automation Support active · GCV4, Identity Platform in progress",color:TOKENS.primary600}
 ];
@@ -232,14 +224,14 @@ var pipelineStats = {
 };
 
 var deliveryStatus = [
-  {name:"Complete",    value:92, color:TOKENS.success},
-  {name:"In Progress", value:2,  color:TOKENS.warning},
+  {name:"Complete",    value:93, color:TOKENS.success},
+  {name:"In Progress", value:1,  color:TOKENS.warning},
   {name:"Planned",     value:25, color:"#00838F"},
   {name:"Docs Only",   value:0,  color:"#6B3FA0"}
 ];
 
 // Complete component inventory (Apr 27, 2026), aligned to the UDS roadmap status tracker.
-// Count: 92 components (27 atoms + 53 molecules + 12 organisms).
+// Count: 93 components (27 atoms + 54 molecules + 12 organisms).
 // Note: tracker reports 88 implemented component folders + 1 semantic completion outside folders.
 // Corrections from PM master list:
 //   - ProgressBarFill (PS-3762) demoted: docs-only on main, no .tsx
@@ -304,6 +296,7 @@ var completeComponents = [
   {name:"LoadingMask",      type:"Molecule", ticket:"PS-2855"},
   {name:"LogoLoader",         type:"Molecule", ticket:"PS-2851"},
   {name:"MenuItemContainer",  type:"Molecule", ticket:"PS-2652"},
+  {name:"MenuToggleButton",   type:"Molecule", ticket:"PS-2381"},
   {name:"ModalHeader",        type:"Molecule", ticket:"PS-3099"},
   {name:"MultiSelectItem",  type:"Molecule", ticket:"PS-1610"},
   {name:"NavSubmenuButton",   type:"Molecule", ticket:"PS-2442"},
@@ -345,8 +338,7 @@ var completeComponents = [
 
 // In Progress — active development in the roadmap status tracker.
 var partialComponents = [
-  {name:"NavMenuButton",          type:"Molecule", ticket:"PS-2441", issue:"MR !273 open · 1 of 2 approvals · awaiting final review"},
-  {name:"MenuToggleButton",       type:"Molecule", ticket:"PS-2381", issue:"Implementation scaffold is on main (.tsx/.css/index/docs); stories/tests pending"}
+  {name:"NavMenuButton",          type:"Molecule", ticket:"PS-2441", issue:"MR !273 open · awaiting review · last activity Apr 28"}
 ];
 
 // Planned — on roadmap, not yet started. Includes DropdownMenuContainer (PS-2617)
@@ -393,47 +385,55 @@ var docsOnlyComponents = [];
 // ═══════════════════════════════════════════════════════
 // GITLAB PIPELINE SNAPSHOT (for Pipeline tab)
 // Source: GitLab API /projects/.../pipelines?ref=main
-// Snapshot taken Apr 27, 2026 — to refresh, re-run the dashboard update with
+// Snapshot taken Apr 28, 2026 — to refresh, re-run the dashboard update with
 // GitLab MCP tools (manage_pipeline list + get_pipeline_jobs for latest).
 // ═══════════════════════════════════════════════════════
 var gitlabProject = {
   path:     "constructconnect/product-development/unified-design/unified_design_system",
   url:      "https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system",
-  snapshotAt: "2026-04-27T23:05:00Z",
+  snapshotAt: "2026-04-28T23:01:00Z",
   branch:   "main"
 };
 
 // Latest pipeline on main — stages derived from get_pipeline_jobs response.
 // Stage duration = sum of job durations in that stage (approximate; ignores parallelism).
 var gitlabLatestPipeline = {
-  iid: 4213,
-  id: 2483628764,
-  sha: "5f98331b",
+  iid: 4303,
+  id: 2486716514,
+  sha: "436a68ba",
   status: "success",
   source: "push",
-  created_at: "2026-04-27T22:44:16Z",
-  updated_at: "2026-04-27T22:56:34Z",
-  duration_seconds: 738,
-  commit_title: "Merge branch 'vc/PS-4407/docs/Update-Typography-Documentation' into 'main'",
-  commit_ref:   "PS-4407",
+  created_at: "2026-04-28T22:35:38Z",
+  updated_at: "2026-04-28T22:48:18Z",
+  duration_seconds: 760,
+  commit_title: "Merge branch 'vc/PS-4870/feat/Add-hooks' into 'main'",
+  commit_ref:   "PS-4870",
   author: "Vivian Conrad",
-  web_url: "https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2483628764",
+  web_url: "https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2486716514",
   stages: [
-    {name:"lint",     jobs:2, duration:15,  status:"success"},
-    {name:"prepare",  jobs:1, duration:96,  status:"success"},
-    {name:"test",     jobs:3, duration:185, status:"success"},
-    {name:"release",  jobs:1, duration:79,  status:"success"},
-    {name:"build",    jobs:1, duration:154, status:"success"},
-    {name:"patch",    jobs:1, duration:113, status:"success"},
-    {name:"push",     jobs:1, duration:51,  status:"success"},
-    {name:"deploy",   jobs:1, duration:130, status:"success"},
+    {name:"lint",     jobs:2, duration:17,  status:"success"},
+    {name:"prepare",  jobs:1, duration:87,  status:"success"},
+    {name:"test",     jobs:3, duration:186, status:"success"},
+    {name:"release",  jobs:1, duration:86,  status:"success"},
+    {name:"build",    jobs:1, duration:182, status:"success"},
+    {name:"patch",    jobs:1, duration:107, status:"success"},
+    {name:"push",     jobs:1, duration:66,  status:"success"},
+    {name:"deploy",   jobs:1, duration:123, status:"success"},
     {name:"rollback", jobs:1, duration:0,   status:"manual"}
   ]
 };
 
 // Last 20 pipelines on main (newest first). Duration = updated_at - created_at in seconds.
 var gitlabRecentPipelines = [
-  {iid:4218, sha:"4aabf6ed", status:"running",  source:"push",     created_at:"2026-04-27T22:51:24Z", duration:0,    web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2483636371"},
+  {iid:4308, sha:"f447aef7", status:"running",  source:"push",     created_at:"2026-04-28T22:50:26Z", duration:0,    web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2486732946"},
+  {iid:4303, sha:"436a68ba", status:"success",  source:"push",     created_at:"2026-04-28T22:35:38Z", duration:760,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2486716514"},
+  {iid:4296, sha:"84e49ecc", status:"success",  source:"push",     created_at:"2026-04-28T21:33:15Z", duration:1352, web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2486617097"},
+  {iid:4283, sha:"762e2477", status:"success",  source:"push",     created_at:"2026-04-28T17:22:28Z", duration:879,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2486159562"},
+  {iid:4282, sha:"af85fea7", status:"success",  source:"push",     created_at:"2026-04-28T17:22:04Z", duration:903,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2486158994"},
+  {iid:4246, sha:"d4d7ada4", status:"success",  source:"push",     created_at:"2026-04-28T15:47:58Z", duration:796,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2485945353"},
+  {iid:4245, sha:"b3aca4b9", status:"success",  source:"push",     created_at:"2026-04-28T15:44:24Z", duration:779,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2485926218"},
+  {iid:4233, sha:"4aabf6ed", status:"failed",   source:"schedule", created_at:"2026-04-28T02:59:37Z", duration:275,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2483915185"},
+  {iid:4218, sha:"4aabf6ed", status:"success",  source:"push",     created_at:"2026-04-27T22:51:24Z", duration:690,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2483636371"},
   {iid:4213, sha:"5f98331b", status:"success",  source:"push",     created_at:"2026-04-27T22:44:16Z", duration:738,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2483628764"},
   {iid:4210, sha:"a4483f98", status:"success",  source:"push",     created_at:"2026-04-27T22:37:22Z", duration:682,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2483621494"},
   {iid:4195, sha:"608f3027", status:"success",  source:"push",     created_at:"2026-04-27T22:09:59Z", duration:734,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2483581591"},
@@ -444,15 +444,7 @@ var gitlabRecentPipelines = [
   {iid:4128, sha:"b3805bb1", status:"success",  source:"push",     created_at:"2026-04-27T20:24:31Z", duration:751,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2483390348"},
   {iid:4127, sha:"6857a330", status:"success",  source:"push",     created_at:"2026-04-27T20:20:34Z", duration:719,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2483382623"},
   {iid:4112, sha:"438a7eb9", status:"success",  source:"push",     created_at:"2026-04-27T19:42:12Z", duration:696,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2483301245"},
-  {iid:4111, sha:"5f1c78af", status:"failed",   source:"web",      created_at:"2026-04-27T19:40:46Z", duration:780,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2483299290"},
-  {iid:4094, sha:"5f1c78af", status:"success",  source:"push",     created_at:"2026-04-27T18:12:06Z", duration:786,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2483147660"},
-  {iid:4093, sha:"3d06ba24", status:"failed",   source:"web",      created_at:"2026-04-27T17:58:51Z", duration:10037, web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2483117091"},
-  {iid:3989, sha:"3d06ba24", status:"failed",   source:"push",     created_at:"2026-04-27T14:23:15Z", duration:194,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2482639019"},
-  {iid:3982, sha:"e8632ef4", status:"success",  source:"push",     created_at:"2026-04-27T13:54:51Z", duration:822,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2482559704"},
-  {iid:3981, sha:"ef6f72bb", status:"success",  source:"push",     created_at:"2026-04-27T13:53:08Z", duration:748,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2482555807"},
-  {iid:3978, sha:"b6f357be", status:"failed",   source:"schedule", created_at:"2026-04-27T03:00:20Z", duration:206,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2481257336"},
-  {iid:3977, sha:"b6f357be", status:"failed",   source:"schedule", created_at:"2026-04-26T03:06:57Z", duration:222,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2480087819"},
-  {iid:3970, sha:"b6f357be", status:"failed",   source:"schedule", created_at:"2026-04-25T02:59:35Z", duration:303,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2478811782"}
+  {iid:4111, sha:"5f1c78af", status:"failed",   source:"web",      created_at:"2026-04-27T19:40:46Z", duration:781,  web_url:"https://gitlab.com/constructconnect/product-development/unified-design/unified_design_system/-/pipelines/2483299290"}
 ];
 
 // extracted = on active roadmap (Complete + In Progress + Planned + Docs Only)
@@ -460,7 +452,7 @@ var gitlabRecentPipelines = [
 // handoff = remaining work (extracted - monorepo)
 var atomicComparison = [
   {level:"Atoms",     extracted:28, monorepo:27, handoff:1},
-  {level:"Molecules", extracted:59, monorepo:53, handoff:6},
+  {level:"Molecules", extracted:59, monorepo:54, handoff:5},
   {level:"Organisms", extracted:27, monorepo:12, handoff:15},
   {level:"Templates", extracted:5,  monorepo:0,  handoff:5}
 ];
@@ -513,7 +505,7 @@ var closedGaps = [
   {name:"Spinner",       closedBy:"LoadingMask (PS-2855) + LogoLoader (PS-2851) + CircularIndicator (PS-2853) — all complete"},
   {name:"Table",         closedBy:"TableCell + TableRowContent + Pagination + TableRow + ActionsHeader complete; Table organism Planned"},
   {name:"Toast / Notifications", closedBy:"NotificationMessage molecule (PS-3516) is the canonical notification component and replaces ToastMessage — five semantic variants, four behavioral modes (Toast/Snackbar/Banner/Inline)"},
-  {name:"TopNav",        closedBy:"PageHeader molecule (PS-3643) + HeaderButton + HeaderLogoButton + HeaderLogoTitle + UsernameButton complete; PageHeader organism (PS-2384) planned and MenuToggleButton in progress (PS-2381)"}
+  {name:"TopNav",        closedBy:"PageHeader molecule (PS-3643) + HeaderButton + HeaderLogoButton + HeaderLogoTitle + UsernameButton complete; PageHeader organism (PS-2384) planned and MenuToggleButton complete (PS-2381)"}
 ];
 
 // Certification Queue — items requested or prototyped but not on the roadmap.
@@ -525,9 +517,9 @@ var remainingGaps = [
 ];
 
 var popoverData = {
-  "Total Components": "119 components are on the active roadmap as of Apr 27, 2026. Breakdown: Complete 92, In Progress 2, Planned 25, Docs Only 0.",
-  "Complete": "92 complete components in the dashboard inventory (27 atoms, 53 molecules, 12 organisms). This aligns with the latest roadmap status tracker and includes promoted components ActionsHeader, PageHeader, UsernameButton, and StepperContainer.",
-  "In Progress": "2 components are in active development: NavMenuButton (PS-2441) and MenuToggleButton (PS-2381). Open non-component/foundation MRs are tracked separately and do not change component delivery counts.",
+  "Total Components": "119 components are on the active roadmap as of Apr 28, 2026. Breakdown: Complete 93, In Progress 1, Planned 25, Docs Only 0.",
+  "Complete": "93 complete components in the dashboard inventory (27 atoms, 54 molecules, 12 organisms). This aligns with the latest roadmap status tracker. Latest addition: MenuToggleButton (PS-2381, MR !289 merged Apr 28).",
+  "In Progress": "1 component is in active development: NavMenuButton (PS-2441, MR !273 open). MenuToggleButton (PS-2381) completed Apr 28 via MR !289.",
   "In NPM Package": "70 components published via @unified_design_system/components (Cloudsmith NPM registry). <strong>Release MR !232 pending</strong> - now packages @unified_design_system/components@5.0.0 and will need to absorb the latest merged component batch (ActionsHeader PS-3620, PageHeader PS-3643, UsernameButton PS-2383, StepperContainer PS-3765) or be followed by another release. Published count stays 70 until the release MR merges.<br><br>See the Complete popover for the full component list. Source: UDS main branch, Apr 27, 2026.",
   "Blocked": "No components are currently blocked. This metric tracks components that have a dependency or design decision preventing work from starting. If a blocker emerges, surface it here.",
   "Active Consumers": "5 teams engaged with the UDS NPM package (Active + In Progress). Status tracked via GitLab API (code scans) and manual (HubSpot integrations).<br><br><strong>Active (NPM Package):</strong><br>• <strong>Payment Portal</strong> — Most active adopter (Button, Input, Badge, Checkbox, Toggle, Label). Source: GitLab API · Mar 2026 Cloudsmith data.<br>• <strong>UCMS (Crimson)</strong> — Working with Khay as the team makes Crimson React. Two repos consuming: ucms-frontend + crimson-v2-frontend (\"Fusion\").<br>• <strong>Automation Support</strong> — qhub-portal depends on @unified_design_system/components (confirmed via GitLab, Apr 2026).<br><br><strong>In Progress (NPM Package):</strong><br>• <strong>GCV4</strong> — Active conversations, onboarding in progress. Component list pending scan.<br>• <strong>Identity Platform</strong> (user management + admin portal) — Using buttons. Component list pending scan.<br><br><strong>Informal / experimental (not counted):</strong><br>• <strong>AI Center of Excellence</strong> (SWE AI Enablement) — ai-marketplace-webapp depends on UDS in package.json. Not on the formal adoption list; confirm with team whether to promote.<br>• <strong>Takeoff (WebTakeOff FE)</strong> — components@^0.1.1 on develop branch; likely informal.<br>• <strong>Hackfest 2026</strong> — construct-pilot-ui and hackathon-whats-that are internal hackathon prototypes.<br><br><strong>Planned Pipeline:</strong><br>• <strong>OST</strong> — HubSpot integration, onboarding planned (manual tracking)<br>• <strong>FAI</strong> — HubSpot integration, onboarding planned (manual tracking)<br>• <strong>API Services</strong> (Developers Portal)<br>• <strong>Planswift</strong> — Reach out to Brandin Thomas re: components used"
@@ -721,9 +713,9 @@ function jiraLink(ticket, extraStyle) {
 function getDefaultWeeks() {
   return [
     {label:"Week of Apr 20–24",   start:"2026-04-20", kind:"target", target:0, originalTarget:19, completedActual:20},
-    {label:"Week of Apr 27–May 1",start:"2026-04-27", kind:"target", target:14},
-    {label:"Week of May 4–8",     start:"2026-05-04", kind:"target", target:7},
-    {label:"Week of May 11–15",   start:"2026-05-11", kind:"target", target:6},
+    {label:"Week of Apr 27–May 1",start:"2026-04-27", kind:"target", target:8, originalTarget:8, completedActual:10},
+    {label:"Week of May 4–8",     start:"2026-05-04", kind:"target", target:9},
+    {label:"Week of May 11–15",   start:"2026-05-11", kind:"target", target:9},
     {label:"Week of May 18–22",   start:"2026-05-18", kind:"target", target:0},
     {label:"Week of May 25–29",   start:"2026-05-25", kind:"buffer"}
   ];
@@ -746,6 +738,7 @@ function computeDeliveryInvariants(atomicComparison, weeksIn) {
     var dSeen = 0;
     for (var wi = 0; wi < weeks.length; wi++) {
       if (weeks[wi].kind === 'buffer') { weekT[wi] = 0; continue; }
+      if (weeks[wi].completedActual !== undefined) { weekT[wi] = 0; continue; }
       if (weeks[wi].target !== undefined) {
         weekT[wi] = weeks[wi].target|0;
       } else {
@@ -754,7 +747,9 @@ function computeDeliveryInvariants(atomicComparison, weeksIn) {
       }
     }
     var twIdx = [];
-    for (var j = 0; j < weeks.length; j++) { if (weeks[j].kind === 'target') twIdx.push(j); }
+    for (var j = 0; j < weeks.length; j++) {
+      if (weeks[j].kind === 'target' && weeks[j].completedActual === undefined) twIdx.push(j);
+    }
     if (twIdx.length === 0) return;
     var s = 0;
     for (var t = 0; t < twIdx.length; t++) { s += weekT[twIdx[t]]; }
@@ -781,7 +776,19 @@ function computeDeliveryInvariants(atomicComparison, weeksIn) {
     parts.sort(function(a, b) { return b.rem - a.rem; });
     for (t = 0; t < need; t++) { if (t < parts.length) weekT[parts[t].i]++; }
   })();
-  return { cdTotal:cdTotal, cdDone:cdDone, cdRemaining:cdRemaining, cdPct:cdPct, weekT:weekT, weeks:weeks, targetWeeksCount:targetWeeksCount };
+  var activeTargetWeeksCount = 0;
+  for (var aw = 0; aw < weeks.length; aw++) {
+    if (weeks[aw].kind === 'target' && weekT[aw] > 0) activeTargetWeeksCount++;
+  }
+  return {
+    cdTotal:cdTotal,
+    cdDone:cdDone,
+    cdRemaining:cdRemaining,
+    cdPct:cdPct,
+    weekT:weekT,
+    weeks:weeks,
+    targetWeeksCount:activeTargetWeeksCount > 0 ? activeTargetWeeksCount : targetWeeksCount
+  };
 }
 function exportOverviewPng() {
   var inv = computeDeliveryInvariants(atomicComparison, getDefaultWeeks());
@@ -1013,7 +1020,7 @@ function renderOverview(container) {
     var isBuffer = w.kind === 'buffer';
     var target = isBuffer ? 0 : weekT[i];
     if (!isBuffer) {
-      cumulative += target;
+      cumulative += (w.completedActual !== undefined ? w.completedActual : target);
     }
     var cumPct = Math.round(cumulative / cdTotal * 100);
     var isCurrent = w.start <= todayISO && (i === weeks.length - 1 || weeks[i+1].start > todayISO);
@@ -1078,7 +1085,7 @@ function renderOverview(container) {
     if (isBuffer) {
       barHtml = '<div class="bar-track" style="'+barH+';opacity:.4"><div class="bar-fill" style="width:0%"></div></div>';
     } else if (isCompletedWeek) {
-      var completedPct = (w.originalTarget||w.completedActual) > 0 ? Math.round(w.completedActual / (w.originalTarget||w.completedActual) * 100) : 0;
+      var completedPct = (w.originalTarget||w.completedActual) > 0 ? Math.min(100, Math.round(w.completedActual / (w.originalTarget||w.completedActual) * 100)) : 0;
       barHtml = '<div class="bar-track" style="'+barH+'"><div class="bar-fill" style="width:'+completedPct+'%;background:var(--color-status-success-default)"></div></div>';
     } else if (isCurrent) {
       var weekDonePct = target > 0 ? Math.round(shippedCount / (w.originalTarget||target) * 100) : 0;
