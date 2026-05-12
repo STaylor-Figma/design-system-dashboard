@@ -124,9 +124,9 @@ tr.alt{background:#FAFAFA}
   <div class="header-top">
     <div>
       <h1>Blueprint Design System</h1>
-      <p class="sub">Status Dashboard — May 5, 2026</p>
+      <p class="sub">Status Dashboard — May 12, 2026</p>
     </div>
-    <div class="badge">v5.50 — Autocomplete removed from component count · May 5</div>
+    <div class="badge">v5.51 — Synced with UDS main through May 12</div>
   </div>
   <div class="tabs" id="tabs"></div>
 </div>
@@ -187,29 +187,27 @@ var TOKENS = (function() {
 // DATA — Edit values here to update dashboard
 // ═══════════════════════════════════════════════════════
 
-// Dashboard status snapshot (May 6, 2026). Counts combine repo evidence plus
+// Dashboard status snapshot (May 12, 2026). Counts combine repo evidence plus
 // manual same-day completion updates provided by the UDS team.
 // Roadmap = Complete + In Progress + Planned + Docs Only (excludes N/A + Unplanned).
 // Recently merged tickets (manual GitLab update provided May 6, 2026, 6:06 PM UTC-5).
-var recentlyMergedTickets = ["PS-3634","PS-4633","PS-2954","PS-925","PS-5083","PS-2384"];
-// Tickets merged in the current week window (May 4-May 8, 2026) from the same manual snapshot.
-var currentWeekMergedTickets = ["PS-3634","PS-4633","PS-2954","PS-925","PS-5083","PS-2384"];
-// Recently merged MRs on UDS main (manual snapshot from team report).
+var recentlyMergedTickets = ["PS-2179","PS-3634","PS-4633","PS-2954","PS-925","PS-5083","PS-2384"];
+// Tickets merged in the current week window (May 11-May 15, 2026).
+var currentWeekMergedTickets = ["PS-2179"];
+// Weekly merge attribution used by the Weekly Delivery Targets shipped sections.
+var mergedTicketsByWeekStart = {
+  "2026-05-04": ["PS-3634","PS-4633","PS-2954","PS-925","PS-5083","PS-2384"],
+  "2026-05-11": ["PS-2179"]
+};
+// Recently merged MRs on UDS main today.
 var mergedTodayMergeRequests = [
-  {iid:332, title:"chore: add tokenized DataChart foundation for Vega visualizations"},
-  {iid:299, title:"[PS-3634] Add CalendarLayout organism"},
-  {iid:328, title:"[PS-4633] feat(components): add ButtonSegment organism with radiogroup pattern"},
-  {iid:316, title:"[PS-2954] feat(components): Add SideContainer organism"},
-  {iid:331, title:"[PS-925] feat(components): add Table organism"},
-  {iid:330, title:"chore(ci): replace component-status auto-fix MR bot with MR comment [PS-5083]"},
-  {iid:324, title:"[PS-2384] feat(components): add AppHeader organism"},
-  {iid:297, title:"chore: Condense CLAUDE.md (962 -> 676 lines, 61k -> 47k chars)"}
+  {iid:350, title:"[PS-2179] feat(components): Add PageContentContainer organism"}
 ];
 
 var topMetrics = [
-  {label:"Total Components",value:120,sub:"Active roadmap — Complete + In Progress + Planned + Docs Only",color:TOKENS.primary500},
-  {label:"Complete",        value:108, sub:"26 atoms + 58 molecules + 23 organisms + 1 template",color:TOKENS.success},
-  {label:"In Progress",     value:0,  sub:"No active component MRs currently open",color:TOKENS.warning},
+  {label:"Total Components",value:119,sub:"Active roadmap — Complete + In Progress + Planned + Docs Only",color:TOKENS.primary500},
+  {label:"Complete",        value:107, sub:"25 atoms + 58 molecules + 23 organisms + 1 template",color:TOKENS.success},
+  {label:"In Progress",     value:2,  sub:"DrawerModal (!350) and MultiselectDropdownInput (!342)",color:TOKENS.warning},
   {label:"In NPM Package",  value:70, sub:"70 published · !232 merged Apr 29 · @components 5.0.0 released · verify count against Cloudsmith",color:TOKENS.primary500},
   {label:"Blocked",         value:0,  sub:"No current blockers",color:TOKENS.primary600},
   {label:"Active Consumers",value:5,  sub:"Payment Portal, UCMS, Automation Support active · GCV4, Identity Platform in progress",color:TOKENS.primary600}
@@ -217,25 +215,25 @@ var topMetrics = [
 
 // Pipeline audit counts (UDS main branch, Apr 21, 2026)
 var pipelineStats = {
-  docsOnly: 0,     // Drawer merged into DrawerModal variant; no other docs-only items
+  docsOnly: 0,     // No docs-only components currently; MultiselectDropdownInput is active in MR !342
   missingDocs: 0   // All components now documented
 };
 
 var deliveryStatus = [
-  {name:"Complete",    value:108, color:TOKENS.success},
-  {name:"In Progress", value:0,  color:TOKENS.warning},
-  {name:"Planned",     value:12, color:"#00838F"},
+  {name:"Complete",    value:107, color:TOKENS.success},
+  {name:"In Progress", value:2,  color:TOKENS.warning},
+  {name:"Planned",     value:10, color:"#00838F"},
   {name:"Docs Only",   value:0,  color:"#6B3FA0"}
 ];
 
-// Complete component inventory (May 6, 2026), synced to unified_design_system main.
-// Count: 108 components (26 atoms + 58 molecules + 23 organisms + 1 template).
+// Complete component inventory (May 12, 2026), synced to unified_design_system main.
+// Count: 107 components (25 atoms + 58 molecules + 23 organisms + 1 template).
 // Corrections from PM master list:
 //   - ProgressBarFill (PS-3762) demoted: docs-only on main, no .tsx
 //   - DropdownMenuContainer (PS-2617) demoted: no folder on main at all
 //   - Card (PS-3669) added: on main since Mar 24, not in PM master
 var completeComponents = [
-  // Atoms (27)
+  // Atoms (25)
   {name:"Badge",             type:"Atom", ticket:"PS-1609"},
   {name:"Breadcrumb",        type:"Atom", ticket:"PS-4357"},
   {name:"Checkbox",          type:"Atom", ticket:"PS-1414"},
@@ -243,7 +241,6 @@ var completeComponents = [
   {name:"FieldMessage",      type:"Atom", ticket:"PS-2872"},
   {name:"HelperText",        type:"Atom", ticket:"PS-2871"},
   {name:"Icon",              type:"Atom", ticket:"PS-923"},
-  {name:"Indicator",         type:"Atom", ticket:"PS-1605"},
   {name:"Input",             type:"Atom", ticket:"PS-922"},
   {name:"Label",             type:"Atom", ticket:"PS-2228"},
   {name:"Logo",              type:"Atom", ticket:"PS-2145"},
@@ -330,7 +327,7 @@ var completeComponents = [
   {name:"Card",                     type:"Organism", ticket:"PS-3669"},
   {name:"DatePickerField",          type:"Organism", ticket:"PS-3635"},
   {name:"DateRangePicker",          type:"Organism", ticket:"PS-4627"},
-  {name:"DropdownButton",           type:"Organism", ticket:"PS-2657"},
+  {name:"PageContentContainer",     type:"Organism", ticket:"PS-2179"},
   {name:"FilterMultiselectDropdown",type:"Organism", ticket:"PS-2826"},
   {name:"MenuContainer",            type:"Organism", ticket:"PS-2448"},
   {name:"MenuHeaderOrganism",       type:"Organism", ticket:"PS-3733"},
@@ -350,7 +347,10 @@ var completeComponents = [
 ];
 
 // In Progress — active development in the roadmap status tracker.
-var partialComponents = [];
+var partialComponents = [
+  {name:"DrawerModal",             type:"Organism", ticket:"PS-2818", issue:"Active MR !350 — Add DrawerModal organism"},
+  {name:"MultiselectDropdownInput",type:"Molecule", ticket:"PS-5350", issue:"Active MR !342 — implementation in progress (docs-only on main)"}
+];
 
 // Planned — on roadmap, not yet started. Includes DropdownMenuContainer (PS-2617)
 // demoted from PM-Complete (no folder on main at all). ProgressBarFill (PS-3762) was
@@ -360,9 +360,7 @@ var plannedComponents = [
   // Atoms (1)
   {name:"Link",                     type:"Atom", ticket:"PS-4864"},
   // Molecules (0)
-  // Organisms (7)
-  {name:"ContentContainer",         type:"Organism", ticket:"PS-2179"},
-  {name:"DrawerModal",              type:"Organism", ticket:"PS-2818", note:"Unified pattern — covers both Drawer and Modal variants (same layout, different margins)"},
+  // Organisms (5)
   {name:"MultiSelectDropdown",      type:"Organism", ticket:"PS-2618"},
   {name:"Navigation",               type:"Organism", ticket:"PS-4640"},
   {name:"Page Content Container",   type:"Organism", ticket:"PS-3644"},
@@ -572,9 +570,9 @@ var gitlabRecentPipelines = [
 // monorepo = complete count per level in this dashboard snapshot
 // handoff = remaining work (extracted - monorepo)
 var atomicComparison = [
-  {level:"Atoms",     extracted:27, monorepo:26, handoff:1},
-  {level:"Molecules", extracted:58, monorepo:58, handoff:0},
-  {level:"Organisms", extracted:30, monorepo:23, handoff:7},
+  {level:"Atoms",     extracted:26, monorepo:25, handoff:1},
+  {level:"Molecules", extracted:59, monorepo:58, handoff:1},
+  {level:"Organisms", extracted:29, monorepo:23, handoff:6},
   {level:"Templates", extracted:5,  monorepo:1,  handoff:4}
 ];
 
@@ -835,7 +833,7 @@ function getDefaultWeeks() {
   return [
     {label:"Week of Apr 20–24",   start:"2026-04-20", kind:"target", target:0, originalTarget:19, completedActual:20},
     {label:"Week of Apr 27–May 1",start:"2026-04-27", kind:"target", target:8, originalTarget:8, completedActual:10},
-    {label:"Week of May 4–8",     start:"2026-05-04", kind:"target", target:8},
+    {label:"Week of May 4-8",     start:"2026-05-04", kind:"target", target:8, originalTarget:8, completedActual:6},
     {label:"Week of May 11–15",   start:"2026-05-11", kind:"target", target:8},
     {label:"Week of May 18–22",   start:"2026-05-18", kind:"target", target:8},
     {label:"Week of May 25–29",   start:"2026-05-25", kind:"buffer"}
@@ -1265,10 +1263,12 @@ function renderOverview(container) {
     var clickAttr = isBuffer ? '' : ' onclick="event.stopPropagation();toggleWeek('+i+')"';
     var cursorStyle = isBuffer ? 'default' : 'pointer';
     var labelColor = isBuffer ? 'var(--color-neutral-400)' : 'var(--color-neutral-600)';
-    // For the current week, compute shipped count to show ✓ done vs remaining.
-    var shippedCount = isCurrent
-      ? completeComponents.filter(function(c){ return c.ticket && currentWeekMergedTickets.indexOf(c.ticket) !== -1; }).length
-      : 0;
+    // Week-specific shipped count for weekly attribution display.
+    var weekMergedTickets = mergedTicketsByWeekStart[w.start] || [];
+    var shippedForWeek = completeComponents.filter(function(c){
+      return c.ticket && weekMergedTickets.indexOf(c.ticket) !== -1;
+    });
+    var shippedCount = isCurrent ? shippedForWeek.length : 0;
     var targetCell = isBuffer
       ? '<div style="font-size:12px;font-weight:600;color:var(--color-neutral-400);text-align:center;font-style:italic">catch-up</div>'
       : isCompletedWeek
@@ -1321,14 +1321,12 @@ function renderOverview(container) {
     // Expanded component list — always in DOM, hidden/shown via display toggle (no re-render).
     if (!isBuffer) {
       var list = weeklyAssignments[i] || [];
-      var shipped = isCurrent
-        ? completeComponents.filter(function(c){ return c.ticket && currentWeekMergedTickets.indexOf(c.ticket) !== -1; })
-        : [];
+      var shipped = shippedForWeek;
       tHtml += '<div id="week-detail-'+i+'" onclick="event.stopPropagation()" style="display:'+(isOpen?'block':'none')+';margin:-4px 0 4px 0;padding:14px 16px;background:#F5FBFC;border:1px solid #00838F;border-top:none;border-radius:0 0 6px 6px">';
 
       // ── Shipped section ──────────────────────────────────────
       if (shipped.length > 0) {
-        tHtml += '<div style="font-size:11px;font-weight:700;color:var(--color-status-success-default);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">'+shipped.length+' shipped this week</div>';
+        tHtml += '<div style="font-size:11px;font-weight:700;color:var(--color-status-success-default);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">'+shipped.length+' shipped in '+w.label+'</div>';
         tHtml += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:6px;margin-bottom:16px">';
         shipped.forEach(function(c){
           var ticketHtml = c.ticket ? ' <span style="font-size:11px;margin-left:6px">'+jiraLink(c.ticket,'font-size:11px')+'</span>' : '';
