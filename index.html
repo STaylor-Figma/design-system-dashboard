@@ -207,8 +207,8 @@ var mergedTodayMergeRequests = [
 ];
 
 var topMetrics = [
-  {label:"Total Components",value:122,sub:"Active roadmap — Complete + In Progress + Planned + Docs Only",color:TOKENS.primary500},
-  {label:"Complete",        value:109, sub:"27 atoms + 58 molecules + 23 organisms + 1 template",color:TOKENS.success},
+  {label:"Total Components",value:120,sub:"Active roadmap — Complete + In Progress + Planned + Docs Only",color:TOKENS.primary500},
+  {label:"Complete",        value:108, sub:"26 atoms + 58 molecules + 23 organisms + 1 template",color:TOKENS.success},
   {label:"In Progress",     value:0,  sub:"No active component MRs currently open",color:TOKENS.warning},
   {label:"In NPM Package",  value:70, sub:"70 published · !232 merged Apr 29 · @components 5.0.0 released · verify count against Cloudsmith",color:TOKENS.primary500},
   {label:"Blocked",         value:0,  sub:"No current blockers",color:TOKENS.primary600},
@@ -222,14 +222,14 @@ var pipelineStats = {
 };
 
 var deliveryStatus = [
-  {name:"Complete",    value:109, color:TOKENS.success},
+  {name:"Complete",    value:108, color:TOKENS.success},
   {name:"In Progress", value:0,  color:TOKENS.warning},
-  {name:"Planned",     value:13, color:"#00838F"},
+  {name:"Planned",     value:12, color:"#00838F"},
   {name:"Docs Only",   value:0,  color:"#6B3FA0"}
 ];
 
 // Complete component inventory (May 6, 2026), synced to unified_design_system main.
-// Count: 109 components (27 atoms + 58 molecules + 23 organisms + 1 template).
+// Count: 108 components (26 atoms + 58 molecules + 23 organisms + 1 template).
 // Corrections from PM master list:
 //   - ProgressBarFill (PS-3762) demoted: docs-only on main, no .tsx
 //   - DropdownMenuContainer (PS-2617) demoted: no folder on main at all
@@ -261,7 +261,6 @@ var completeComponents = [
   {name:"Toggle",            type:"Atom", ticket:"PS-1416"},
   {name:"Tooltip",           type:"Atom", ticket:"PS-1607"},
   {name:"UserAvatar",        type:"Atom", ticket:"PS-2953"},
-  {name:"VisuallyHidden",    type:"Atom"},
   {name:"PaginationItem",    type:"Atom", ticket:"PS-3621"},
   // Molecules (58) — folder names on main
   {name:"AccordionHeader",  type:"Molecule"},
@@ -369,8 +368,7 @@ var plannedComponents = [
   {name:"Page Content Container",   type:"Organism", ticket:"PS-3644"},
   {name:"PageHeader",               type:"Organism", ticket:"PS-2384"},
   {name:"Submenu",                  type:"Organism", ticket:"PS-4638"},
-  // Templates (5)
-  {name:"DatePickerModal",          type:"Template", ticket:"PS-3638"},
+  // Templates (4)
   {name:"FormLayout",               type:"Template", ticket:"PS-3787", note:"Covers Form Layout Templates"},
   {name:"ModalDateRange",           type:"Template", ticket:"PS-4867", note:"Blueprint Modal Date Range content template"},
   {name:"Modal",                    type:"Template", ticket:"PS-2818"},
@@ -415,7 +413,6 @@ var componentCompletionOverrides = {
   "Atom:Toggle": 100,
   "Atom:Tooltip": 100,
   "Atom:UserAvatar": 94.75,
-  "Atom:VisuallyHidden": null,
   "Molecule:AccordionHeader": 100,
   "Molecule:ActionsHeader": 100,
   "Molecule:BreadcrumbItem": 100,
@@ -575,10 +572,10 @@ var gitlabRecentPipelines = [
 // monorepo = complete count per level in this dashboard snapshot
 // handoff = remaining work (extracted - monorepo)
 var atomicComparison = [
-  {level:"Atoms",     extracted:28, monorepo:27, handoff:1},
+  {level:"Atoms",     extracted:27, monorepo:26, handoff:1},
   {level:"Molecules", extracted:58, monorepo:58, handoff:0},
   {level:"Organisms", extracted:30, monorepo:23, handoff:7},
-  {level:"Templates", extracted:6,  monorepo:1,  handoff:5}
+  {level:"Templates", extracted:5,  monorepo:1,  handoff:4}
 ];
 
 var NEW_BADGE = '<span style="display:inline-block;padding:1px 6px;background:#d6f2c7;color:#459d13;border-radius:8px;font-size:9px;font-weight:700;vertical-align:middle;margin-left:5px">New!</span>';
@@ -641,8 +638,8 @@ var remainingGaps = [
 ];
 
 var popoverData = {
-  "Total Components": "122 components are on the active roadmap as of May 6, 2026. Breakdown: Complete 109, In Progress 0, Planned 13, Docs Only 0.",
-  "Complete": "109 complete components in the dashboard inventory (27 atoms, 58 molecules, 23 organisms, 1 template). Latest merges moved CalendarLayout, ButtonSegment, SideContainer, Table, and AppHeader to complete. DatePickerTemplate is also implemented and now included in the template count.",
+  "Total Components": "120 components are on the active roadmap as of May 7, 2026. Breakdown: Complete 108, In Progress 0, Planned 12, Docs Only 0.",
+  "Complete": "108 complete components in the dashboard inventory (26 atoms, 58 molecules, 23 organisms, 1 template). Latest merges moved CalendarLayout, ButtonSegment, SideContainer, Table, and AppHeader to complete. DatePickerTemplate is also implemented and included in the template count.",
   "In Progress": "No components are currently in progress based on the latest unified_design_system main snapshot.",
   "In NPM Package": "70 components published via @unified_design_system/components (Cloudsmith NPM registry). Release MR !232 merged Apr 29 — @components 5.0.0 is live on Cloudsmith. Published count reflects pre-5.0.0 baseline; verify exact count against Cloudsmith registry to confirm the full batch landed.<br><br>See the Complete popover for the full component list. Source: UDS main branch, May 6, 2026.",
   "Blocked": "No components are currently blocked. This metric tracks components that have a dependency or design decision preventing work from starting. If a blocker emerges, surface it here.",
