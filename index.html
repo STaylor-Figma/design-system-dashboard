@@ -205,7 +205,7 @@ var mergedTodayMergeRequests = [
 ];
 
 var topMetrics = [
-  {label:"Total Components",value:119,sub:"Active roadmap — Complete + In Progress + Planned + Docs Only",color:TOKENS.primary500},
+  {label:"Total Components",value:113,sub:"Active roadmap - Complete + In Progress + Planned + Docs Only",color:TOKENS.primary500},
   {label:"Complete",        value:107, sub:"25 atoms + 58 molecules + 23 organisms + 1 template",color:TOKENS.success},
   {label:"In Progress",     value:2,  sub:"DrawerModal (!350) and MultiselectDropdownInput (!342)",color:TOKENS.warning},
   {label:"In NPM Package",  value:70, sub:"70 published · !232 merged Apr 29 · @components 5.0.0 released · verify count against Cloudsmith",color:TOKENS.primary500},
@@ -222,7 +222,7 @@ var pipelineStats = {
 var deliveryStatus = [
   {name:"Complete",    value:107, color:TOKENS.success},
   {name:"In Progress", value:2,  color:TOKENS.warning},
-  {name:"Planned",     value:10, color:"#00838F"},
+  {name:"Planned",     value:4, color:"#00838F"},
   {name:"Docs Only",   value:0,  color:"#6B3FA0"}
 ];
 
@@ -360,16 +360,10 @@ var plannedComponents = [
   // Atoms (1)
   {name:"Link",                     type:"Atom", ticket:"PS-4864"},
   // Molecules (0)
-  // Organisms (5)
+  // Organisms (2)
   {name:"MultiSelectDropdown",      type:"Organism", ticket:"PS-2618"},
-  {name:"Navigation",               type:"Organism", ticket:"PS-4640"},
-  {name:"Page Content Container",   type:"Organism", ticket:"PS-3644"},
-  {name:"PageHeader",               type:"Organism", ticket:"PS-2384"},
-  {name:"Submenu",                  type:"Organism", ticket:"PS-4638"},
-  // Templates (4)
+  // Templates (2)
   {name:"FormLayout",               type:"Template", ticket:"PS-3787", note:"Covers Form Layout Templates"},
-  {name:"ModalDateRange",           type:"Template", ticket:"PS-4867", note:"Blueprint Modal Date Range content template"},
-  {name:"Modal",                    type:"Template", ticket:"PS-2818"},
   {name:"PageLayout",               type:"Template", ticket:"PS-3645"}
 ];
 
@@ -572,8 +566,8 @@ var gitlabRecentPipelines = [
 var atomicComparison = [
   {level:"Atoms",     extracted:26, monorepo:25, handoff:1},
   {level:"Molecules", extracted:59, monorepo:58, handoff:1},
-  {level:"Organisms", extracted:29, monorepo:23, handoff:6},
-  {level:"Templates", extracted:5,  monorepo:1,  handoff:4}
+  {level:"Organisms", extracted:25, monorepo:23, handoff:2},
+  {level:"Templates", extracted:3,  monorepo:1,  handoff:2}
 ];
 
 var NEW_BADGE = '<span style="display:inline-block;padding:1px 6px;background:#d6f2c7;color:#459d13;border-radius:8px;font-size:9px;font-weight:700;vertical-align:middle;margin-left:5px">New!</span>';
@@ -582,7 +576,6 @@ var systems = [
   {name:"Boolean Controls",  components:6,  implemented:6, status:"done"},
   {name:"Form Inputs",       components:7,  implemented:6, status:"partial"},
   {name:"Buttons",           components:4,  implemented:4, status:"done"},
-  {name:"Navigation",        components:7,  implemented:6, status:"partial"},
   {name:"Header",            components:6,  implemented:5, status:"partial"},
   {name:"Modal/Drawer",      components:4,  implemented:2, status:"partial"},
   {name:"Dropdown/Filter",   components:12, implemented:4, status:"partial"},
@@ -618,13 +611,13 @@ var closedGaps = [
   {name:"Popover",       closedBy:"Popover organism (PS-3793) — complete. No separate Popover molecule; the organism is the component."},
   {name:"ProgressBar",   closedBy:"ProgressBar atom (PS-3762) + ProgressBarField molecule (PS-3763) complete. StepIndicator (PS-3764) + StepperContainer (PS-3765) complete. ProgressBarFill atom retired — PS-3762 was repurposed from PBF to ProgressBar itself"},
   {name:"SearchBar",     closedBy:"SearchBar + SearchField + InlineSearchField + QuickSearchField molecules complete; QuickSearch organism retired from roadmap"},
-  {name:"SideNav",       closedBy:"MainMenu organism retired; SideContainer (PS-2954) is complete. NavSubmenuContainer (PS-4638), NavSubmenuGroup (PS-2446), and NavMenuButton molecule (PS-2441) are complete. Submenu remains planned on roadmap."},
+  {name:"SideNav",       closedBy:"MainMenu organism retired; SideContainer (PS-2954) is complete. NavSubmenuContainer (PS-4638), NavSubmenuGroup (PS-2446), and NavMenuButton molecule (PS-2441) are complete."},
   {name:"Skeleton",      closedBy:"Skeleton atom (PS-3746) is complete. Existing Skeleton Loading System semantic CSS layer (.is-loading + skeleton.css tokens) remains complete."},
   {name:"Slider",        closedBy:"SliderRail + SliderThumb + SliderTrack atoms + Slider + SliderField molecules (PS-2018) — all complete"},
   {name:"Spinner",       closedBy:"LoadingMask (PS-2855) + LogoLoader (PS-2851) + CircularIndicator (PS-2853) — all complete"},
   {name:"Table",         closedBy:"TableCell + TableRowContent + Pagination + TableRow + ActionsHeader complete; Table organism Planned"},
   {name:"Toast / Notifications", closedBy:"NotificationMessage molecule (PS-3516) is the canonical notification component and replaces ToastMessage — five semantic variants, four behavioral modes (Toast/Snackbar/Banner/Inline)"},
-  {name:"TopNav",        closedBy:"PageHeader molecule (PS-3643) + HeaderButton + HeaderLogoButton + HeaderLogoTitle + UsernameButton complete; PageHeader organism (PS-2384) planned and MenuToggleButton complete (PS-2381)"}
+  {name:"TopNav",        closedBy:"PageHeader molecule (PS-3643) + HeaderButton + HeaderLogoButton + HeaderLogoTitle + UsernameButton + MenuToggleButton complete (PS-2381)"}
 ];
 
 // Certification Queue — items requested or prototyped but not on the roadmap.
@@ -636,7 +629,7 @@ var remainingGaps = [
 ];
 
 var popoverData = {
-  "Total Components": "120 components are on the active roadmap as of May 7, 2026. Breakdown: Complete 108, In Progress 0, Planned 12, Docs Only 0.",
+  "Total Components": "113 components are on the active roadmap as of May 12, 2026. Breakdown: Complete 107, In Progress 2, Planned 4, Docs Only 0.",
   "Complete": "108 complete components in the dashboard inventory (26 atoms, 58 molecules, 23 organisms, 1 template). Latest merges moved CalendarLayout, ButtonSegment, SideContainer, Table, and AppHeader to complete. DatePickerTemplate is also implemented and included in the template count.",
   "In Progress": "No components are currently in progress based on the latest unified_design_system main snapshot.",
   "In NPM Package": "70 components published via @unified_design_system/components (Cloudsmith NPM registry). Release MR !232 merged Apr 29 — @components 5.0.0 is live on Cloudsmith. Published count reflects pre-5.0.0 baseline; verify exact count against Cloudsmith registry to confirm the full batch landed.<br><br>See the Complete popover for the full component list. Source: UDS main branch, May 6, 2026.",
@@ -690,7 +683,7 @@ var mcpDocsComponents = {
     {name:"Dropdown Button",hasDocs:true},{name:"Dropdown Input",hasDocs:true},{name:"Filter Multiselect Dropdown",hasDocs:true},
     {name:"Header",hasDocs:true},{name:"Menu Container",hasDocs:true},{name:"Menu Header",hasDocs:true},
     {name:"Modal Footer",hasDocs:true},{name:"Multiselect Dropdown Input Field",hasDocs:true},{name:"Nav Menu Container",hasDocs:true},
-    {name:"Nav Submenu Container",hasDocs:true},{name:"Nav Submenu Group",hasDocs:true},{name:"Page Content Container",hasDocs:true},
+    {name:"Nav Submenu Container",hasDocs:true},{name:"Nav Submenu Group",hasDocs:true},{name:"PageContentContainer",hasDocs:true},
     {name:"Popover",hasDocs:true},{name:"Push Drawer Container",hasDocs:true},{name:"Quick Search",hasDocs:true},
     {name:"Side Container",hasDocs:true},{name:"Split Button",hasDocs:true},{name:"Stepper Container",hasDocs:true},
     {name:"Tab Group",hasDocs:true},{name:"Table",hasDocs:true}
@@ -831,7 +824,7 @@ function jiraLink(ticket, extraStyle) {
 // Weekly plan config: same object shape as in render (clone per compute).
 function getDefaultWeeks() {
   return [
-    {label:"Week of Apr 20–24",   start:"2026-04-20", kind:"target", target:0, originalTarget:19, completedActual:20},
+    {label:"Week of Apr 20-24",   start:"2026-04-20", kind:"target", target:0, originalTarget:12, completedActual:20},
     {label:"Week of Apr 27–May 1",start:"2026-04-27", kind:"target", target:8, originalTarget:8, completedActual:10},
     {label:"Week of May 4-8",     start:"2026-05-04", kind:"target", target:8, originalTarget:8, completedActual:6},
     {label:"Week of May 11–15",   start:"2026-05-11", kind:"target", target:8},
