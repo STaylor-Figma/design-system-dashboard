@@ -207,7 +207,7 @@ var mergedTodayMergeRequests = [
 var topMetrics = [
   {label:"Total Components",value:113,sub:"Active roadmap - Complete + In Progress + Planned + Docs Only",color:TOKENS.primary500},
   {label:"Complete",        value:107, sub:"25 atoms + 58 molecules + 23 organisms + 1 template",color:TOKENS.success},
-  {label:"In Progress",     value:2,  sub:"DrawerModal (!350) and MultiselectDropdownInput (!342)",color:TOKENS.warning},
+  {label:"In Progress",     value:3,  sub:"DrawerModal (!350), MultiselectDropdownInput (!342), MultiSelectDropdownInputField (!355)",color:TOKENS.warning},
   {label:"In NPM Package",  value:70, sub:"70 published · !232 merged Apr 29 · @components 5.0.0 released · verify count against Cloudsmith",color:TOKENS.primary500},
   {label:"Blocked",         value:0,  sub:"No current blockers",color:TOKENS.primary600},
   {label:"Active Consumers",value:5,  sub:"Payment Portal, UCMS, Automation Support active · GCV4, Identity Platform in progress",color:TOKENS.primary600}
@@ -221,8 +221,8 @@ var pipelineStats = {
 
 var deliveryStatus = [
   {name:"Complete",    value:107, color:TOKENS.success},
-  {name:"In Progress", value:2,  color:TOKENS.warning},
-  {name:"Planned",     value:4, color:"#00838F"},
+  {name:"In Progress", value:3,  color:TOKENS.warning},
+  {name:"Planned",     value:3, color:"#00838F"},
   {name:"Docs Only",   value:0,  color:"#6B3FA0"}
 ];
 
@@ -349,7 +349,8 @@ var completeComponents = [
 // In Progress — active development in the roadmap status tracker.
 var partialComponents = [
   {name:"DrawerModal",             type:"Organism", ticket:"PS-2818", issue:"Active MR !350 — Add DrawerModal organism"},
-  {name:"MultiselectDropdownInput",type:"Molecule", ticket:"PS-5350", issue:"Active MR !342 — implementation in progress (docs-only on main)"}
+  {name:"MultiselectDropdownInput",type:"Molecule", ticket:"PS-5350", issue:"Active MR !342 — implementation in progress (docs-only on main)"},
+  {name:"MultiSelectDropdownInputField", type:"Organism", ticket:"PS-2618", issue:"Active MR !355 — implementation started and in review"}
 ];
 
 // Planned — on roadmap, not yet started. Includes DropdownMenuContainer (PS-2617)
@@ -360,8 +361,7 @@ var plannedComponents = [
   // Atoms (1)
   {name:"Link",                     type:"Atom", ticket:"PS-4864"},
   // Molecules (0)
-  // Organisms (2)
-  {name:"MultiSelectDropdown",      type:"Organism", ticket:"PS-2618"},
+  // Organisms (1)
   // Templates (2)
   {name:"FormLayout",               type:"Template", ticket:"PS-3787", note:"Covers Form Layout Templates"},
   {name:"PageLayout",               type:"Template", ticket:"PS-3645"}
