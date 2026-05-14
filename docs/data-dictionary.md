@@ -321,11 +321,11 @@
 
 ---
 
-### Navigation
+### Navigation Support
 **Components:** 5 (Nav Menu Button, Nav Submenu Button, Nav Menu Container, Nav Submenu Container, Nav Submenu Group)
 **Implementation:** 0/5 (0%)
 **Status:** Ready for Dev
-**All extracted, awaiting implementation**
+**All extracted, awaiting implementation; standalone Navigation organism target is retired**
 
 ---
 

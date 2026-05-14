@@ -6,13 +6,14 @@
 
 ## Quick Update Workflow
 
-1. **Receive new data** from Vivian or extraction work
-2. **Update data-sources.md** with new counts
-3. **Calculate derived metrics** (handoff values, percentages)
-4. **Edit dashboard HTML** JavaScript variables
-5. **Test locally** by opening in browser
-6. **Recalculate component quality score report** (if quality signals changed)
-7. **Document changes** in version history
+1. **Run canonical roadmap sync first**: `npm run sync:roadmap-status`
+2. **Receive new data** from Vivian or extraction work
+3. **Update data-sources.md** with new counts
+4. **Calculate derived metrics** (handoff values, percentages)
+5. **Edit dashboard HTML** JavaScript variables (only for non-roadmap sections not managed by sync)
+6. **Test locally** by opening in browser
+7. **Recalculate component quality score report** (if quality signals changed)
+8. **Document changes** in version history
 
 ---
 

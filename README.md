@@ -88,8 +88,9 @@ Current counts live in the JS data variables inside `index.html` / `dashboard/bl
 
 ### To Update the Dashboard:
 
-1. **Update data sources** in `data/` folder
-2. **Edit JavaScript variables** in `dashboard/blueprint-status.html` (lines ~200-350)
+1. **Sync canonical roadmap status** from UDS:
+   - `npm run sync:roadmap-status`
+2. **Update data sources** in `data/` folder (if needed for non-roadmap sections)
 3. **Test locally** by opening HTML file in browser
 4. **Document changes** in version history
 

@@ -10,7 +10,8 @@
   "scripts": {
     "sync:tokens": "node scripts/sync-tokens.mjs",
     "score:components": "node scripts/calculate-component-quality.mjs --input data/component-quality.sample.json --output data/component-quality-report.json",
-    "sync:component-comparison": "node scripts/sync-component-comparison.mjs"
+    "sync:component-comparison": "node scripts/sync-component-comparison.mjs",
+    "sync:roadmap-status": "node scripts/sync-roadmap-status.mjs"
   },
   "dependencies": {
     "@unified_design_system/design-tokens": "^2.4.0"

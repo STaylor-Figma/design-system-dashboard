@@ -182,13 +182,13 @@ Prior status before the live audit was available:
 **High Priority:**
 - Table System (9 components)
 - Loading Indicators (3 components)
-- Navigation (3 components)
+- Navigation organism target (historical; now retired from active roadmap)
 
 **Still Missing (4 baseline):**
 1. loading-spinner (atom)
 2. linear-progress-indicator (molecule)
 3. circular-progress-indicator (molecule)
-4. date-picker (molecule)
+4. standalone date-picker (historical baseline; now replaced by DatePickerField / DateRangePicker path)
 
 **In Progress:**
 - Toast Message (audit phase)
