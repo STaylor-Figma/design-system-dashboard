@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-05-05T21:04:23.342Z",
+  "generatedAt": "2026-05-14T16:11:35.438Z",
   "sourceRepos": {
     "uds": "C:\\Users\\ConradV\\source\\repos\\unified_design_system",
     "blueprint": "C:\\Users\\ConradV\\source\\repos\\blueprint-storybook-poc"
   },
   "summary": {
-    "totalImplemented": 94,
-    "blueprintImplementationCoverage": 73,
-    "blueprintStoryCoverage": 66,
-    "figmaLinkCoverage": 92,
-    "figmaCanonicalCoverage": 92,
-    "comparableCount": 75,
-    "excludedNoBlueprintCount": 19,
-    "averageDonePercent": 99.09
+    "totalImplemented": 109,
+    "blueprintImplementationCoverage": 84,
+    "blueprintStoryCoverage": 75,
+    "figmaLinkCoverage": 106,
+    "figmaCanonicalCoverage": 106,
+    "comparableCount": 86,
+    "excludedNoBlueprintCount": 23,
+    "averageDonePercent": 98.88
   },
   "entries": [
     {
@@ -151,6 +151,21 @@
       "comparisonNote": null
     },
     {
+      "id": "Atom:Link",
+      "name": "Link",
+      "type": "Atom",
+      "udsImplemented": true,
+      "blueprintImplementation": true,
+      "blueprintStory": true,
+      "blueprintComparable": true,
+      "figmaLink": "https://www.figma.com/design/D4wgJpVFwWQp6AHElpoJK9/Storybook-Branch?node-id=20937-6012",
+      "figmaCanonical": true,
+      "blueprintScore": 100,
+      "figmaScore": 100,
+      "donePercent": 100,
+      "comparisonNote": null
+    },
+    {
       "id": "Atom:Logo",
       "name": "Logo",
       "type": "Atom",
@@ -254,6 +269,21 @@
       "figmaScore": 100,
       "donePercent": 100,
       "comparisonNote": null
+    },
+    {
+      "id": "Atom:Skeleton",
+      "name": "Skeleton",
+      "type": "Atom",
+      "udsImplemented": true,
+      "blueprintImplementation": false,
+      "blueprintStory": false,
+      "blueprintComparable": false,
+      "figmaLink": null,
+      "figmaCanonical": false,
+      "blueprintScore": 0,
+      "figmaScore": 40,
+      "donePercent": null,
+      "comparisonNote": "No matching Blueprint component found; excluded from percent calculation."
     },
     {
       "id": "Atom:SkipLink",
@@ -376,21 +406,6 @@
       "comparisonNote": null
     },
     {
-      "id": "Atom:VisuallyHidden",
-      "name": "VisuallyHidden",
-      "type": "Atom",
-      "udsImplemented": true,
-      "blueprintImplementation": false,
-      "blueprintStory": false,
-      "blueprintComparable": false,
-      "figmaLink": null,
-      "figmaCanonical": false,
-      "blueprintScore": 0,
-      "figmaScore": 40,
-      "donePercent": null,
-      "comparisonNote": "No matching Blueprint component found; excluded from percent calculation."
-    },
-    {
       "id": "Molecule:AccordionHeader",
       "name": "AccordionHeader",
       "type": "Molecule",
@@ -479,6 +494,51 @@
       "figmaScore": 100,
       "donePercent": 100,
       "comparisonNote": null
+    },
+    {
+      "id": "Molecule:CalendarFooterActions",
+      "name": "CalendarFooterActions",
+      "type": "Molecule",
+      "udsImplemented": true,
+      "blueprintImplementation": false,
+      "blueprintStory": false,
+      "blueprintComparable": false,
+      "figmaLink": "https://www.figma.com/design/D4wgJpVFwWQp6AHElpoJK9/Storybook-Branch?node-id=16830-1182675",
+      "figmaCanonical": true,
+      "blueprintScore": 0,
+      "figmaScore": 100,
+      "donePercent": null,
+      "comparisonNote": "No matching Blueprint component found; excluded from percent calculation."
+    },
+    {
+      "id": "Molecule:CalendarGrid",
+      "name": "CalendarGrid",
+      "type": "Molecule",
+      "udsImplemented": true,
+      "blueprintImplementation": false,
+      "blueprintStory": false,
+      "blueprintComparable": false,
+      "figmaLink": "https://www.figma.com/design/D4wgJpVFwWQp6AHElpoJK9/Storybook-Branch?node-id=16830-1182675",
+      "figmaCanonical": true,
+      "blueprintScore": 0,
+      "figmaScore": 100,
+      "donePercent": null,
+      "comparisonNote": "No matching Blueprint component found; excluded from percent calculation."
+    },
+    {
+      "id": "Molecule:CalendarHeader",
+      "name": "CalendarHeader",
+      "type": "Molecule",
+      "udsImplemented": true,
+      "blueprintImplementation": false,
+      "blueprintStory": false,
+      "blueprintComparable": false,
+      "figmaLink": "https://www.figma.com/design/D4wgJpVFwWQp6AHElpoJK9/Storybook-Branch?node-id=16830-1182675",
+      "figmaCanonical": true,
+      "blueprintScore": 0,
+      "figmaScore": 100,
+      "donePercent": null,
+      "comparisonNote": "No matching Blueprint component found; excluded from percent calculation."
     },
     {
       "id": "Molecule:CalendarItemButton",
@@ -856,6 +916,21 @@
       "comparisonNote": null
     },
     {
+      "id": "Molecule:MultiselectDropdownInput",
+      "name": "MultiselectDropdownInput",
+      "type": "Molecule",
+      "udsImplemented": true,
+      "blueprintImplementation": true,
+      "blueprintStory": true,
+      "blueprintComparable": true,
+      "figmaLink": "https://www.figma.com/design/D4wgJpVFwWQp6AHElpoJK9/Storybook-Branch?node-id=16171-238160",
+      "figmaCanonical": true,
+      "blueprintScore": 100,
+      "figmaScore": 100,
+      "donePercent": 100,
+      "comparisonNote": null
+    },
+    {
       "id": "Molecule:MultiSelectItem",
       "name": "MultiSelectItem",
       "type": "Molecule",
@@ -864,6 +939,21 @@
       "blueprintStory": false,
       "blueprintComparable": true,
       "figmaLink": "https://www.figma.com/design/D4wgJpVFwWQp6AHElpoJK9/Storybook-Branch?node-id=16227-48980",
+      "figmaCanonical": true,
+      "blueprintScore": 85,
+      "figmaScore": 100,
+      "donePercent": 94.75,
+      "comparisonNote": null
+    },
+    {
+      "id": "Molecule:NavMenuButton",
+      "name": "NavMenuButton",
+      "type": "Molecule",
+      "udsImplemented": true,
+      "blueprintImplementation": true,
+      "blueprintStory": false,
+      "blueprintComparable": true,
+      "figmaLink": "https://www.figma.com/design/D4wgJpVFwWQp6AHElpoJK9/Storybook-Branch?node-id=6811-23623",
       "figmaCanonical": true,
       "blueprintScore": 85,
       "figmaScore": 100,
@@ -1216,6 +1306,21 @@
       "comparisonNote": null
     },
     {
+      "id": "Organism:AppHeader",
+      "name": "AppHeader",
+      "type": "Organism",
+      "udsImplemented": true,
+      "blueprintImplementation": true,
+      "blueprintStory": true,
+      "blueprintComparable": true,
+      "figmaLink": "https://www.figma.com/design/D4wgJpVFwWQp6AHElpoJK9/Storybook-Branch?node-id=13046-4319",
+      "figmaCanonical": true,
+      "blueprintScore": 100,
+      "figmaScore": 100,
+      "donePercent": 100,
+      "comparisonNote": null
+    },
+    {
       "id": "Organism:BreadcrumbOrganism",
       "name": "BreadcrumbOrganism",
       "type": "Organism",
@@ -1231,6 +1336,36 @@
       "comparisonNote": "No matching Blueprint component found; excluded from percent calculation."
     },
     {
+      "id": "Organism:ButtonSegment",
+      "name": "ButtonSegment",
+      "type": "Organism",
+      "udsImplemented": true,
+      "blueprintImplementation": true,
+      "blueprintStory": true,
+      "blueprintComparable": true,
+      "figmaLink": "https://www.figma.com/design/D4wgJpVFwWQp6AHElpoJK9/Storybook-Branch?node-id=20589-6769",
+      "figmaCanonical": true,
+      "blueprintScore": 100,
+      "figmaScore": 100,
+      "donePercent": 100,
+      "comparisonNote": null
+    },
+    {
+      "id": "Organism:CalendarLayout",
+      "name": "CalendarLayout",
+      "type": "Organism",
+      "udsImplemented": true,
+      "blueprintImplementation": true,
+      "blueprintStory": true,
+      "blueprintComparable": true,
+      "figmaLink": "https://www.figma.com/design/D4wgJpVFwWQp6AHElpoJK9/Storybook-Branch?node-id=16830-1182675",
+      "figmaCanonical": true,
+      "blueprintScore": 100,
+      "figmaScore": 100,
+      "donePercent": 100,
+      "comparisonNote": null
+    },
+    {
       "id": "Organism:Card",
       "name": "Card",
       "type": "Organism",
@@ -1239,6 +1374,51 @@
       "blueprintStory": true,
       "blueprintComparable": true,
       "figmaLink": "https://www.figma.com/design/D4wgJpVFwWQp6AHElpoJK9/Storybook-Branch?node-id=17878-8987",
+      "figmaCanonical": true,
+      "blueprintScore": 100,
+      "figmaScore": 100,
+      "donePercent": 100,
+      "comparisonNote": null
+    },
+    {
+      "id": "Organism:DatePickerField",
+      "name": "DatePickerField",
+      "type": "Organism",
+      "udsImplemented": true,
+      "blueprintImplementation": true,
+      "blueprintStory": true,
+      "blueprintComparable": true,
+      "figmaLink": "https://www.figma.com/design/D4wgJpVFwWQp6AHElpoJK9/Storybook-Branch?node-id=16843-2170219",
+      "figmaCanonical": true,
+      "blueprintScore": 100,
+      "figmaScore": 100,
+      "donePercent": 100,
+      "comparisonNote": null
+    },
+    {
+      "id": "Organism:DateRangePicker",
+      "name": "DateRangePicker",
+      "type": "Organism",
+      "udsImplemented": true,
+      "blueprintImplementation": false,
+      "blueprintStory": false,
+      "blueprintComparable": false,
+      "figmaLink": "https://www.figma.com/design/D4wgJpVFwWQp6AHElpoJK9/Storybook-Branch?node-id=16843-2170222",
+      "figmaCanonical": true,
+      "blueprintScore": 0,
+      "figmaScore": 100,
+      "donePercent": null,
+      "comparisonNote": "No matching Blueprint component found; excluded from percent calculation."
+    },
+    {
+      "id": "Organism:DrawerModal",
+      "name": "DrawerModal",
+      "type": "Organism",
+      "udsImplemented": true,
+      "blueprintImplementation": true,
+      "blueprintStory": true,
+      "blueprintComparable": true,
+      "figmaLink": "https://www.figma.com/design/D4wgJpVFwWQp6AHElpoJK9/Storybook-Branch?node-id=778-6626",
       "figmaCanonical": true,
       "blueprintScore": 100,
       "figmaScore": 100,
@@ -1336,6 +1516,21 @@
       "comparisonNote": null
     },
     {
+      "id": "Organism:PageContentContainer",
+      "name": "PageContentContainer",
+      "type": "Organism",
+      "udsImplemented": true,
+      "blueprintImplementation": true,
+      "blueprintStory": true,
+      "blueprintComparable": true,
+      "figmaLink": "https://www.figma.com/design/D4wgJpVFwWQp6AHElpoJK9/Storybook-Branch?node-id=11916-1624",
+      "figmaCanonical": true,
+      "blueprintScore": 100,
+      "figmaScore": 100,
+      "donePercent": 100,
+      "comparisonNote": null
+    },
+    {
       "id": "Organism:Popover",
       "name": "Popover",
       "type": "Organism",
@@ -1364,6 +1559,21 @@
       "figmaScore": 40,
       "donePercent": null,
       "comparisonNote": "No matching Blueprint component found; excluded from percent calculation."
+    },
+    {
+      "id": "Organism:SideContainer",
+      "name": "SideContainer",
+      "type": "Organism",
+      "udsImplemented": true,
+      "blueprintImplementation": true,
+      "blueprintStory": false,
+      "blueprintComparable": true,
+      "figmaLink": "https://www.figma.com/design/D4wgJpVFwWQp6AHElpoJK9/Storybook-Branch?node-id=16615-312160",
+      "figmaCanonical": true,
+      "blueprintScore": 85,
+      "figmaScore": 100,
+      "donePercent": 94.75,
+      "comparisonNote": null
     },
     {
       "id": "Organism:SingleSelectDropdown",
@@ -1423,6 +1633,21 @@
       "blueprintScore": 100,
       "figmaScore": 100,
       "donePercent": 100,
+      "comparisonNote": null
+    },
+    {
+      "id": "Organism:Table",
+      "name": "Table",
+      "type": "Organism",
+      "udsImplemented": true,
+      "blueprintImplementation": true,
+      "blueprintStory": true,
+      "blueprintComparable": true,
+      "figmaLink": null,
+      "figmaCanonical": false,
+      "blueprintScore": 100,
+      "figmaScore": 40,
+      "donePercent": 82,
       "comparisonNote": null
     }
   ]
