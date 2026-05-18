@@ -124,9 +124,9 @@ tr.alt{background:#FAFAFA}
   <div class="header-top">
     <div>
       <h1>Blueprint Design System</h1>
-      <p class="sub">Status Dashboard � May 12, 2026</p>
+      <p class="sub">Status Dashboard - May 15, 2026</p>
     </div>
-    <div class="badge">v5.51 � Synced with UDS main through May 12</div>
+    <div class="badge">v5.53 - Synced with UDS MR feed through May 15</div>
   </div>
   <div class="tabs" id="tabs"></div>
 </div>
@@ -187,27 +187,50 @@ var TOKENS = (function() {
 // DATA � Edit values here to update dashboard
 // -------------------------------------------------------
 
-// Dashboard status snapshot (May 12, 2026). Counts combine repo evidence plus
+// Dashboard status snapshot (May 15, 2026). Counts combine repo evidence plus
 // manual same-day completion updates provided by the UDS team.
 // Roadmap = Complete + In Progress + Planned + Docs Only (excludes N/A + Unplanned).
-// Recently merged tickets (manual GitLab update provided May 14, 2026, 11:10 AM UTC-5).
-var recentlyMergedTickets = ["PS-4864","PS-2818","PS-2179","PS-3634","PS-4633","PS-2954","PS-925","PS-5083","PS-2384"];
+// Recently merged tickets (manual GitLab update provided May 15, 2026, 1:38 PM UTC-5).
+var recentlyMergedTickets = ["PS-5630","PS-5629","PS-5628","PS-5627","PS-5623","PS-5619","PS-5617","PS-5605","PS-5599","PS-5581","PS-5579","PS-5328","PS-4864","PS-3787","PS-3634","PS-2818","PS-2618"];
 // Tickets merged in the current week window (May 11-May 15, 2026).
-var currentWeekMergedTickets = ["PS-4864","PS-2818","PS-2179"];
+var currentWeekMergedTickets = ["PS-5630","PS-5629","PS-5628","PS-5627","PS-5623","PS-5619","PS-5617","PS-5605","PS-5599","PS-5581","PS-5579","PS-5328","PS-4864","PS-3787","PS-3634","PS-2818","PS-2618"];
 // Weekly merge attribution used by the Weekly Delivery Targets shipped sections.
 var mergedTicketsByWeekStart = {
-  "2026-05-04": ["PS-3634","PS-4633","PS-2954","PS-925","PS-5083","PS-2384"],
-  "2026-05-11": ["PS-4864","PS-2818","PS-2179"]
+  "2026-05-04": ["PS-4633","PS-2954","PS-925","PS-5083","PS-2384"],
+  "2026-05-11": ["PS-5630","PS-5629","PS-5628","PS-5627","PS-5623","PS-5619","PS-5617","PS-5605","PS-5599","PS-5581","PS-5579","PS-5328","PS-4864","PS-3787","PS-3634","PS-2818","PS-2618"]
 };
-// Recently merged MRs on UDS main today.
+// Recently merged MRs today across UDS repositories (manual snapshot).
 var mergedTodayMergeRequests = [
+  {iid:369, title:"[PS-5581] feat(components): add atomic onSelectAll prop to Table organism"},
+  {iid:367, title:"[PS-5630] chore(codeowners): quote groups and route infra paths to UDS Infra Reviewers"},
+  {iid:366, title:"[PS-5629] chore(release-notifier): sanitize MR body to prevent markdown injection"},
+  {iid:365, title:"[PS-5628] chore(mcp-server): rate-limit OAuth endpoints and bound auth state"},
+  {iid:364, title:"[PS-5627] fix(mcp-server): move browser auth middleware above /public static"},
+  {iid:362, title:"[PS-5579] fix(components): make ActionsHeader a pure layout coordinator"},
+  {iid:361, title:"[PS-3787] feat(components): add FormTemplate template"},
+  {iid:360, title:"chore: Anchor isEmailAllowed allowlist match to @ separator (PS-5623)"},
   {iid:359, title:"[PS-4864] feat(components): add Link atom"},
-  {iid:350, title:"[PS-2818] feat(components): Add DrawerModal organism"}
+  {iid:358, title:"chore: Reject cross-origin continue redirects on signin page (PS-5617)"},
+  {iid:357, title:"chore(ci): Pin templates to SHA, restore TLS, add ref lint (PS-5605)"},
+  {iid:355, title:"[PS-2618] feat(components): add MultiSelectDropdownInputField organism"},
+  {iid:353, title:"chore: Tighten MCP server auth and remove public DCR (PS-5599)"},
+  {iid:350, title:"[PS-2818] feat(components): Add DrawerModal organism"},
+  {iid:346, title:"[PS-5328] Add CLAUDE.md rule-number drift test"},
+  {iid:343, title:"fix: install all workspace prod deps in Dockerfile runtime stage (PS-3634)"},
+  {iid:12,  title:"[PS-5619] fix(security): skill hardening from internal review"}
+];
+
+// Open MRs snapshot across UDS repositories (in review).
+var openMergeRequests = [
+  {iid:371, title:"[PS-5642] fix(components): ESLint cross-platform invocation fix (unresolved discussions)"},
+  {iid:368, title:"[PS-3645] feat(components): add PageLayout template (merge conflicts / unresolved discussions)"},
+  {iid:363, title:"[PS-5625] chore: Add --ignore-scripts to npm install/ci in pipeline (merge conflicts)"},
+  {iid:341, title:"[PS-5368] chore: Fix component completion gaps - 24 components below 80% ship gate (pending approval)"}
 ];
 
 var topMetrics = [
   {label:"Total Components",value:118,sub:"Active roadmap - Complete + In Progress + Planned + Docs Only",color:TOKENS.primary500},
-  {label:"Complete",        value:116, sub:"27 atoms + 61 molecules + 27 organisms + 1 templates",color:TOKENS.success},
+  {label:"Complete",        value:117, sub:"27 atoms + 61 molecules + 27 organisms + 2 templates",color:TOKENS.success},
   {label:"In Progress",     value:0,  sub:"No active development",color:TOKENS.warning},
   {label:"In NPM Package",  value:70, sub:"70 published · !232 merged Apr 29 · @components 5.0.0 released · verify count against Cloudsmith",color:TOKENS.primary500},
   {label:"Blocked",         value:0,  sub:"No current blockers",color:TOKENS.primary600},
@@ -221,14 +244,14 @@ var pipelineStats = {
 };
 
 var deliveryStatus = [
-  {name:"Complete",    value:116, color:TOKENS.success},
+  {name:"Complete",    value:117, color:TOKENS.success},
   {name:"In Progress", value:0,  color:TOKENS.warning},
-  {name:"Planned",     value:2, color:"#00838F"},
+  {name:"Planned",     value:1, color:"#00838F"},
   {name:"Docs Only",   value:0,  color:"#6B3FA0"}
 ];
 
-// Complete component inventory (May 12, 2026), synced to unified_design_system main.
-// Count: 107 components (25 atoms + 58 molecules + 23 organisms + 1 template).
+// Complete component inventory (May 15, 2026), synced to unified_design_system main.
+// Count: 117 components (27 atoms + 61 molecules + 27 organisms + 2 templates).
 // Corrections from PM master list:
 //   - ProgressBarFill (PS-3762) demoted: docs-only on main, no .tsx
 //   - DropdownMenuContainer (PS-2617) demoted: no folder on main at all
@@ -244,7 +267,7 @@ var completeComponents = [
   {name:"Indicator", type:"Atom"},
   {name:"Input", type:"Atom"},
   {name:"Label", type:"Atom"},
-  {name:"Link", type:"Atom"},
+  {name:"Link", type:"Atom", ticket:"PS-4864"},
   {name:"Logo", type:"Atom"},
   {name:"MenuToggleIcon", type:"Atom"},
   {name:"Overlay", type:"Atom"},
@@ -330,13 +353,13 @@ var completeComponents = [
   {name:"Card", type:"Organism"},
   {name:"DatePickerField", type:"Organism"},
   {name:"DateRangePicker", type:"Organism"},
-  {name:"DrawerModal", type:"Organism"},
+  {name:"DrawerModal", type:"Organism", ticket:"PS-2818"},
   {name:"DropdownButton", type:"Organism"},
   {name:"FilterMultiselectDropdown", type:"Organism"},
   {name:"MenuContainer", type:"Organism"},
   {name:"MenuHeaderOrganism", type:"Organism"},
   {name:"ModalFooter", type:"Organism"},
-  {name:"MultiselectDropdownInputField", type:"Organism"},
+  {name:"MultiselectDropdownInputField", type:"Organism", ticket:"PS-2618"},
   {name:"NavMenuContainer", type:"Organism"},
   {name:"NavSubmenuContainer", type:"Organism"},
   {name:"NavSubmenuGroup", type:"Organism"},
@@ -349,6 +372,7 @@ var completeComponents = [
   {name:"StepperContainer", type:"Organism"},
   {name:"TabGroup", type:"Organism"},
   {name:"Table", type:"Organism"},
+  {name:"FormTemplate", type:"Template", ticket:"PS-3787"},
   {name:"DatePickerModal", type:"Template", ticket:"PS-3638"}
 ];
 
@@ -360,7 +384,6 @@ var partialComponents = [];
 // retired to "No longer applicable" � its responsibility lives inside the ProgressBar
 // atom, so a separate Fill atom was redundant.
 var plannedComponents = [
-  {name:"FormTemplate", type:"Template", ticket:"PS-3787"},
   {name:"PageLayout", type:"Template", ticket:"PS-3645"}
 ];
 
@@ -511,7 +534,7 @@ function getComponentDonePercent(component) {
 // -------------------------------------------------------
 // GITLAB PIPELINE SNAPSHOT (for Pipeline tab)
 // Source: GitLab API /projects/.../pipelines?ref=main
-// Snapshot taken May 14, 2026 � to refresh, re-run the dashboard update with
+// Snapshot taken May 15, 2026 � to refresh, re-run the dashboard update with
 // GitLab MCP tools (manage_pipeline list + get_pipeline_jobs for latest).
 // -------------------------------------------------------
 var gitlabProject = {
@@ -577,10 +600,10 @@ var gitlabRecentPipelines = [
 // monorepo = complete count per level in this dashboard snapshot
 // handoff = remaining work (extracted - monorepo)
 var atomicComparison = [
-  {level:"Atoms",     extracted:26, monorepo:25, handoff:1},
-  {level:"Molecules", extracted:59, monorepo:58, handoff:1},
-  {level:"Organisms", extracted:25, monorepo:23, handoff:2},
-  {level:"Templates", extracted:3,  monorepo:1,  handoff:2}
+  {level:"Atoms",     extracted:27, monorepo:27, handoff:0},
+  {level:"Molecules", extracted:61, monorepo:61, handoff:0},
+  {level:"Organisms", extracted:27, monorepo:27, handoff:0},
+  {level:"Templates", extracted:3,  monorepo:2,  handoff:1}
 ];
 
 var NEW_BADGE = '<span style="display:inline-block;padding:1px 6px;background:#d6f2c7;color:#459d13;border-radius:8px;font-size:9px;font-weight:700;vertical-align:middle;margin-left:5px">New!</span>';
@@ -617,8 +640,8 @@ var closedGaps = [
   {name:"Divider",       closedBy:"Divider atom (PS-3717) � complete, in Figma"},
   {name:"Drawer",        closedBy:"Merged into DrawerModal organism (PS-2818) � unified pattern, same layout / different margins"},
   {name:"FileUpload",    closedBy:"FileUploadButton + FileUploadProgress (PS-3715) + FileUploadField (PS-2732) + FileUploadAvatar (PS-2824) complete"},
-  {name:"FormTemplate",  closedBy:"FormTemplate template (PS-3787) is the canonical name (FormLayout retained only as compatibility alias)"},
-  {name:"Link",          closedBy:"Link atom planned (PS-4864)"},
+  {name:"FormTemplate",  closedBy:"FormTemplate template (PS-3787) is complete and is the canonical name (FormLayout retained only as compatibility alias)"},
+  {name:"Link",          closedBy:"Link atom (PS-4864) is complete"},
   {name:"Modal/Dialog",  closedBy:"Modal template removed from active roadmap; DrawerModal + ModalHeader + ModalFooter (PS-3100) are canonical"},
   {name:"Page Content Container", closedBy:"Merged into canonical PageContentContainer organism (duplicate naming retired)"},
   {name:"Navigation",    closedBy:"Navigation organism removed from active roadmap; use SideContainer and related nav molecules/organisms"},
@@ -633,7 +656,7 @@ var closedGaps = [
   {name:"Skeleton",      closedBy:"Skeleton atom (PS-3746) is complete. Existing Skeleton Loading System semantic CSS layer (.is-loading + skeleton.css tokens) remains complete."},
   {name:"Slider",        closedBy:"SliderRail + SliderThumb + SliderTrack atoms + Slider + SliderField molecules (PS-2018) � all complete"},
   {name:"Spinner",       closedBy:"LoadingMask (PS-2855) + LogoLoader (PS-2851) + CircularIndicator (PS-2853) � all complete"},
-  {name:"Table",         closedBy:"TableCell + TableRowContent + Pagination + TableRow + ActionsHeader complete; Table organism Planned"},
+  {name:"Table",         closedBy:"TableCell + TableRowContent + Pagination + TableRow + ActionsHeader complete; Table organism complete (PS-5581 added atomic onSelectAll)"},
   {name:"Toast / Notifications", closedBy:"NotificationMessage molecule (PS-3516) is the canonical notification component and replaces ToastMessage � five semantic variants, four behavioral modes (Toast/Snackbar/Banner/Inline)"},
   {name:"TopNav",        closedBy:"PageHeader molecule (PS-3643) + HeaderButton + HeaderLogoButton + HeaderLogoTitle + UsernameButton + MenuToggleButton complete (PS-2381)"}
 ];
@@ -647,10 +670,10 @@ var remainingGaps = [
 ];
 
 var popoverData = {
-  "Total Components": "118 components are on the active roadmap. Breakdown: Complete 116, In Progress 0, Planned 2, Docs Only 0.",
-  "Complete": "116 complete components in the dashboard inventory (27 atoms, 61 molecules, 27 organisms, 1 templates).",
+  "Total Components": "118 components are on the active roadmap. Breakdown: Complete 117, In Progress 0, Planned 1, Docs Only 0.",
+  "Complete": "117 complete components in the dashboard inventory (27 atoms, 61 molecules, 27 organisms, 2 templates).",
   "In Progress": "0 components are currently in active development.",
-  "In NPM Package": "70 components published via @unified_design_system/components (Cloudsmith NPM registry). Release MR !232 merged Apr 29 � @components 5.0.0 is live on Cloudsmith. Published count reflects pre-5.0.0 baseline; verify exact count against Cloudsmith registry to confirm the full batch landed.<br><br>See the Complete popover for the full component list. Source: UDS main branch, May 6, 2026.",
+  "In NPM Package": "70 components published via @unified_design_system/components (Cloudsmith NPM registry). Release MR !232 merged Apr 29 � @components 5.0.0 is live on Cloudsmith. Published count reflects pre-5.0.0 baseline; verify exact count against Cloudsmith registry to confirm the full batch landed.<br><br>See the Complete popover for the full component list. Source: UDS main branch, May 15, 2026.",
   "Blocked": "No components are currently blocked. This metric tracks components that have a dependency or design decision preventing work from starting. If a blocker emerges, surface it here.",
   "Active Consumers": "5 teams engaged with the UDS NPM package (Active + In Progress). Status tracked via GitLab API (code scans) and manual (HubSpot integrations).<br><br><strong>Active (NPM Package):</strong><br>� <strong>Payment Portal</strong> � Most active adopter (Button, Input, Badge, Checkbox, Toggle, Label). Source: GitLab API � Mar 2026 Cloudsmith data.<br>� <strong>UCMS (Crimson)</strong> � Working with Khay as the team makes Crimson React. Two repos consuming: ucms-frontend + crimson-v2-frontend (\"Fusion\").<br>� <strong>Automation Support</strong> � qhub-portal depends on @unified_design_system/components (confirmed via GitLab, Apr 2026).<br><br><strong>In Progress (NPM Package):</strong><br>� <strong>GCV4</strong> � Active conversations, onboarding in progress. Component list pending scan.<br>� <strong>Identity Platform</strong> (user management + admin portal) � Using buttons. Component list pending scan.<br><br><strong>Informal / experimental (not counted):</strong><br>� <strong>AI Center of Excellence</strong> (SWE AI Enablement) � ai-marketplace-webapp depends on UDS in package.json. Not on the formal adoption list; confirm with team whether to promote.<br>� <strong>Takeoff (WebTakeOff FE)</strong> � webtakeoff_fe depends on components@^0.1.1 on develop; likely informal.<br>� <strong>Hackfest 2026</strong> � construct-pilot-ui, hackathon-whats-that, and quackathon-qhub-portal are internal hackathon prototypes.<br><br><strong>Planned Pipeline:</strong><br>� <strong>OST</strong> � HubSpot integration, onboarding planned (manual tracking)<br>� <strong>FAI</strong> � HubSpot integration, onboarding planned (manual tracking)<br>� <strong>API Services</strong> (Developers Portal)<br>� <strong>Planswift</strong> � Reach out to Brandin Thomas re: components used"
 };
@@ -1041,11 +1064,15 @@ function renderOverview(container) {
   var weekT         = inv.weekT;
   var targetWeeksCount = inv.targetWeeksCount;
 
-  // -- Daily Merge Count � visible in the downloaded overview PNG ---------
-  var dailyMergeCard = card('Recent Completed Work (includes docs, foundational work, and components)');
+  // -- Daily MR Activity � visible in the downloaded overview PNG ---------
+  var dailyMergeCard = card('Recent MR Activity (UDS family repositories)');
   dailyMergeCard.innerHTML += '<div style="display:flex;align-items:baseline;gap:10px;margin-top:10px">';
   dailyMergeCard.innerHTML += '<div style="font-size:40px;font-weight:700;line-height:1;color:var(--color-status-success-default)">'+mergedTodayMergeRequests.length+'</div>';
-  dailyMergeCard.innerHTML += '<div><div style="font-size:12px;font-weight:700;color:var(--color-neutral-600)">Number of merge requests in recent snapshot</div><div style="font-size:11px;color:var(--color-neutral-500);margin-top:3px">Latest merged-MR list provided by UDS update</div></div>';
+  dailyMergeCard.innerHTML += '<div><div style="font-size:12px;font-weight:700;color:var(--color-neutral-600)">Merged today</div><div style="font-size:11px;color:var(--color-neutral-500);margin-top:3px">Manual GitLab snapshot: May 15, 1:38 PM (17 MRs)</div></div>';
+  dailyMergeCard.innerHTML += '</div>';
+  dailyMergeCard.innerHTML += '<div style="display:flex;align-items:baseline;gap:10px;margin-top:12px">';
+  dailyMergeCard.innerHTML += '<div style="font-size:28px;font-weight:700;line-height:1;color:var(--color-primary-500)">'+openMergeRequests.length+'</div>';
+  dailyMergeCard.innerHTML += '<div><div style="font-size:12px;font-weight:700;color:var(--color-neutral-600)">Open merge requests</div><div style="font-size:11px;color:var(--color-neutral-500);margin-top:3px">Tracked for current planning context</div></div>';
   dailyMergeCard.innerHTML += '</div>';
   dailyMergeCard.style.marginBottom = '0';
 
@@ -1391,7 +1418,7 @@ function renderOverview(container) {
   var donutSvg = el('div'); donutSvg.innerHTML = svgDonut(deliveryStatus, 160, 22);
   donutInner.appendChild(donutSvg);
   var legendDiv = el('div', {style:{flex:'1'}});
-  var legendHtml = '<div style="font-size:11px;color:var(--color-neutral-400);margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Data Updated � May 5, 2026</div>';
+  var legendHtml = '<div style="font-size:11px;color:var(--color-neutral-400);margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Data Updated � May 15, 2026</div>';
   deliveryStatus.forEach(function(g) {
     legendHtml += '<div class="legend-item"><span class="legend-swatch" style="background:'+g.color+'"></span><span class="legend-name">'+g.name+'</span><span class="legend-val">'+g.value+'</span></div>';
   });
@@ -1401,12 +1428,12 @@ function renderOverview(container) {
   row.appendChild(donutCard);
 
   // Growth card � implementation trajectory
-  var growthCard = card('Library Growth', 'Implementation on UDS main � Dec 2025 ? May 5, 2026');
+  var growthCard = card('Library Growth', 'Implementation on UDS main � Dec 2025 ? May 15, 2026');
   growthCard.innerHTML += '<div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-neutral-500)">Foundation build � Dec 2025 ? end of March 2026</div>';
   growthCard.innerHTML += '<div style="display:flex;gap:16px;margin-bottom:12px"><div class="growth-box" style="background:var(--color-primary-100)"><div class="growth-label">Dec 2025</div><div class="growth-num" style="color:var(--color-primary-600)">'+pDecBase+'</div><div class="growth-label">implemented</div></div><div style="display:flex;align-items:center;font-size:24px;color:var(--color-status-success-default)">?</div><div class="growth-box" style="background:#E8F5E9"><div class="growth-label">Mar 31, 2026</div><div class="growth-num" style="color:var(--color-status-success-default)">'+pEndMarch+'</div><div class="growth-label">implemented</div></div></div>';
   growthCard.innerHTML += '<div class="highlight-bar" style="background:#FFF3CD;color:#8B6914"><strong>+'+pFoundationIncrease+' components shipped</strong> over ~3 months � '+pFoundationPct+'% growth</div>';
   growthCard.innerHTML += '<div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--color-neutral-200)"><div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-neutral-500)">April sprint � Apr 1 ? Apr 30, 2026</div><div style="display:flex;gap:16px;margin-bottom:12px"><div class="growth-box" style="background:var(--color-primary-100)"><div class="growth-label">Apr 1, 2026</div><div class="growth-num" style="color:var(--color-primary-600)">'+pEndMarch+'</div><div class="growth-label">implemented</div></div><div style="display:flex;align-items:center;font-size:24px;color:var(--color-status-success-default)">?</div><div class="growth-box" style="background:#E8F5E9"><div class="growth-label">Apr 30, 2026</div><div class="growth-num" style="color:var(--color-status-success-default)">'+pEndApril+'</div><div class="growth-label">implemented</div></div></div><div class="highlight-bar" style="background:#FFF3CD;color:#8B6914"><strong>+'+pAprilIncrease+' components shipped</strong> in 30 days � '+pAprilPct+'% month-over-month</div></div>';
-  growthCard.innerHTML += '<div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--color-neutral-200)"><div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-neutral-500)">May sprint � May 1 ? May 5, 2026</div><div style="display:flex;gap:16px;margin-bottom:12px"><div class="growth-box" style="background:var(--color-primary-100)"><div class="growth-label">May 1, 2026</div><div class="growth-num" style="color:var(--color-primary-600)">'+pEndApril+'</div><div class="growth-label">implemented</div></div><div style="display:flex;align-items:center;font-size:24px;color:var(--color-status-success-default)">?</div><div class="growth-box" style="background:#E8F5E9"><div class="growth-label">May 5, 2026</div><div class="growth-num" style="color:var(--color-status-success-default)">'+pImplNow+'</div><div class="growth-label">implemented</div></div></div><div class="highlight-bar" style="background:#E3F2FD;color:#0D47A1"><strong>+'+pMayIncrease+' components shipped</strong> in May so far � '+pMayPct+'% growth from April close</div></div>';
+  growthCard.innerHTML += '<div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--color-neutral-200)"><div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-neutral-500)">May sprint � May 1 ? May 15, 2026</div><div style="display:flex;gap:16px;margin-bottom:12px"><div class="growth-box" style="background:var(--color-primary-100)"><div class="growth-label">May 1, 2026</div><div class="growth-num" style="color:var(--color-primary-600)">'+pEndApril+'</div><div class="growth-label">implemented</div></div><div style="display:flex;align-items:center;font-size:24px;color:var(--color-status-success-default)">?</div><div class="growth-box" style="background:#E8F5E9"><div class="growth-label">May 15, 2026</div><div class="growth-num" style="color:var(--color-status-success-default)">'+pImplNow+'</div><div class="growth-label">implemented</div></div></div><div class="highlight-bar" style="background:#E3F2FD;color:#0D47A1"><strong>+'+pMayIncrease+' components shipped</strong> in May so far � '+pMayPct+'% growth from April close</div></div>';
   // Bar = completion % within each tier (monorepo / extracted). Atoms at 100%, molecules
   // ~59%, organisms ~17%, templates 0%. Reads as "how done is this tier," not volume.
   var atomBars = '<div style="margin-top:16px"><div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-neutral-500)">By Atomic Level � % complete per tier (implemented / roadmap)</div>';
@@ -1697,7 +1724,7 @@ function renderSystems(container) {
   allComps.forEach(function(c){ if (byType[c.type]) byType[c.type].push(c); });
   Object.keys(byType).forEach(function(t){ byType[t].sort(function(a,b){ return a.name.localeCompare(b.name); }); });
 
-  var allCard = card('All Components ('+allComps.length+')', 'Full roadmap inventory � dashboard snapshot, May 5, 2026');
+  var allCard = card('All Components ('+allComps.length+')', 'Full roadmap inventory � dashboard snapshot, May 14, 2026');
 
   // Legend
   var legend = '<div style="display:flex;flex-wrap:wrap;gap:16px;margin-bottom:16px;padding:10px 12px;background:#F8F9FA;border-radius:6px;font-size:12px">';
